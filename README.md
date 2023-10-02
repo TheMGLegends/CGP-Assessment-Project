@@ -1,7 +1,13 @@
 # CGP Assessment Project
-
-# CGP Project Requirements
 -=-REFER TO SOL CHECKLIST FOR MORE DETAILED INFORMATION ON THE BELOW REQUIREMENTS-=-
+
+# CGP Project Requirements (Word Report)
+1. Project Introduction - Explain the idea
+2. Technical Design - UML, Flowcharts and Pseudocode
+3. Testing - Test Table and Evidence
+4. Reflection - What went right/wrong? What did you learn? How would you change it?
+
+# CGP Project Requirements (Visual Studio)
 1. Must be a 2D Game Using SDL
 2. Good Use of OOP (Object-Oriented Programming)
 3. Player Movement
