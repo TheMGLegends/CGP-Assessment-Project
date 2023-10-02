@@ -11,6 +11,7 @@
 2. Technical Design - UML, Flowcharts and Pseudocode
 3. Testing - Test Table and Evidence
 4. Reflection - What went right/wrong? What did you learn? How would you change it?
+5. 750 Max Word Count (Only body text contributes to this, no titles, bulletpoints, tables or pseudocode etc, contribute to this)
 
 # Visual Studio Project:
 1. Must be a 2D Game Using SDL
