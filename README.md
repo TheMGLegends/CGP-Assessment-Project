@@ -19,7 +19,7 @@
 3. Player Movement
 4. 2 or More Non-Moving, Non-passable Objects (Walls/Floors/Boxes etc.)
 5. 1 or More Non-Moving, Passable Objects (Door/Water etc.)
-6. 2 or More NPCs - Must Move/Intereact (Enemy, Dialogue NPC etc.)
+6. 2 or More NPCs - Must Move/Interact (Enemy, Dialogue NPC etc.)
 7. Use Different Images for Different Objects
 8. Player and NPCs Collide
 9. End Goal with at least 2 Steps (Get Key -> Touch Door etc.)
