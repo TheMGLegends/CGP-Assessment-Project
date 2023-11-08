@@ -4,14 +4,22 @@
 #include "SDL_mixer.h"
 #include "SDL_ttf.h"
 
+#include "cGame.h"
+
 int main(int argc, char* argv[])
 {
-	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+	cGame game;
+
+	game.Initialize("CGP Assessment Project", 960, 540);
+
+	while (game.IsRunning()) 
 	{
-		std::cout << "Failed to initialize SDL. SDL error: " << SDL_GetError() << std::endl;
+		game.HandleEvents();
+		game.Update();
+		game.Draw();
 	}
 
-	SDL_Quit();
+	game.Clean();
 
 	return 0;
 }
