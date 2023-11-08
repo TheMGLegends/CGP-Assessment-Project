@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-11-08T11:27:40.244Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="RTM5GOfmB0Vmn4KMYUTk" version="22.0.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-08T11:31:13.704Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="OZYZrGy03KT6IkD_F3GK" version="22.0.8" type="github">
   <diagram id="1-El4E7-JrEee6S0gWFY" name="Page-1">
     <mxGraphModel dx="1062" dy="561" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -298,8 +298,11 @@
         <mxCell id="5XIr_MTe1HNAsaEMLyVN-17" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 15px; color: rgb(255, 0, 0); background-color: initial;&quot;&gt;Access external file functions for (level data)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 15px; color: rgb(255, 0, 0); background-color: initial;&quot;&gt;Have variable (2D array that stores level data (represented by numbers e.g. (0 = water, 1 = dirt, 2 = rock etc.).&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1210" y="1020" width="280" height="89" as="geometry" />
         </mxCell>
-        <mxCell id="5XIr_MTe1HNAsaEMLyVN-18" value="&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#ff0000&quot;&gt;&lt;span style=&quot;font-size: 15px;&quot;&gt;Health, MoveSpeed,&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1210" y="1150" width="280" height="89" as="geometry" />
+        <mxCell id="5XIr_MTe1HNAsaEMLyVN-18" value="&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#ff0000&quot;&gt;&lt;span style=&quot;font-size: 15px;&quot;&gt;Health, MoveSpeed, DamageAmount&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#ff0000&quot;&gt;&lt;span style=&quot;font-size: 15px;&quot;&gt;Virtual Movement System (Overriding will be able to change to input controlled vs AI controlled)&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="1130" width="280" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="5XIr_MTe1HNAsaEMLyVN-19" value="&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#ff0000&quot;&gt;&lt;span style=&quot;font-size: 15px;&quot;&gt;InputManager Reference?&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="1251" width="280" height="89" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
