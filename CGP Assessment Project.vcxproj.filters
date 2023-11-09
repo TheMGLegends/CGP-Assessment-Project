@@ -21,9 +21,15 @@
     <ClCompile Include="cGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cInputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cInputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

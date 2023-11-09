@@ -1,25 +1,26 @@
-#include <iostream>
-#include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_mixer.h"
 #include "SDL_ttf.h"
 
 #include "cGame.h"
 
+cGame* game = nullptr;
+
 int main(int argc, char* argv[])
 {
-	cGame game;
+	game = new cGame();
 
-	game.Initialize("CGP Assessment Project", 960, 540);
+	game->Initialize("CGP Assessment Project", 960, 540);
 
-	while (game.IsRunning()) 
+	while (game->IsRunning()) 
 	{
-		game.HandleEvents();
-		game.Update();
-		game.Draw();
+		game->HandleEvents();
+		game->Update();
+		game->Draw();
 	}
 
-	game.Clean();
+	game->Clean();
+	delete game;
 
 	return 0;
 }
