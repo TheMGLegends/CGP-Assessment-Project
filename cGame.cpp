@@ -72,6 +72,11 @@ void cGame::HandleEvents()
 		std::cout << "Spacebar Pressed!" << std::endl;
 	}
 
+	if (m_inputManager->GetKeyUp(SDL_SCANCODE_S)) 
+	{
+		std::cout << "S Pressed!" << std::endl;
+	}
+
 	m_inputManager->Update();
 }
 

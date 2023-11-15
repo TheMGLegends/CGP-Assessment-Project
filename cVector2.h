@@ -13,6 +13,9 @@ public:
 	cVector2(float x, float y);
 	~cVector2();
 
+	static cVector2 Lerp(cVector2 a, cVector2 b, float t);
+	static float Distance(cVector2 a, cVector2 b);
+
 	cVector2 operator+(const cVector2& other) const;
 	cVector2 operator-(const cVector2& other) const;
 	cVector2 operator/(const cVector2& other) const;
@@ -36,5 +39,5 @@ protected:
 	float m_y;
 
 private:
-
+	static float Clamp(float num, float min, float max);
 };

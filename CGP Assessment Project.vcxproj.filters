@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Helpers">
       <UniqueIdentifier>{addac53b-bb54-48dd-b481-0fe177305c47}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game Objects">
+      <UniqueIdentifier>{5cb0345e-466a-40a6-ad0b-7e64ac1f19cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects">
+      <UniqueIdentifier>{77f2eac0-51bd-4e16-b6c7-fb9e8e02c842}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,6 +45,12 @@
     <ClCompile Include="cVector2.cpp">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="cAssetManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="cGameObject.cpp">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cGame.h">
@@ -49,6 +61,12 @@
     </ClInclude>
     <ClInclude Include="cVector2.h">
       <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="cAssetManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="cGameObject.h">
+      <Filter>Header Files\Game Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

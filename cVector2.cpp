@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cmath>
 #include "cVector2.h"
 
@@ -13,6 +14,18 @@ cVector2::cVector2(float x, float y) : m_x{ x }, m_y{ y }
 
 cVector2::~cVector2()
 {
+}
+
+cVector2 cVector2::Lerp(cVector2 a, cVector2 b, float t)
+{
+	t = Clamp(t, 0, 1);
+	return cVector2((a.m_x + b.m_x) * t, (a.m_y + b.m_y) * t);
+}
+
+float cVector2::Distance(cVector2 a, cVector2 b)
+{
+	cVector2 temp(a.m_x - b.m_x, a.m_y - b.m_y);
+	return temp.Magnitude();
 }
 
 cVector2 cVector2::operator+(const cVector2& other) const
@@ -100,4 +113,14 @@ void cVector2::Normalize()
 {
 	m_x /= Magnitude();
 	m_y /= Magnitude();
+}
+
+float cVector2::Clamp(float num, float min, float max)
+{
+	if (num < min)
+		return min;
+	else if (num > max)
+		return max;
+	else
+		return num;
 }
