@@ -1,5 +1,12 @@
 #include <iostream>
+#include "SDL_image.h"
+#include "cAssetManager.h"
+#include "cTime.h"
 #include "cGame.h"
+
+// INFO: Temporary Testing:
+SDL_Texture* playerTexture;
+SDL_Rect destinationRect;
 
 cGame::cGame() : m_window{ nullptr }, m_renderer{ nullptr }, m_isRunning{ false }, m_inputManager { cInputManager::GetInstance() }
 {
@@ -31,6 +38,9 @@ bool cGame::Initialize(const char* windowTitle, int width, int height, int xPosi
 			return false;
 		}
 
+		// INFO: Initial Window Background Colour:
+		SDL_SetRenderDrawColor(m_renderer, 255, 255, 255, 255);
+
 		// INFO: Enable the Game Loop
 		m_isRunning = true;
 	}
@@ -40,6 +50,10 @@ bool cGame::Initialize(const char* windowTitle, int width, int height, int xPosi
 		m_isRunning = false; // INFO: Security Measure
 		return false;
 	}
+
+	// INFO: Temporary Testing:
+	playerTexture = cAssetManager::LoadTexture("Assets/testPlayer.png", m_renderer);
+
 	return true;
 }
 
@@ -82,11 +96,22 @@ void cGame::HandleEvents()
 
 void cGame::Update()
 {
+	// INFO: Temporary Testing:
+	count++;
+
+	destinationRect.h = 100;
+	destinationRect.w = 100;
+	destinationRect.x = count;
+
+	std::cout << count << std::endl;
 }
 
 void cGame::Draw()
 {
 	SDL_RenderClear(m_renderer);
+
+	// INFO: Temporary Testing:
+	SDL_RenderCopy(m_renderer, playerTexture, NULL, &destinationRect);
 
 	SDL_RenderPresent(m_renderer);
 }

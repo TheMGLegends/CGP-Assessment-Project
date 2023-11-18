@@ -27,4 +27,7 @@ private:
 	SDL_Renderer* m_renderer;
 	cInputManager* m_inputManager;
 	bool m_isRunning;
+
+	// INFO: Temporary Testing:
+	int count = 0;
 };
