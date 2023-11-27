@@ -1,33 +1,32 @@
 #pragma once
 #include <SDL.h>
-#include "cInputManager.h"
+//#include "cInputManager.h"
 
 class cGame
 {
 public:
-	cGame();
-	~cGame();
+	cGame(const cGame&) = delete;
+	inline static cGame* Instance() { return m_Instance != nullptr ? m_Instance : m_Instance = new cGame(); }
 
-	/*
-	* @param xPosition: By default is SDL_WINDOWPOS_CENTERED
-	* @param yPosition: By default is SDL_WINDOWPOS_CENTERED
-	*/
-	bool Initialize(const char* windowTitle, int width, int height, int xPosition = SDL_WINDOWPOS_CENTERED, int yPosition = SDL_WINDOWPOS_CENTERED);
+	bool Initialise(const char* windowTitle, int width, int height);
 	void HandleEvents();
 	void Update();
 	void Draw();
 	void Clean();
 
-	bool IsRunning();
-
-protected:
+	inline bool IsRunning() const { return m_isRunning; }
+	inline SDL_Renderer* GetRenderer() const { return m_renderer; }
 
 private:
+	cGame();
+
+	static cGame* m_Instance;
+
 	SDL_Window* m_window;
 	SDL_Renderer* m_renderer;
-	cInputManager* m_inputManager;
 	bool m_isRunning;
+	//cInputManager* m_inputManager;
 
 	// INFO: Temporary Testing:
-	int count = 0;
+	//int count = 0;
 };
