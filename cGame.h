@@ -2,13 +2,16 @@
 #include <SDL.h>
 //#include "cInputManager.h"
 
+const int SCREEN_WIDTH = 960;
+const int SCREEN_HEIGHT = 540;
+
 class cGame
 {
 public:
 	cGame(const cGame&) = delete;
 	inline static cGame* Instance() { return m_Instance != nullptr ? m_Instance : m_Instance = new cGame(); }
 
-	bool Initialise(const char* windowTitle, int width, int height);
+	bool Initialise(const char* windowTitle, int width = SCREEN_WIDTH, int height = SCREEN_HEIGHT);
 	void HandleEvents();
 	void Update();
 	void Draw();
@@ -19,7 +22,6 @@ public:
 
 private:
 	cGame();
-
 	static cGame* m_Instance;
 
 	SDL_Window* m_window;

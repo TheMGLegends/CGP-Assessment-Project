@@ -5,6 +5,7 @@
 #include "SDL_ttf.h"
 #include "SDL_mixer.h"
 #include "SDL_image.h"
+
 #include "cGame.h"
 
 // INFO: Temporary Testing:
@@ -34,7 +35,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		}
 	
 		// INFO: Renderer Creation
-		m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+		m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	
 		if (m_renderer == nullptr) 
 		{
@@ -68,7 +69,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		}
 	
 		// INFO: Initial Window Background Colour:
-		SDL_SetRenderDrawColor(m_renderer, 255, 255, 255, 255);
+		SDL_SetRenderDrawColor(m_renderer, 92, 148, 252, 255);
 	
 		// INFO: Enable the Game Loop
 		m_isRunning = true;

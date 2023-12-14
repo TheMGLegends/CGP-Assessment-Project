@@ -1,12 +1,17 @@
 #pragma once
+#include <string>
 #include <SDL.h>
-#include <SDL_image.h>
 
 class cAssetManager
 {
 public:
-	static SDL_Texture* LoadTexture(const char* filepath, SDL_Renderer* renderer);
-protected:
+	cAssetManager(const cAssetManager&) = delete;
+	inline static cAssetManager* Instance() { return m_Instance != nullptr ? m_Instance : m_Instance = new cAssetManager(); }
+
+	bool LoadTexture(std::string key, const char* filepath, SDL_Renderer* renderer);
 
 private:
+	cAssetManager() {};
+	static cAssetManager* m_Instance;
+
 };

@@ -148,6 +148,7 @@
     <ClInclude Include="cInputManager.h" />
     <ClInclude Include="cTime.h" />
     <ClInclude Include="cVector2.h" />
+    <ClInclude Include="TextureStrings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
