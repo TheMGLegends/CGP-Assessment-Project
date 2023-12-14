@@ -84,7 +84,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 	}
 	
 	//// INFO: Temporary Testing:
-	//playerTexture = cAssetManager::LoadTexture("Assets/testPlayer.png", m_renderer);
+	//playerTexture = cAssetManager::LoadTexture("Assets/testPlayer.png", m_renderer); Testing if push works with .gitignore
 }
 
 void cGame::HandleEvents()
