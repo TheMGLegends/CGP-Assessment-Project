@@ -1,6 +1,5 @@
 #pragma once
 #include <SDL.h>
-//#include "cInputManager.h"
 
 const int SCREEN_WIDTH = 960;
 const int SCREEN_HEIGHT = 540;
@@ -27,8 +26,4 @@ private:
 	SDL_Window* m_window;
 	SDL_Renderer* m_renderer;
 	bool m_isRunning;
-	//cInputManager* m_inputManager;
-
-	// INFO: Temporary Testing:
-	//int count = 0;
 };

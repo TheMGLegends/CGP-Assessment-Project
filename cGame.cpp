@@ -1,16 +1,13 @@
-//#include "SDL_image.h"
-//#include "cAssetManager.h"
-//#include "cTime.h"
 #include <iostream>
+
+#include "cAssetManager.h"
+#include "cTextureStrings.h"
+
 #include "SDL_ttf.h"
 #include "SDL_mixer.h"
 #include "SDL_image.h"
 
 #include "cGame.h"
-
-// INFO: Temporary Testing:
-//SDL_Texture* playerTexture;
-//SDL_Rect destinationRect;
 
 cGame* cGame::m_Instance = nullptr;
 
@@ -74,6 +71,9 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		// INFO: Enable the Game Loop
 		m_isRunning = true;
 
+		// INFO: Initialise Textures:
+		cAssetManager::Instance()->LoadTexture(cTextureStrings::TEST_PLAYER, "Assets/testPlayer.png", m_renderer);
+
 		return true;
 	}
 	else 
@@ -82,9 +82,6 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		m_isRunning = false; // INFO: Security Measure
 		return false;
 	}
-	
-	//// INFO: Temporary Testing:
-	//playerTexture = cAssetManager::LoadTexture("Assets/testPlayer.png", m_renderer); Testing if push works with .gitignore
 }
 
 void cGame::HandleEvents()
@@ -99,57 +96,27 @@ void cGame::HandleEvents()
 				break;
 		}
 	}
-	//
-	//// INFO: Specific Player Keyboard Inputs
-	//if (m_inputManager->GetKey(SDL_SCANCODE_A)) 
-	//{
-	//	std::cout << "A Pressed!" << std::endl;
-	//}
-	//
-	//if (m_inputManager->GetKey(SDL_SCANCODE_D))
-	//{
-	//	std::cout << "D Pressed!" << std::endl;
-	//}
-	//
-	//if (m_inputManager->GetKeyDown(SDL_SCANCODE_SPACE))
-	//{
-	//	std::cout << "Spacebar Pressed!" << std::endl;
-	//}
-	//
-	//if (m_inputManager->GetKeyUp(SDL_SCANCODE_S)) 
-	//{
-	//	std::cout << "S Pressed!" << std::endl;
-	//}
-	//
-	//m_inputManager->Update();
 }
 
 void cGame::Update()
 {
-	//// INFO: Temporary Testing:
-	//count++;
-	//
-	//destinationRect.h = 100;
-	//destinationRect.w = 100;
-	//destinationRect.x = count;
-	//
-	//std::cout << count << std::endl;
+
 }
 
 void cGame::Draw()
 {
 	SDL_RenderClear(m_renderer);
 
-	//// INFO: Temporary Testing:
-	//SDL_RenderCopy(m_renderer, playerTexture, NULL, &destinationRect);
+	// INFO: Test Code
+	cAssetManager::Instance()->DrawStatic(cTextureStrings::TEST_PLAYER, 960 / 2, 540 / 2, 100, 100);
 
 	SDL_RenderPresent(m_renderer);
 }
 
 void cGame::Clean()
-{
-	//m_inputManager->Clean();
-	
+{	
+	cAssetManager::Instance()->Clean();
+
 	SDL_DestroyRenderer(m_renderer);
 	SDL_DestroyWindow(m_window);
 

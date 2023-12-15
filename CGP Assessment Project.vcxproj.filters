@@ -54,6 +54,9 @@
     <ClCompile Include="cTime.cpp">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="cTextureStrings.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cGame.h">
@@ -74,8 +77,8 @@
     <ClInclude Include="cTime.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="TextureStrings.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="cTextureStrings.h">
+      <Filter>Header Files\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

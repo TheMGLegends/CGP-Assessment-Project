@@ -140,6 +140,7 @@
     <ClCompile Include="cTime.cpp" />
     <ClCompile Include="cVector2.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="cTextureStrings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAssetManager.h" />
@@ -148,7 +149,7 @@
     <ClInclude Include="cInputManager.h" />
     <ClInclude Include="cTime.h" />
     <ClInclude Include="cVector2.h" />
-    <ClInclude Include="TextureStrings.h" />
+    <ClInclude Include="cTextureStrings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
