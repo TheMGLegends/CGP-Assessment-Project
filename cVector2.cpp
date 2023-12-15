@@ -1,5 +1,7 @@
 #include <algorithm>
 #include <cmath>
+#include <iostream>
+
 #include "cVector2.h"
 
 const cVector2 cVector2::DOWN(0, -1);
@@ -9,10 +11,6 @@ const cVector2 cVector2::RIGHT(1, 0);
 const cVector2 cVector2::ZERO(0, 0);
 
 cVector2::cVector2(float x, float y) : m_x{ x }, m_y{ y }
-{
-}
-
-cVector2::~cVector2()
 {
 }
 
@@ -43,9 +41,19 @@ cVector2 cVector2::operator/(const cVector2& other) const
 	return cVector2(this->m_x / other.m_x, this->m_y / other.m_y);
 }
 
+cVector2 cVector2::operator/(const float scalar) const
+{
+	return cVector2(this->m_x / scalar, this->m_y / scalar);
+}
+
 cVector2 cVector2::operator*(const cVector2& other) const
 {
 	return cVector2(this->m_x * other.m_x, this->m_y * other.m_y);
+}
+
+cVector2 cVector2::operator*(const float scalar) const
+{
+	return cVector2(this->m_x * scalar, this->m_y * scalar);
 }
 
 cVector2& cVector2::operator+=(const cVector2& other)
@@ -113,6 +121,11 @@ void cVector2::Normalize()
 {
 	m_x /= Magnitude();
 	m_y /= Magnitude();
+}
+
+void cVector2::DisplayVector() const
+{
+	std::cout << "( X: " << m_x << ", Y: " << m_y << " )" << std::endl;
 }
 
 float cVector2::Clamp(float num, float min, float max)

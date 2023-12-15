@@ -1,4 +1,5 @@
 #pragma once
+
 #include <SDL.h>
 
 const int SCREEN_WIDTH = 960;

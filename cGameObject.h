@@ -1,4 +1,5 @@
 #pragma once
+
 #include "cVector2.h"
 #include "SDL.h"
 

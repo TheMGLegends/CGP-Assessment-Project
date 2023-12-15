@@ -1,6 +1,8 @@
 #include <iostream>
+
 #include "cGame.h"
 #include "SDL_image.h"
+
 #include "cAssetManager.h"
 
 cAssetManager* cAssetManager::m_Instance = nullptr;

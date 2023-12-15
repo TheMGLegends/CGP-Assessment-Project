@@ -9,6 +9,9 @@
 
 #include "cGame.h"
 
+// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
+#include "cVector2.h"
+
 cGame* cGame::m_Instance = nullptr;
 
 cGame::cGame()
@@ -40,7 +43,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 			return false;
 		}
 
-		// INFO: Initialise SDL_Image:
+		// INFO: Initialise SDL_Image
 		int flags = IMG_INIT_JPG | IMG_INIT_PNG;
 
 		if (IMG_Init(flags) != flags)
@@ -49,7 +52,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 			return false;
 		}
 
-		// INFO: Initialise SDL_Mixer:
+		// INFO: Initialise SDL_Mixer
 		flags = MIX_INIT_MP3;
 
 		if (Mix_Init(flags) != flags)
@@ -58,21 +61,30 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 			return false;
 		}
 
-		// INFO: Initialise SDL_TTF:
+		// INFO: Initialise SDL_TTF
 		if (TTF_Init() < 0)
 		{
 			std::cout << "Failed to initialise SDL_TTF. SDL_TTF error: " << TTF_GetError() << std::endl;
 			return false;
 		}
 	
-		// INFO: Initial Window Background Colour:
+		// INFO: Initial Window Background Colour
 		SDL_SetRenderDrawColor(m_renderer, 92, 148, 252, 255);
 	
 		// INFO: Enable the Game Loop
 		m_isRunning = true;
 
-		// INFO: Initialise Textures:
+		// INFO: Initialise Textures
+		// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::TEST_PLAYER, "Assets/testPlayer.png", m_renderer);
+
+		// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
+		cVector2 vector1{ 2, 3 };
+		cVector2 vector2{ 2, 5 };
+		vector1.DisplayVector();
+		vector2.DisplayVector();
+		vector1 /= vector2;
+		vector1.DisplayVector();
 
 		return true;
 	}
@@ -107,7 +119,7 @@ void cGame::Draw()
 {
 	SDL_RenderClear(m_renderer);
 
-	// INFO: Test Code
+	// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
 	cAssetManager::Instance()->DrawStatic(cTextureStrings::TEST_PLAYER, 960 / 2, 540 / 2, 100, 100);
 
 	SDL_RenderPresent(m_renderer);

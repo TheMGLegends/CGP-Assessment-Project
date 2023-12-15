@@ -1,4 +1,7 @@
 #pragma once
+
+//#include rand;
+
 class cTime
 {
 public:

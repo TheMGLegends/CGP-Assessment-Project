@@ -138,6 +138,7 @@
     <ClCompile Include="cGameObject.cpp" />
     <ClCompile Include="cInputManager.cpp" />
     <ClCompile Include="cTime.cpp" />
+    <ClCompile Include="cTransform.cpp" />
     <ClCompile Include="cVector2.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="cTextureStrings.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="cGameObject.h" />
     <ClInclude Include="cInputManager.h" />
     <ClInclude Include="cTime.h" />
+    <ClInclude Include="cTransform.h" />
     <ClInclude Include="cVector2.h" />
     <ClInclude Include="cTextureStrings.h" />
   </ItemGroup>
