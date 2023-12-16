@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-12-16T09:51:46.799Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="Z8sgVOL00I4qbIGpmQ2k" version="22.1.11" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-16T10:00:42.676Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="pClu-NV5NaICYlSK0qJ_" version="22.1.11" type="github">
   <diagram id="1-El4E7-JrEee6S0gWFY" name="Page-1">
-    <mxGraphModel dx="2022" dy="653" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2193" dy="747" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -673,7 +673,7 @@
           <mxGeometry y="60" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9OC_dfxMhOFUNNJjUkun-1" value="&amp;lt;&amp;lt;singleton&amp;gt;&amp;gt; cGame" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-80" y="2790" width="230" height="216" as="geometry" />
+          <mxGeometry x="-40" y="3140" width="230" height="216" as="geometry" />
         </mxCell>
         <mxCell id="9OC_dfxMhOFUNNJjUkun-2" value="- m_isRunning : bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-1">
           <mxGeometry y="26" width="230" height="26" as="geometry" />
@@ -700,7 +700,7 @@
           <mxGeometry y="190" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9OC_dfxMhOFUNNJjUkun-16" value="&amp;lt;&amp;lt;singleton&amp;gt;&amp;gt; cAssetManager" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="2790" width="230" height="138" as="geometry" />
+          <mxGeometry x="-370" y="3140" width="230" height="138" as="geometry" />
         </mxCell>
         <mxCell id="9OC_dfxMhOFUNNJjUkun-17" value="- m_textureDictionary : std::map" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-16">
           <mxGeometry y="26" width="230" height="26" as="geometry" />
@@ -746,6 +746,53 @@
         </mxCell>
         <mxCell id="9OC_dfxMhOFUNNJjUkun-31" value="- &lt;u&gt;Clamp&lt;/u&gt;(num : float, min : float, max : float) : float" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-22">
           <mxGeometry y="216" width="280" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-32" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="9OC_dfxMhOFUNNJjUkun-21" target="9OC_dfxMhOFUNNJjUkun-12">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-215" y="3130" as="sourcePoint" />
+            <mxPoint x="-20" y="3100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-33" value="cTransform" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="3300" width="230" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-34" value="+ m_x : float" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-33">
+          <mxGeometry y="26" width="230" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-37" value="+ m_y : float" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-33">
+          <mxGeometry y="52" width="230" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-35" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-33">
+          <mxGeometry y="78" width="230" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-36" value="+ Translate(vector : cVector2) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-33">
+          <mxGeometry y="86" width="230" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-44" value="cGameObject {abstract}" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="2820" width="240" height="190" as="geometry">
+            <mxRectangle x="970" y="720" width="120" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-45" value="# m_position : Transform" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-44">
+          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-46" value="# m_width : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-44">
+          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-47" value="# m_height : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-44">
+          <mxGeometry y="78" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-48" value="# m_isActive : bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-44">
+          <mxGeometry y="104" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-51" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-44">
+          <mxGeometry y="130" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-52" value="+ &lt;&lt;virtual&gt;&gt; Update() = 0 : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-44">
+          <mxGeometry y="138" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="9OC_dfxMhOFUNNJjUkun-53" value="+ Draw(renderer : SDL_Renderer*) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="9OC_dfxMhOFUNNJjUkun-44">
+          <mxGeometry y="164" width="240" height="26" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
