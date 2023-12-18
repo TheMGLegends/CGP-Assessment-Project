@@ -11,6 +11,7 @@
 
 // TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
 #include "cVector2.h"
+#include "cCharacter.h"
 
 cGame* cGame::m_Instance = nullptr;
 
@@ -110,7 +111,7 @@ void cGame::HandleEvents()
 	}
 }
 
-void cGame::Update()
+void cGame::Update(float deltaTime)
 {
 
 }

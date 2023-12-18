@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
 	while (cGame::Instance()->IsRunning())
 	{
 		cGame::Instance()->HandleEvents();
-		cGame::Instance()->Update();
+		cGame::Instance()->Update(0);
 		cGame::Instance()->Draw();
 	}
 

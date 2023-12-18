@@ -13,7 +13,7 @@ public:
 
 	bool Initialise(const char* windowTitle, int width = SCREEN_WIDTH, int height = SCREEN_HEIGHT);
 	void HandleEvents();
-	void Update();
+	void Update(float deltaTime);
 	void Draw();
 	void Clean();
 
