@@ -5,7 +5,7 @@
 class cCharacter : public cGameObject
 {
 public:
-	cCharacter(sParameters* params);
+	cCharacter(sEssentials* required);
 
 	virtual void Update(float deltaTime) = 0;
 	virtual void Draw() = 0;

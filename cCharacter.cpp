@@ -1,6 +1,6 @@
 #include "cCharacter.h"
 
-cCharacter::cCharacter(sParameters* params)
-	: cGameObject(params)
+cCharacter::cCharacter(sEssentials* required)
+	: cGameObject(required)
 {
 }

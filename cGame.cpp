@@ -11,7 +11,6 @@
 
 // TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
 #include "cVector2.h"
-#include "cCharacter.h"
 
 cGame* cGame::m_Instance = nullptr;
 
@@ -121,7 +120,7 @@ void cGame::Draw()
 	SDL_RenderClear(m_renderer);
 
 	// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
-	cAssetManager::Instance()->DrawStatic(cTextureStrings::TEST_PLAYER, 960 / 2, 540 / 2, 100, 100);
+	cAssetManager::Instance()->Draw(cTextureStrings::TEST_PLAYER, 960 / 2, 540 / 2, 100, 100);
 
 	SDL_RenderPresent(m_renderer);
 }

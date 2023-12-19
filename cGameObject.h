@@ -4,32 +4,32 @@
 #include "cTransform.h"
 #include "SDL.h"
 
-struct sParameters
+struct sEssentials
 {
-	sParameters(float x, float y, int width, int height, std::string textureKey, SDL_RendererFlip flip = SDL_FLIP_NONE)
+	sEssentials(float x, float y, int width, int height, std::string textureKey, SDL_RendererFlip flip = SDL_FLIP_NONE)
 	{
-		X = x;
-		Y = y;
-		Width = width;
-		Height = height;
-		Flip = flip;
-		TextureKey = textureKey;
+		_x = x;
+		_y = y;
+		_width = width;
+		_height = height;
+		_textureKey = textureKey;
+		_flip = flip;
 	}
 
-	float X;
-	float Y;
-	int Width;
-	int Height;
-	SDL_RendererFlip Flip;
-	std::string TextureKey;
+	float _x;
+	float _y;
+	int _width;
+	int _height;
+	std::string _textureKey;
+	SDL_RendererFlip _flip;
 };
 
 class cGameObject
 {
 public:
-	cGameObject(sParameters* params);
+	cGameObject(sEssentials* required);
 
-	// INFO: Required GO Methods:
+	// INFO: Required GO Methods
 	virtual void Update(float deltaTime) = 0;
 	virtual void Draw() = 0;
 	virtual void Clean() = 0;
@@ -38,7 +38,6 @@ protected:
 	cTransform* m_position;
 	int m_width;
 	int m_height;
-	SDL_RendererFlip m_flip;
 	std::string m_textureKey;
-	
+	SDL_RendererFlip m_flip;
 };

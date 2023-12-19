@@ -32,13 +32,26 @@ bool cAssetManager::LoadTexture(std::string key, const char* filepath, SDL_Rende
 	return true;
 }
 
-void cAssetManager::DrawStatic(std::string key, int x, int y, int width, int height, SDL_RendererFlip flip)
+// INFO: Used for Drawing Static Textures
+void cAssetManager::Draw(std::string key, int x, int y, int width, int height, SDL_RendererFlip flip)
 {
 	SDL_Rect destinationRect{ x, y, width, height };
 	
 	if (cGame::Instance()->GetRenderer() != nullptr && m_textureDictionary[key] != nullptr)
 	{
 		SDL_RenderCopyEx(cGame::Instance()->GetRenderer(), m_textureDictionary[key], NULL, &destinationRect, 0, NULL, flip);
+	}
+}
+
+// INFO: Used for Drawing Animated Textures
+void cAssetManager::Draw(std::string key, int x, int y, int width, int height, int row, int frame, SDL_RendererFlip flip)
+{
+	SDL_Rect sourceRect = { width * frame, height * row, width, height };
+	SDL_Rect destinationRect = { x, y, width, height };
+
+	if (cGame::Instance()->GetRenderer() != nullptr && m_textureDictionary[key] != nullptr)
+	{
+		SDL_RenderCopyEx(cGame::Instance()->GetRenderer(), m_textureDictionary[key], &sourceRect, &destinationRect, 0, NULL, flip);
 	}
 }
 
