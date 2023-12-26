@@ -33,7 +33,7 @@ bool cAssetManager::LoadTexture(std::string key, const char* filepath, SDL_Rende
 }
 
 // INFO: Used for Drawing Static Textures
-void cAssetManager::Draw(std::string key, int x, int y, int width, int height, SDL_RendererFlip flip)
+void cAssetManager::DrawStatic(std::string key, int x, int y, int width, int height, SDL_RendererFlip flip)
 {
 	SDL_Rect destinationRect{ x, y, width, height };
 	
@@ -44,7 +44,7 @@ void cAssetManager::Draw(std::string key, int x, int y, int width, int height, S
 }
 
 // INFO: Used for Drawing Animated Textures
-void cAssetManager::Draw(std::string key, int x, int y, int width, int height, int row, int frame, SDL_RendererFlip flip)
+void cAssetManager::DrawFrame(std::string key, int x, int y, int width, int height, int row, int frame, SDL_RendererFlip flip)
 {
 	SDL_Rect sourceRect = { width * frame, height * row, width, height };
 	SDL_Rect destinationRect = { x, y, width, height };

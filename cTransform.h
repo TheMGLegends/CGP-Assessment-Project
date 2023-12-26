@@ -20,9 +20,9 @@ public:
 	// INFO: Testing Functionality
 	void DisplayPosition() const;
 
-private:
 	// INFO: Position
 	float m_x;
 	float m_y;
+
 };
 

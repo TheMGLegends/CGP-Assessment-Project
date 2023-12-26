@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 // INFO: The following was used as a reference: https://docs.unity3d.com/ScriptReference/Vector2.html
 
 class cVector2
@@ -16,21 +18,21 @@ public:
 	static const cVector2 RIGHT;
 	static const cVector2 ZERO;
 
-	cVector2(float x = 0, float y = 0);
+	cVector2(float x = 0, float y = 0) : m_x{ x }, m_y{ y } {};
 
 	static cVector2 Lerp(cVector2 a, cVector2 b, float t);
 	static float Distance(cVector2 a, cVector2 b);
 
 	// INFO: Operator Overloads
-	cVector2 operator+(const cVector2& other) const;
-	cVector2 operator-(const cVector2& other) const;
+	inline cVector2 operator+(const cVector2& other) const { return cVector2(m_x + other.m_x, m_y + other.m_y); };
+	inline cVector2 operator-(const cVector2& other) const { return cVector2(m_x - other.m_x, m_y - other.m_y); };
 
 	// INFO: Dividing and Multiplying works for both vector and scalar values
-	cVector2 operator/(const cVector2& other) const;
-	cVector2 operator/(const float scalar) const;
+	inline cVector2 operator/(const cVector2& other) const { return cVector2(m_x / other.m_x, m_y / other.m_y); };
+	inline cVector2 operator/(const float scalar) const { return cVector2(m_x / scalar, m_y / scalar); };
 
-	cVector2 operator*(const cVector2& other) const;
-	cVector2 operator*(const float scalar) const;
+	inline cVector2 operator*(const cVector2& other) const { return cVector2(m_x * other.m_x, m_y * other.m_y); };
+	inline cVector2 operator*(const float scalar) const { return cVector2(m_x * scalar, m_y * scalar); };
 
 	cVector2& operator+=(const cVector2& other);
 	cVector2& operator-=(const cVector2& other);
@@ -38,15 +40,15 @@ public:
 	cVector2& operator*=(const cVector2& other);
 
 	cVector2& operator=(const cVector2& other);
-	bool operator==(const cVector2& other) const;
-	bool operator!=(const cVector2& other) const;
+	inline bool operator==(const cVector2& other) const { return (m_x == other.m_x) && (m_y == other.m_y); };
+	inline bool operator!=(const cVector2& other) const { return (m_x != other.m_x) || (m_y != other.m_y); };
 
-	float Magnitude();
+	inline float Magnitude() { return float((std::sqrt(std::pow(m_x, 2) + std::pow(m_y, 2)))); };
 	cVector2 normalized();
 	void Normalize();
 
 	// INFO: Testing Functionality
-	void DisplayVector() const;
+	inline void DisplayVector() const { std::cout << "( X: " << m_x << ", Y: " << m_y << " )" << std::endl; };
 
 private:
 	static float Clamp(float num, float min, float max);

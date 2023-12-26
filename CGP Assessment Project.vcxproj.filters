@@ -66,6 +66,9 @@
     <ClCompile Include="cPlayer.cpp">
       <Filter>Source Files\Game Objects</Filter>
     </ClCompile>
+    <ClCompile Include="cAnimator.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cGame.h">
@@ -97,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="cPlayer.h">
       <Filter>Header Files\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="cAnimator.h">
+      <Filter>Header Files\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

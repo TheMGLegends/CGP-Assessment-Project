@@ -11,6 +11,8 @@
 
 // TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
 #include "cVector2.h"
+#include "cPlayer.h"
+cPlayer* Mario = nullptr;;
 
 cGame* cGame::m_Instance = nullptr;
 
@@ -77,6 +79,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		// INFO: Initialise Textures
 		// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::TEST_PLAYER, "Assets/testPlayer.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Run, "Assets/MarioSpriteSheet.png", m_renderer);
 
 		// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
 		cVector2 vector1{ 2, 3 };
@@ -85,6 +88,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		vector2.DisplayVector();
 		vector1 /= vector2;
 		vector1.DisplayVector();
+		Mario = new cPlayer(new sEssentials(960 / 4, 520 / 2, 35, 27, cTextureStrings::Mario_Run));
 
 		return true;
 	}
@@ -112,7 +116,7 @@ void cGame::HandleEvents()
 
 void cGame::Update(float deltaTime)
 {
-
+	Mario->Update(0);
 }
 
 void cGame::Draw()
@@ -120,7 +124,8 @@ void cGame::Draw()
 	SDL_RenderClear(m_renderer);
 
 	// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
-	cAssetManager::Instance()->Draw(cTextureStrings::TEST_PLAYER, 960 / 2, 540 / 2, 100, 100);
+	cAssetManager::Instance()->DrawStatic(cTextureStrings::TEST_PLAYER, 960 / 2, 540 / 2, 100, 100);
+	Mario->Draw();
 
 	SDL_RenderPresent(m_renderer);
 }

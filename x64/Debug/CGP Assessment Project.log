@@ -1,2 +1,5 @@
-﻿  cGame.cpp
+﻿  cCharacter.cpp
+  cGame.cpp
+  cPlayer.cpp
+  Generating Code...
   CGP Assessment Project.vcxproj -> B:\University Projects\CGP-Assessment-Project\x64\Debug\CGP Assessment Project.exe

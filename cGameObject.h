@@ -6,7 +6,7 @@
 
 struct sEssentials
 {
-	sEssentials(float x, float y, int width, int height, std::string textureKey, SDL_RendererFlip flip = SDL_FLIP_NONE)
+	sEssentials(float x, float y, int width, int height, std::string textureKey = "", SDL_RendererFlip flip = SDL_FLIP_NONE)
 	{
 		_x = x;
 		_y = y;

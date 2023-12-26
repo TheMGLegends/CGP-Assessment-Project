@@ -10,5 +10,7 @@ public:
 	*/
 
 	static const std::string TEST_PLAYER;
+
+	static const std::string Mario_Run;
 };
 

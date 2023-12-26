@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cAnimator.cpp" />
     <ClCompile Include="cAssetManager.cpp" />
     <ClCompile Include="cCharacter.cpp" />
     <ClCompile Include="cGame.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="cTextureStrings.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cAnimator.h" />
     <ClInclude Include="cAssetManager.h" />
     <ClInclude Include="cCharacter.h" />
     <ClInclude Include="cGame.h" />
