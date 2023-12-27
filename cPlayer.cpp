@@ -7,11 +7,16 @@
 
 cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 {
-	m_animator->SetAnimation(cTextureStrings::Mario_Run, 0, 5, 100, SDL_FLIP_VERTICAL);
+	m_animator->SetAnimation(cTextureStrings::Mario_Run, 0, 5, 100);
+	m_rb2D = new cRigidbody();
 }
 
 void cPlayer::Update(float deltaTime)
 {
+	m_rb2D->Update(0.5);
+
+	m_position->Translate(m_rb2D->GetPosition());
+
 	m_animator->Update();
 }
 
