@@ -4,7 +4,7 @@ int main(int argc, char* argv[])
 {
 	cGame::Instance()->Initialise("CGP Assessment Project");
 
-	while (cGame::Instance()->IsRunning())
+	while (cGame::Instance()->GetIsRunning())
 	{
 		cGame::Instance()->HandleEvents();
 		cGame::Instance()->Update(0);

@@ -17,8 +17,10 @@ public:
 	void Draw();
 	void Clean();
 
-	inline bool IsRunning() const { return m_isRunning; }
 	inline SDL_Renderer* GetRenderer() const { return m_renderer; }
+	inline bool GetIsRunning() const { return m_isRunning; }
+
+	inline void SetIsRunning(bool isRunning) { m_isRunning = isRunning; }
 
 private:
 	cGame();

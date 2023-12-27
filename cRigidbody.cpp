@@ -13,7 +13,6 @@ cRigidbody::cRigidbody()
 
 void cRigidbody::Update(float deltaTime)
 {
-	m_acceleration = m_force / m_mass;
 	m_acceleration.m_x = m_force.m_x / m_mass;
 	m_acceleration.m_y = m_gravity + m_force.m_y / m_mass;
 

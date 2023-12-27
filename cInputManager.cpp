@@ -1,6 +1,9 @@
-#include "cInputManager.h"
 #include <cstring>
 #include <iostream>
+
+#include "cGame.h"
+
+#include "cInputManager.h"
 
 cInputManager* cInputManager::m_Instance = nullptr;
 
@@ -11,18 +14,22 @@ cInputManager::cInputManager()
 	std::memcpy(m_previousKeyboardState, m_keyboardState, m_keyLength);
 }
 
-cInputManager::~cInputManager()
-{
-	if (m_previousKeyboardState != nullptr) 
-	{
-		delete[] m_previousKeyboardState;
-		m_previousKeyboardState = nullptr;
-	}
-}
-
 void cInputManager::Update()
 {
 	std::memcpy(m_previousKeyboardState, m_keyboardState, m_keyLength);
+
+	SDL_Event sdlEvent{};
+	while (SDL_PollEvent(&sdlEvent))
+	{
+		switch (sdlEvent.type)
+		{
+		case SDL_QUIT:
+			cGame::Instance()->SetIsRunning(false);
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void cInputManager::Clean()
@@ -32,19 +39,10 @@ void cInputManager::Clean()
 		delete m_Instance;
 		m_Instance = nullptr;
 	}
-}
 
-bool cInputManager::GetKey(SDL_Keycode key)
-{
-	return m_previousKeyboardState[key] && m_keyboardState[key];
-}
-
-bool cInputManager::GetKeyDown(SDL_Keycode key)
-{
-	return !m_previousKeyboardState[key] && m_keyboardState[key];
-}
-
-bool cInputManager::GetKeyUp(SDL_Keycode key)
-{
-	return m_previousKeyboardState[key] && !m_keyboardState[key];
+	if (m_previousKeyboardState != nullptr)
+	{
+		delete[] m_previousKeyboardState;
+		m_previousKeyboardState = nullptr;
+	}
 }

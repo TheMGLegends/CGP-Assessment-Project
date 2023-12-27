@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "cAssetManager.h"
+#include "cInputManager.h"
 #include "cTextureStrings.h"
 
 #include "SDL_ttf.h"
@@ -102,20 +103,13 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 
 void cGame::HandleEvents()
 {
-	SDL_Event sdlEvent;
-	while (SDL_PollEvent(&sdlEvent)) 
-	{
-		switch (sdlEvent.type) 
-		{
-			case SDL_QUIT:
-				m_isRunning = false;
-				break;
-		}
-	}
+	cInputManager::Instance()->Update();
 }
 
 void cGame::Update(float deltaTime)
 {
+	// TEMP CODE: -------------------------------------------------------------------------
+	if (cInputManager::Instance()->GetKey(SDL_SCANCODE_A)) std::cout << "Holding A" << std::endl;
 	Mario->Update(0);
 }
 
