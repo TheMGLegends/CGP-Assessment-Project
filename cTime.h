@@ -1,7 +1,7 @@
 #pragma once
 
 const int TARGET_FPS = 60;
-const float TARGET_DELTATIME = 2.0f;
+const float TARGET_DELTATIME = 0.75f;
 
 class cTime
 {
