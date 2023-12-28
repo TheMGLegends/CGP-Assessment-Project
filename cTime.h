@@ -1,14 +1,21 @@
 #pragma once
 
-//#include rand;
+const int TARGET_FPS = 60;
+const float TARGET_DELTATIME = 2.0f;
 
 class cTime
 {
 public:
-	static float m_deltaTime;
+	cTime(const cTime&) = delete;
+	inline static cTime* Instance() { return m_Instance != nullptr ? m_Instance : m_Instance = new cTime(); }
 
-protected:
+	void Update();
+	inline float DeltaTime() const { return m_deltaTime; }
 
 private:
+	cTime();
+	static cTime* m_Instance;
 
+	float m_deltaTime;
+	float m_previousFrameTime;
 };

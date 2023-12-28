@@ -100,7 +100,8 @@ void cGame::HandleEvents()
 
 void cGame::Update(float deltaTime)
 {
-	Mario->Update(0);
+	Mario->Update(deltaTime);
+	std::cout << deltaTime << std::endl;
 }
 
 void cGame::Draw()

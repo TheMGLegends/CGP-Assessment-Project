@@ -23,7 +23,7 @@ void cPlayer::Update(float deltaTime)
 	{
 		m_flip = SDL_FLIP_HORIZONTAL;
 
-		m_rb2D->AddForceX(-15, 0.5);
+		m_rb2D->AddForceX(-5, deltaTime);
 		m_animator->SetAnimation(cTextureStrings::Mario_Run, 0, 12, 50, 2, m_flip);
 	}
 
@@ -31,11 +31,11 @@ void cPlayer::Update(float deltaTime)
 	{
 		m_flip = SDL_FLIP_NONE;
 
-		m_rb2D->AddForceX(15, 0.5);
+		m_rb2D->AddForceX(5, deltaTime);
 		m_animator->SetAnimation(cTextureStrings::Mario_Run, 0, 12, 50, 2);
 	}
 
-	m_rb2D->Update(0.5);
+	m_rb2D->Update(deltaTime);
 
 	//m_position->Translate(m_rb2D->GetPosition());
 	m_position->TranslateX(m_rb2D->GetPosition().m_x);

@@ -1,4 +1,5 @@
 #include "cGame.h"
+#include "cTime.h"
 
 int main(int argc, char* argv[])
 {
@@ -7,8 +8,10 @@ int main(int argc, char* argv[])
 	while (cGame::Instance()->GetIsRunning())
 	{
 		cGame::Instance()->HandleEvents();
-		cGame::Instance()->Update(0);
+		cGame::Instance()->Update(cTime::Instance()->DeltaTime());
 		cGame::Instance()->Draw();
+		
+		cTime::Instance()->Update();
 	}
 
 	cGame::Instance()->Clean();
