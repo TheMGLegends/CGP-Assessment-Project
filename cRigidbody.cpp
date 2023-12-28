@@ -20,25 +20,23 @@ void cRigidbody::Update(float deltaTime)
 	m_position = m_velocity * deltaTime;
 }
 
-void cRigidbody::UseForceMode(cVector2 force, ForceMode mode, float dt)
+void cRigidbody::UseForceMode(cVector2 force, float dt, ForceMode mode)
 {
 	switch (mode)
 	{
 	case ForceMode::Force:
-		m_velocity = force * dt / m_mass;
+		m_force = force * dt / m_mass;
 		break;
 	case ForceMode::Acceleration:
-		m_velocity = force * dt;
+		m_force = force * dt;
 		break;
 	case ForceMode::Impulse:
-		m_velocity = force / m_mass;
+		m_force = force / m_mass;
 		break;
 	case ForceMode::VelocityChange:
-		m_velocity = force;
+		m_force = force;
 		break;
 	default:
 		break;
 	}
-
-	m_position = m_velocity * dt;
 }

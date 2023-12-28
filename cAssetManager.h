@@ -12,8 +12,8 @@ public:
 
 	bool LoadTexture(std::string key, const char* filepath, SDL_Renderer* renderer);
 
-	void DrawStatic(std::string key, int x, int y, int width, int height, SDL_RendererFlip flip = SDL_FLIP_NONE);
-	void DrawFrame(std::string key, int x, int y, int width, int height, int row, int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void DrawStatic(std::string key, int x, int y, int width, int height, int size = 1, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void DrawFrame(std::string key, int x, int y, int width, int height, int row, int frame, int size = 1, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
 	void Clean();
 

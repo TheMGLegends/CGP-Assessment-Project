@@ -28,8 +28,12 @@ public:
 	inline cVector2 GetPosition() const { return m_position; }
 
 	// _____ dt value may be temporary and may not be necessary to pass once time class is created
-	inline void AddForce(cVector2 force, ForceMode mode, float dt) { UseForceMode(force, mode, dt); }
-	inline void AddForce(float x, float y, ForceMode mode, float dt) { UseForceMode(cVector2(x, y), mode, dt); }
+	inline void AddForce(cVector2 force, float dt, ForceMode mode = ForceMode::Force) { UseForceMode(force, dt, mode); }
+	inline void AddForce(float x, float y, float dt, ForceMode mode = ForceMode::Force) { UseForceMode(cVector2(x, y), dt, mode); }
+
+	inline void AddForceX(float x, float dt, ForceMode mode = ForceMode::Force) { UseForceMode(cVector2(x, m_force.m_y), dt, mode); }
+	inline void AddForceY(float y, float dt, ForceMode mode = ForceMode::Force) { UseForceMode(cVector2(m_force.m_x, y), dt, mode); }
+	
 	inline void CancelForce() { m_force = cVector2::ZERO; }
 
 	void Update(float deltaTime);
@@ -45,6 +49,6 @@ private:
 
 	cVector2 m_position;
 
-	void UseForceMode(cVector2 force, ForceMode mode, float dt);
+	void UseForceMode(cVector2 force, float dt, ForceMode mode = ForceMode::Force);
 };
 

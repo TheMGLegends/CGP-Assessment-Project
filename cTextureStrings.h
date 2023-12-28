@@ -9,8 +9,7 @@ public:
 	* static const std::string PLAYER_IDLE = "Player_Idle";
 	*/
 
-	static const std::string TEST_PLAYER;
-
+	static const std::string Mario_Idle;
 	static const std::string Mario_Run;
 };
 

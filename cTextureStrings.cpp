@@ -1,5 +1,4 @@
 #include "cTextureStrings.h"
 
-const std::string cTextureStrings::TEST_PLAYER = "testPlayer";
-
+const std::string cTextureStrings::Mario_Idle = "Mario_Idle";
 const std::string cTextureStrings::Mario_Run = "Mario_Run";

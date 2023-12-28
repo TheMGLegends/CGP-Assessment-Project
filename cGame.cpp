@@ -11,7 +11,6 @@
 #include "cGame.h"
 
 // TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
-#include "cVector2.h"
 #include "cPlayer.h"
 cPlayer* Mario = nullptr;;
 
@@ -78,18 +77,11 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		m_isRunning = true;
 
 		// INFO: Initialise Textures
-		// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::TEST_PLAYER, "Assets/testPlayer.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Run, "Assets/MarioSpriteSheet.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Idle, "Assets/Mario_Idle.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Run, "Assets/Mario_Run.png", m_renderer);
 
 		// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
-		cVector2 vector1{ 2, 3 };
-		cVector2 vector2{ 2, 5 };
-		vector1.DisplayVector();
-		vector2.DisplayVector();
-		vector1 /= vector2;
-		vector1.DisplayVector();
-		Mario = new cPlayer(new sEssentials(960 / 4, 520 / 2, 35, 27, cTextureStrings::Mario_Run));
+		Mario = new cPlayer(new sEssentials(960 / 4, 520 / 2, 18, 33, cTextureStrings::Mario_Idle));
 
 		return true;
 	}
@@ -108,8 +100,6 @@ void cGame::HandleEvents()
 
 void cGame::Update(float deltaTime)
 {
-	// TEMP CODE: -------------------------------------------------------------------------
-	if (cInputManager::Instance()->GetKey(SDL_SCANCODE_A)) std::cout << "Holding A" << std::endl;
 	Mario->Update(0);
 }
 
@@ -118,7 +108,6 @@ void cGame::Draw()
 	SDL_RenderClear(m_renderer);
 
 	// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
-	cAssetManager::Instance()->DrawStatic(cTextureStrings::TEST_PLAYER, 960 / 2, 540 / 2, 100, 100);
 	Mario->Draw();
 
 	SDL_RenderPresent(m_renderer);
