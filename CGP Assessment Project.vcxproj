@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClCompile Include="cAnimator.cpp" />
     <ClCompile Include="cAssetManager.cpp" />
+    <ClCompile Include="cCamera.cpp" />
     <ClCompile Include="cCharacter.cpp" />
     <ClCompile Include="cGame.cpp" />
     <ClCompile Include="cGameObject.cpp" />
@@ -150,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="cAnimator.h" />
     <ClInclude Include="cAssetManager.h" />
+    <ClInclude Include="cCamera.h" />
     <ClInclude Include="cCharacter.h" />
     <ClInclude Include="cGame.h" />
     <ClInclude Include="cGameObject.h" />

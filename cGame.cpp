@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "cAssetManager.h"
+#include "cCamera.h"
 #include "cInputManager.h"
 #include "cTextureStrings.h"
 
@@ -81,7 +82,10 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Run, "Assets/Mario_Run.png", m_renderer);
 
 		// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
+		cAssetManager::Instance()->LoadTexture(cTextureStrings::Test, "Assets/Tilemap.png", m_renderer);
 		Mario = new cPlayer(new sEssentials(960 / 4, 520 / 2, 18, 33, cTextureStrings::Mario_Idle));
+
+		cCamera::Instance()->SetTarget(Mario->GetCenterPoint());
 
 		return true;
 	}
@@ -101,7 +105,7 @@ void cGame::HandleEvents()
 void cGame::Update(float deltaTime)
 {
 	Mario->Update(deltaTime);
-	std::cout << deltaTime << std::endl;
+	cCamera::Instance()->Update(deltaTime);
 }
 
 void cGame::Draw()
@@ -109,6 +113,7 @@ void cGame::Draw()
 	SDL_RenderClear(m_renderer);
 
 	// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
+	cAssetManager::Instance()->DrawFrame(cTextureStrings::Test, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0);
 	Mario->Draw();
 
 	SDL_RenderPresent(m_renderer);

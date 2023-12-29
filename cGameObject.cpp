@@ -7,4 +7,6 @@ cGameObject::cGameObject(sEssentials* required)
 	, m_flip(required->_flip)
 {
 	m_position = new cTransform(required->_x, required->_y);
+
+	m_centerPoint = new cTransform(m_position->m_x + m_width / 2, m_position->m_y + m_height / 2);
 }

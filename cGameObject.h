@@ -34,7 +34,10 @@ public:
 	virtual void Draw() = 0;
 	virtual void Clean() = 0;
 
+	inline cTransform* GetCenterPoint() { return m_centerPoint; }
+
 protected:
+	cTransform* m_centerPoint;
 	cTransform* m_position;
 	int m_width;
 	int m_height;

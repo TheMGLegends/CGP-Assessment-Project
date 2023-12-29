@@ -1,6 +1,8 @@
 #include <iostream>
 
+#include "cCamera.h"
 #include "cGame.h"
+#include "cVector2.h"
 #include "SDL_image.h"
 
 #include "cAssetManager.h"
@@ -47,7 +49,8 @@ void cAssetManager::DrawStatic(std::string key, int x, int y, int width, int hei
 void cAssetManager::DrawFrame(std::string key, int x, int y, int width, int height, int row, int frame, int size, SDL_RendererFlip flip)
 {
 	SDL_Rect sourceRect = { width * frame, height * row, width, height };
-	SDL_Rect destinationRect = { x, y, width * size, height * size };
+	cVector2 cameraPos = cCamera::Instance()->GetPosition();
+	SDL_Rect destinationRect = { x - cameraPos.m_x, y - cameraPos.m_y, width * size, height * size };
 
 	if (cGame::Instance()->GetRenderer() != nullptr && m_textureDictionary[key] != nullptr)
 	{

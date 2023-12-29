@@ -40,6 +40,9 @@ void cPlayer::Update(float deltaTime)
 	//m_position->Translate(m_rb2D->GetPosition());
 	m_position->TranslateX(m_rb2D->GetPosition().m_x);
 
+	m_centerPoint->m_x = m_position->m_x + m_width / 2;
+	m_centerPoint->m_y = m_position->m_y + m_height / 2;
+
 	m_animator->Update();
 }
 
