@@ -113,7 +113,7 @@ void cGame::Draw()
 	SDL_RenderClear(m_renderer);
 
 	// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
-	cAssetManager::Instance()->DrawFrame(cTextureStrings::Test, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0);
+	cAssetManager::Instance()->DrawFrame(cTextureStrings::Test, 0, 0, 596 * 2, 211 * 2, 0, 0);
 	Mario->Draw();
 
 	SDL_RenderPresent(m_renderer);

@@ -1,2 +1,6 @@
-﻿  cGame.cpp
+﻿  cCamera.cpp
+B:\University Projects\CGP-Assessment-Project\cCamera.cpp(11,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cCamera.cpp(12,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cCamera.cpp(15,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cCamera.cpp(17,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   CGP Assessment Project.vcxproj -> B:\University Projects\CGP-Assessment-Project\x64\Debug\CGP Assessment Project.exe

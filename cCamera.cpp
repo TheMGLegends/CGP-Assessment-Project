@@ -11,7 +11,10 @@ void cCamera::Update(float deltaTime)
 		m_cameraView.x = m_target->m_x - SCREEN_WIDTH / 2;
 		m_cameraView.y = m_target->m_y - SCREEN_HEIGHT / 2;
 
-		m_position = cVector2(m_cameraView.x, m_cameraView.y);
+		if (m_cameraView.x > m_position.m_x)
+			m_position = cVector2(m_cameraView.x, m_position.m_y);
+		else
+			m_position = cVector2(m_position.m_x, m_cameraView.y);
 	}
 }
 
