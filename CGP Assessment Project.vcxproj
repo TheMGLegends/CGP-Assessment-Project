@@ -140,6 +140,7 @@
     <ClCompile Include="cGame.cpp" />
     <ClCompile Include="cGameObject.cpp" />
     <ClCompile Include="cInputManager.cpp" />
+    <ClCompile Include="cMap.cpp" />
     <ClCompile Include="cPlayer.cpp" />
     <ClCompile Include="cRigidbody.cpp" />
     <ClCompile Include="cTime.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="cGame.h" />
     <ClInclude Include="cGameObject.h" />
     <ClInclude Include="cInputManager.h" />
+    <ClInclude Include="cMap.h" />
     <ClInclude Include="cPlayer.h" />
     <ClInclude Include="cRigidbody.h" />
     <ClInclude Include="cTime.h" />

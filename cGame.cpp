@@ -3,6 +3,7 @@
 #include "cAssetManager.h"
 #include "cCamera.h"
 #include "cInputManager.h"
+#include "cMap.h"
 #include "cTextureStrings.h"
 
 #include "SDL_ttf.h"
@@ -14,6 +15,29 @@
 // TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
 #include "cPlayer.h"
 cPlayer* Mario = nullptr;;
+cMap* Level1 = nullptr;
+int level1[SCREEN_HEIGHT / 32][SCREEN_WIDTH / 32] = {
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,3},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,3,3,3,3,3,0,0,0,0,2,2,0,0,2,2,0,0,0,3,0,3,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,2,2,2,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,2,2,2,2,0,0,0,0,0},
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+};
 
 cGame* cGame::m_Instance = nullptr;
 
@@ -78,12 +102,15 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		m_isRunning = true;
 
 		// INFO: Initialise Textures
+		cAssetManager::Instance()->LoadTexture(cTextureStrings::Tilemap, "Assets/Maps/Tilemap.png", m_renderer);
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Idle, "Assets/Mario_Idle.png", m_renderer);
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Run, "Assets/Mario_Run.png", m_renderer);
 
 		// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::Test, "Assets/Tilemap.png", m_renderer);
 		Mario = new cPlayer(new sEssentials(960 / 4, 520 / 2, 18, 33, cTextureStrings::Mario_Idle));
+		Level1 = new cMap();
+
+		Level1->LoadMap(level1);
 
 		cCamera::Instance()->SetTarget(Mario->GetCenterPoint());
 
@@ -112,9 +139,8 @@ void cGame::Draw()
 {
 	SDL_RenderClear(m_renderer);
 
-	// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
-	cAssetManager::Instance()->DrawFrame(cTextureStrings::Test, 0, 0, 596 * 2, 211 * 2, 0, 0);
 	Mario->Draw();
+	Level1->DrawMap();
 
 	SDL_RenderPresent(m_renderer);
 }
