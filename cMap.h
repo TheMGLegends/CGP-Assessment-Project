@@ -1,15 +1,27 @@
 #pragma once
 
-#include "cGame.h"
+#include <vector>
 
-// INFO TESTING FOR NOW WITH SIMPLE CONSTANT 2D ARRAY
+const int TILE_WIDTH = 32;
+const int TILE_HEIGHT = 32;
+
 class cMap
 {
 public:
-	void LoadMap(int map[SCREEN_HEIGHT / 32][SCREEN_WIDTH / 32]);
+	cMap(const cMap&) = delete;
+	inline static cMap* Instance() { return m_Instance != nullptr ? m_Instance : m_Instance = new cMap(); }
+
+	void LoadMap(std::vector< std::vector<int> > map);
 	void DrawMap();
+
+	inline int GetLevelWidth() const { return m_levelWidth; }
 private:
-	int m_map[SCREEN_HEIGHT / 32][SCREEN_WIDTH / 32];
-	SDL_Rect m_tiles[SCREEN_HEIGHT / 32][SCREEN_WIDTH / 32];
+	cMap() : m_levelWidth{ 0 } {};
+	static cMap* m_Instance;
+
+	int m_levelWidth;
+
+	std::vector< std::vector<int> > m_map;
+	std::vector< std::vector<SDL_Rect> > m_tiles;
 };
 

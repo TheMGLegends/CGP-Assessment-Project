@@ -1,22 +1,10 @@
-﻿  cAnimator.cpp
-  cAssetManager.cpp
-B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp(53,33): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp(53,33): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp(53,52): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp(53,52): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  cCamera.cpp
-B:\University Projects\CGP-Assessment-Project\cCamera.cpp(11,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+﻿  cCamera.cpp
 B:\University Projects\CGP-Assessment-Project\cCamera.cpp(12,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cCamera.cpp(15,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cCamera.cpp(17,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cCamera.cpp(13,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cCamera.cpp(19,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cCamera.cpp(21,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   cGame.cpp
-  cInputManager.cpp
   cMap.cpp
-  cPlayer.cpp
-  main.cpp
-  cTextureStrings.cpp
+B:\University Projects\CGP-Assessment-Project\cMap.cpp(32,33): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
-cCharacter.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-cRigidbody.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-cTransform.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
   CGP Assessment Project.vcxproj -> B:\University Projects\CGP-Assessment-Project\x64\Debug\CGP Assessment Project.exe

@@ -1,39 +1,56 @@
-#include "cMap.h"
+#include <iostream>
 
 #include "cAssetManager.h"
 #include "cTextureStrings.h"
 
-void cMap::LoadMap(int map[SCREEN_HEIGHT / 32][SCREEN_WIDTH / 32])
+#include "cMap.h"
+
+cMap* cMap::m_Instance = nullptr;
+
+void cMap::LoadMap(std::vector< std::vector<int> > map)
 {
-	for (int row = 0; row < SCREEN_HEIGHT / 32; row++)
+	m_map.resize(map.size());
+	m_tiles.resize(map.size());
+
+
+	for (int x = 0; x < map.size(); x++)
 	{
-		for (int column = 0; column < SCREEN_WIDTH / 32; column++)
+		m_map[x].resize(map[x].size());
+		m_tiles[x].resize(map[x].size());
+
+		for (int y = 0; y < map[0].size(); y++)
 		{
-			m_map[row][column] = map[row][column];
-			m_tiles[row][column] = { row * 32, column * 32, 32, 32 };
+			m_map[x][y] = map[x][y];
+
+			m_tiles[x][y].x = y * TILE_WIDTH;
+			m_tiles[x][y].y = x * TILE_HEIGHT;
+			m_tiles[x][y].w = TILE_WIDTH;
+			m_tiles[x][y].h = TILE_HEIGHT;
 		}
 	}
+
+	m_levelWidth = m_map[0].size() * TILE_WIDTH;
 }
 
 void cMap::DrawMap()
 {
-	for (int row = 0; row < SCREEN_HEIGHT / 32; row++)
+	for (int x = 0; x < m_map.size(); x++)
 	{
-		for (int column = 0; column < SCREEN_WIDTH / 32; column++)
+		for (int y = 0; y < m_map[0].size(); y++)
 		{
-			switch (m_map[row][column])
+			switch (m_map[x][y])
 			{
 			case 1:
-				cAssetManager::Instance()->DrawFrame(cTextureStrings::Tilemap, m_tiles[row][column].x, m_tiles[row][column].y, 0, 0);
+				cAssetManager::Instance()->DrawFrame(cTextureStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 0, 0);
 				break;
 			case 2:
-				cAssetManager::Instance()->DrawFrame(cTextureStrings::Tilemap, m_tiles[row][column].x, m_tiles[row][column].y, 0, 1);
+				cAssetManager::Instance()->DrawFrame(cTextureStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 0, 1);
 				break;
 			case 3:
-				cAssetManager::Instance()->DrawFrame(cTextureStrings::Tilemap, m_tiles[row][column].x, m_tiles[row][column].y, 1, 0);
+				cAssetManager::Instance()->DrawFrame(cTextureStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 1, 0);
 				break;
 			case 4:
-				cAssetManager::Instance()->DrawFrame(cTextureStrings::Tilemap, m_tiles[row][column].x, m_tiles[row][column].y, 1, 1);
+				cAssetManager::Instance()->DrawFrame(cTextureStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 1, 1);
 				break;
 			default:
 				break;

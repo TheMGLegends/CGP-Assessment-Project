@@ -23,6 +23,7 @@ private:
 
 	cVector2 m_position;
 	cTransform* m_target;
+	int m_levelWidth;
 
 	SDL_Rect m_cameraView;
 };

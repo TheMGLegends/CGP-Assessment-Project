@@ -9,8 +9,7 @@ int main(int argc, char* argv[])
 	{
 		cGame::Instance()->HandleEvents();
 		cGame::Instance()->Update(cTime::Instance()->DeltaTime());
-		cGame::Instance()->Draw();
-		
+		cGame::Instance()->Draw();	
 		cTime::Instance()->Update();
 	}
 
