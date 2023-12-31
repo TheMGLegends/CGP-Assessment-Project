@@ -2,8 +2,9 @@
 
 #include <vector>
 
-const int TILE_WIDTH = 32;
-const int TILE_HEIGHT = 32;
+#include "SDL.h"
+
+const int TILE_SIZE = 32;
 
 class cMap
 {
@@ -15,11 +16,19 @@ public:
 	void DrawMap();
 
 	inline int GetLevelWidth() const { return m_levelWidth; }
+	inline int GetLevelHeight() const { return m_levelHeight; }
+
+	inline int GetColumnCount() const { return m_levelWidth / TILE_SIZE; }
+	inline int GetRowCount() const { return m_levelHeight / TILE_SIZE; }
+
+	inline std::vector< std::vector<int> > GetMap() const { return m_map; }
+
 private:
-	cMap() : m_levelWidth{ 0 } {};
+	cMap() : m_levelWidth{ 0 }, m_levelHeight{ 0 } {};
 	static cMap* m_Instance;
 
 	int m_levelWidth;
+	int m_levelHeight;
 
 	std::vector< std::vector<int> > m_map;
 	std::vector< std::vector<SDL_Rect> > m_tiles;

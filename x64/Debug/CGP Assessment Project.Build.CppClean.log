@@ -1,9 +1,27 @@
-b:\university projects\cgp-assessment-project\x64\debug\cassetmanager.obj
-b:\university projects\cgp-assessment-project\x64\debug\cgame.obj
-b:\university projects\cgp-assessment-project\x64\debug\cgameobject.obj
-b:\university projects\cgp-assessment-project\x64\debug\cinputmanager.obj
-b:\university projects\cgp-assessment-project\x64\debug\ctime.obj
-b:\university projects\cgp-assessment-project\x64\debug\cvector2.obj
-b:\university projects\cgp-assessment-project\x64\debug\vc143.idb
 b:\university projects\cgp-assessment-project\x64\debug\vc143.pdb
+b:\university projects\cgp-assessment-project\x64\debug\vc143.idb
+b:\university projects\cgp-assessment-project\x64\debug\main.obj
+b:\university projects\cgp-assessment-project\x64\debug\cvector2.obj
+b:\university projects\cgp-assessment-project\x64\debug\ctime.obj
+b:\university projects\cgp-assessment-project\x64\debug\cinputmanager.obj
+b:\university projects\cgp-assessment-project\x64\debug\cgameobject.obj
+b:\university projects\cgp-assessment-project\x64\debug\cgame.obj
+b:\university projects\cgp-assessment-project\x64\debug\cassetmanager.obj
+b:\university projects\cgp-assessment-project\x64\debug\ctexturestrings.obj
+b:\university projects\cgp-assessment-project\x64\debug\ctransform.obj
+b:\university projects\cgp-assessment-project\x64\debug\cplayer.obj
+b:\university projects\cgp-assessment-project\x64\debug\ccharacter.obj
+b:\university projects\cgp-assessment-project\x64\debug\canimator.obj
+b:\university projects\cgp-assessment-project\x64\debug\crigidbody.obj
+b:\university projects\cgp-assessment-project\x64\debug\ccamera.obj
+b:\university projects\cgp-assessment-project\x64\debug\cmap.obj
+b:\university projects\cgp-assessment-project\x64\debug\cgp assessment project.exe
+b:\university projects\cgp-assessment-project\x64\debug\cgp assessment project.ilk
+b:\university projects\cgp-assessment-project\x64\debug\cgp assessment project.pdb
 b:\university projects\cgp-assessment-project\x64\debug\cgp asse.1434e175.tlog\cl.command.1.tlog
+b:\university projects\cgp-assessment-project\x64\debug\cgp asse.1434e175.tlog\cl.items.tlog
+b:\university projects\cgp-assessment-project\x64\debug\cgp asse.1434e175.tlog\cl.read.1.tlog
+b:\university projects\cgp-assessment-project\x64\debug\cgp asse.1434e175.tlog\cl.write.1.tlog
+b:\university projects\cgp-assessment-project\x64\debug\cgp asse.1434e175.tlog\link.command.1.tlog
+b:\university projects\cgp-assessment-project\x64\debug\cgp asse.1434e175.tlog\link.read.1.tlog
+b:\university projects\cgp-assessment-project\x64\debug\cgp asse.1434e175.tlog\link.write.1.tlog

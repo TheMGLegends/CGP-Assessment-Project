@@ -22,14 +22,15 @@ void cMap::LoadMap(std::vector< std::vector<int> > map)
 		{
 			m_map[x][y] = map[x][y];
 
-			m_tiles[x][y].x = y * TILE_WIDTH;
-			m_tiles[x][y].y = x * TILE_HEIGHT;
-			m_tiles[x][y].w = TILE_WIDTH;
-			m_tiles[x][y].h = TILE_HEIGHT;
+			m_tiles[x][y].x = y * TILE_SIZE;
+			m_tiles[x][y].y = x * TILE_SIZE;
+			m_tiles[x][y].w = TILE_SIZE;
+			m_tiles[x][y].h = TILE_SIZE;
 		}
 	}
 
-	m_levelWidth = m_map[0].size() * TILE_WIDTH;
+	m_levelWidth = m_map[0].size() * TILE_SIZE;
+	m_levelHeight = m_map.size() * TILE_SIZE;
 }
 
 void cMap::DrawMap()
