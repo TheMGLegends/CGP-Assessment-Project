@@ -1,6 +1,7 @@
 #pragma once
 
 #include "cAnimator.h"
+#include "cBoxCollider.h"
 #include "cGameObject.h"
 
 class cCharacter : public cGameObject
@@ -13,6 +14,9 @@ public:
 	virtual void Clean() = 0;
 
 protected:
+	cTransform* m_previousPosition;
+
 	cAnimator* m_animator;
+	cBoxCollider* m_boxCollider;
 };
 

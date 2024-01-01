@@ -104,7 +104,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Run, "Assets/Mario_Run.png", m_renderer);
 
 		// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
-		Mario = new cPlayer(new sEssentials(960 / 4, 520 / 2, 18, 33, cTextureStrings::Mario_Idle));
+		Mario = new cPlayer(new sEssentials(960 / 4 - 50, 520 / 2, 18, 33, cTextureStrings::Mario_Idle));
 
 		cMap::Instance()->LoadMap(lvl1);
 

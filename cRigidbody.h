@@ -35,6 +35,8 @@ public:
 	inline void AddForceY(float y, float dt, ForceMode mode = ForceMode::Force) { UseForceMode(cVector2(m_force.m_x, y), dt, mode); }
 	
 	inline void CancelForce() { m_force = cVector2::ZERO; }
+	inline void CancelForceX() { m_force.m_x = cVector2::ZERO.m_x; }
+	inline void CancelForceY() { m_force.m_y = cVector2::ZERO.m_y; }
 
 	void Update(float deltaTime);
 
