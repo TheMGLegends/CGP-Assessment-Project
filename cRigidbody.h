@@ -27,7 +27,6 @@ public:
 	inline cVector2 GetVelocity() const { return m_velocity; }
 	inline cVector2 GetPosition() const { return m_position; }
 
-	// _____ dt value may be temporary and may not be necessary to pass once time class is created
 	inline void AddForce(cVector2 force, float dt, ForceMode mode = ForceMode::Force) { UseForceMode(force, dt, mode); }
 	inline void AddForce(float x, float y, float dt, ForceMode mode = ForceMode::Force) { UseForceMode(cVector2(x, y), dt, mode); }
 

@@ -18,10 +18,11 @@ public:
 	inline int GetLevelWidth() const { return m_levelWidth; }
 	inline int GetLevelHeight() const { return m_levelHeight; }
 
-	inline int GetColumnCount() const { return m_levelWidth / TILE_SIZE; }
-	inline int GetRowCount() const { return m_levelHeight / TILE_SIZE; }
+	inline int GetColumnCount() const { return (m_levelWidth / TILE_SIZE) - 1; }
+	inline int GetRowCount() const { return (m_levelHeight / TILE_SIZE) - 1; }
 
 	inline std::vector< std::vector<int> > GetMap() const { return m_map; }
+	inline std::vector< std::vector<SDL_Rect> > GetTiles() const { return m_tiles; }
 
 private:
 	cMap() : m_levelWidth{ 0 }, m_levelHeight{ 0 } {};

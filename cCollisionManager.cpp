@@ -1,3 +1,5 @@
+#include "cCamera.h"
+#include "cGame.h"
 #include "cMap.h"
 
 #include "cCollisionManager.h"
@@ -43,4 +45,5 @@ bool cCollisionManager::MapCollision(SDL_Rect object)
 cCollisionManager::cCollisionManager()
 {
 	m_levelMap = cMap::Instance()->GetMap();
+	m_rectMap = cMap::Instance()->GetTiles();
 }

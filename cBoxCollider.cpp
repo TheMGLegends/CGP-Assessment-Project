@@ -18,5 +18,6 @@ void cBoxCollider::DrawBoxCollider()
 	m_boxCollider.x -= cameraPos.m_x;
 	m_boxCollider.y -= cameraPos.m_y;
 
+	SDL_SetRenderDrawColor(cGame::Instance()->GetRenderer(), 255, 0, 0, 255);
 	SDL_RenderDrawRect(cGame::Instance()->GetRenderer(), &m_boxCollider);
 }

@@ -18,5 +18,6 @@ private:
 	static cCollisionManager* m_Instance;
 
 	std::vector< std::vector<int> > m_levelMap;
+	std::vector< std::vector<SDL_Rect> > m_rectMap;
 };
 

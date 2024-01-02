@@ -3,7 +3,7 @@
 #include "cRigidbody.h"
 #include "cCharacter.h"
 
-const float JUMP_INTERVAL = 1.5f;
+const float JUMP_INTERVAL = 15.0f;
 
 class cPlayer : public cCharacter
 {
@@ -23,5 +23,7 @@ private:
 	float m_jumpForce;
 	float m_jumpTime;
 
+	void Move(float deltaTime);
+	void Jump(float deltaTime);
 };
 

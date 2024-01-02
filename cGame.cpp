@@ -133,6 +133,8 @@ void cGame::Update(float deltaTime)
 
 void cGame::Draw()
 {
+	SDL_SetRenderDrawColor(m_renderer, 92, 148, 252, 255);
+
 	SDL_RenderClear(m_renderer);
 
 	cMap::Instance()->DrawMap();
