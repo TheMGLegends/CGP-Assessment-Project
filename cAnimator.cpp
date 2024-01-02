@@ -20,7 +20,7 @@ void cAnimator::Update()
 
 void cAnimator::Draw(int x, int y, int spriteWidth, int spriteHeight) const
 {
-	cAssetManager::Instance()->DrawFrame(m_textureKey, x, y, spriteWidth, spriteHeight, m_animRow, m_animFrame, m_animSize, m_flip);
+	cAssetManager::Instance()->DrawAnimation(m_textureKey, x, y, spriteWidth, spriteHeight, m_animRow, m_animFrame, m_animSize, m_flip);
 }
 
 void cAnimator::SetAnimation(std::string textureKey, int animRow, int maxFrames, int animSpeed, int animSize, SDL_RendererFlip flip)

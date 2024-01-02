@@ -35,9 +35,10 @@ bool cAssetManager::LoadTexture(std::string key, const char* filepath, SDL_Rende
 }
 
 // INFO: Used for Drawing Static Textures
-void cAssetManager::DrawStatic(std::string key, int x, int y, int width, int height, int size, SDL_RendererFlip flip)
+void cAssetManager::Draw(std::string key, int x, int y, int width, int height, float scrollingSpeed, int size, SDL_RendererFlip flip)
 {
-	SDL_Rect destinationRect{ x, y, width * size, height * size };
+	cVector2 cameraPos = cCamera::Instance()->GetPosition() * scrollingSpeed;
+	SDL_Rect destinationRect = { x - cameraPos.m_x, y - cameraPos.m_y, width * size, height * size };
 	
 	if (cGame::Instance()->GetRenderer() != nullptr && m_textureDictionary[key] != nullptr)
 	{
@@ -46,7 +47,7 @@ void cAssetManager::DrawStatic(std::string key, int x, int y, int width, int hei
 }
 
 // INFO: Used for Drawing Animated Textures
-void cAssetManager::DrawFrame(std::string key, int x, int y, int width, int height, int row, int frame, int size, SDL_RendererFlip flip)
+void cAssetManager::DrawAnimation(std::string key, int x, int y, int width, int height, int row, int frame, int size, SDL_RendererFlip flip)
 {
 	SDL_Rect sourceRect = { width * frame, height * row, width, height };
 	cVector2 cameraPos = cCamera::Instance()->GetPosition();

@@ -99,6 +99,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 
 		// INFO: Initialise Textures
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Tilemap, "Assets/Tilemap.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(cTextureStrings::Background, "Assets/Background.png", m_renderer);
 
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Idle, "Assets/Mario_Idle.png", m_renderer);
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Run, "Assets/Mario_Run.png", m_renderer);
@@ -141,6 +142,8 @@ void cGame::Draw()
 
 	SDL_RenderClear(m_renderer);
 
+	cAssetManager::Instance()->Draw(cTextureStrings::Background, 0, -100, 1024, 768, 0.1f);
+	cAssetManager::Instance()->Draw(cTextureStrings::Background, 1024, -100, 1024, 768, 0.1f);
 	cMap::Instance()->DrawMap();
 	Mario->Draw();
 
