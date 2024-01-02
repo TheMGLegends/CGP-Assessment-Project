@@ -107,7 +107,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Fall, "Assets/Mario_Fall.png", m_renderer);
 
 		// INFO: Load Entities
-		Mario = new cPlayer(new sEssentials(25, 325, 18, 33, cTextureStrings::Mario_Idle));
+		Mario = new cPlayer(new sEssentials(25, 300, 18, 33, cTextureStrings::Mario_Idle));
 
 		// INFO: Load Map
 		cMap::Instance()->LoadMap(lvl1);

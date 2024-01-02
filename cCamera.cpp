@@ -1,4 +1,3 @@
-#include "cGame.h"
 #include "cMap.h"
 
 #include "cCamera.h"

@@ -16,6 +16,7 @@ public:
 
 private:
 	cRigidbody* m_rb2D;
+	cTransform* m_startingPosition;
 
 	bool m_bIsGrounded;
 	bool m_bIsJumping;
@@ -25,5 +26,6 @@ private:
 
 	void Move(float deltaTime);
 	void Jump(float deltaTime);
+	void Reset();
 };
 

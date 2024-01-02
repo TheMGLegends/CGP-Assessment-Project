@@ -21,12 +21,17 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 	m_rb2D = new cRigidbody();
 	m_rb2D->SetGravity(BASE_GRAVITY * 0.75f);
 
+	m_startingPosition = new cTransform(m_position->m_x, m_position->m_y);
+
 	// INFO: Idle Animation
 	m_animator->SetAnimation(cTextureStrings::Mario_Idle, 0, 10, 100, 2);
 }
 
 void cPlayer::Update(float deltaTime)
 {
+	if (m_position->m_y > 600)
+		Reset();
+
 	Move(deltaTime);
 	Jump(deltaTime);
 
@@ -124,4 +129,13 @@ void cPlayer::Jump(float deltaTime)
 		if (!m_bIsGrounded)
 			m_animator->SetAnimation(cTextureStrings::Mario_Fall, 0, 2, 100, 2, m_flip);
 	}
+}
+
+void cPlayer::Reset()
+{
+	m_position->m_x = m_startingPosition->m_x;
+	m_position->m_y = m_startingPosition->m_y;
+
+	m_flip = SDL_FLIP_NONE;
+	cCamera::Instance()->Reset();
 }
