@@ -1,4 +1,11 @@
-﻿  cCollisionManager.cpp
-B:\University Projects\CGP-Assessment-Project\cCollisionManager.cpp(41,34): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cCollisionManager.cpp(42,34): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+﻿  cPlayer.cpp
+B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(37,83): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(37,66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(37,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(37,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(45,83): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(45,66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(45,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(45,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  LINK : B:\University Projects\CGP-Assessment-Project\x64\Debug\CGP Assessment Project.exe not found or not built by the last incremental link; performing full link
   CGP Assessment Project.vcxproj -> B:\University Projects\CGP-Assessment-Project\x64\Debug\CGP Assessment Project.exe

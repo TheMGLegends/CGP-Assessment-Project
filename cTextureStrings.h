@@ -10,7 +10,10 @@ public:
 	*/
 
 	static const std::string Tilemap;
+
 	static const std::string Mario_Idle;
 	static const std::string Mario_Run;
+	static const std::string Mario_Jump;
+	static const std::string Mario_Fall;
 };
 
