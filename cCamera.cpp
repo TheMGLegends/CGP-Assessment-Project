@@ -10,7 +10,6 @@ void cCamera::Update(float deltaTime)
 	if (m_target != nullptr) 
 	{
 		m_cameraView.x = m_target->m_x - static_cast<float>(SCREEN_WIDTH) / 2;
-		//m_cameraView.y = m_target->m_y - SCREEN_HEIGHT / 2;
 
 		if (m_cameraView.x > (cMap::Instance()->GetLevelWidth() - m_cameraView.w))
 			m_cameraView.x = (cMap::Instance()->GetLevelWidth() - m_cameraView.w);
@@ -25,7 +24,6 @@ void cCamera::Update(float deltaTime)
 cCamera::cCamera()
 {
 	m_target = new cTransform();
-	m_levelWidth = 0;
 
 	m_cameraView = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 }
