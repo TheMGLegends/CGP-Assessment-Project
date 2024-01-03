@@ -16,5 +16,10 @@ public:
 	static const std::string Mario_Run;
 	static const std::string Mario_Jump;
 	static const std::string Mario_Fall;
+
+	static const std::string BulletBill_Fly;
+
+	static const std::string Goomba_Walk;
+	static const std::string Goomba_Death;
 };
 

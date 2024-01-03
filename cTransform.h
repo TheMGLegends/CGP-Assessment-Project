@@ -10,6 +10,7 @@ public:
 	cTransform(float x = 0, float y = 0);
 
 	// INFO: Operator Overloads
+	cTransform& operator=(const cTransform& other);
 	bool operator==(const cTransform& other) const;
 	bool operator!=(const cTransform& other) const;
 

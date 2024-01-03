@@ -1,9 +1,11 @@
 #include <iostream>
 
 #include "cAssetManager.h"
+#include "cBulletBill.h"
 #include "cCamera.h"
 #include "cInputManager.h"
 #include "cMap.h"
+#include "cPlayer.h"
 #include "cTextureStrings.h"
 
 #include "SDL_ttf.h"
@@ -12,10 +14,9 @@
 
 #include "cGame.h"
 
-// TEMP CODE: ------------------------------------------------------------------------------------------------------------------------------------------------
-#include "cPlayer.h"
-#include <vector>
-cPlayer* Mario = nullptr;;
+cPlayer* Mario = nullptr;
+cBulletBill* BulletBill = nullptr;
+
 std::vector< std::vector<int> > lvl1 = {
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -106,8 +107,14 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Jump, "Assets/Mario_Jump.png", m_renderer);
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Fall, "Assets/Mario_Fall.png", m_renderer);
 
+		cAssetManager::Instance()->LoadTexture(cTextureStrings::BulletBill_Fly, "Assets/BulletBill_Fly.png", m_renderer);
+
+		cAssetManager::Instance()->LoadTexture(cTextureStrings::Goomba_Walk, "Assets/Goomba_Walk.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(cTextureStrings::Goomba_Death, "Assets/Goomba_Death.png", m_renderer);
+
 		// INFO: Load Entities
 		Mario = new cPlayer(new sEssentials(25, 300, 18, 33, cTextureStrings::Mario_Idle));
+		BulletBill = new cBulletBill(new sEssentials(2950, 350, 16, 16, cTextureStrings::BulletBill_Fly, SDL_FLIP_HORIZONTAL));
 
 		// INFO: Load Map
 		cMap::Instance()->LoadMap(lvl1);
@@ -133,6 +140,7 @@ void cGame::HandleEvents()
 void cGame::Update(float deltaTime)
 {
 	Mario->Update(deltaTime);
+	BulletBill->Update(deltaTime);
 	cCamera::Instance()->Update(deltaTime);
 }
 
@@ -146,6 +154,7 @@ void cGame::Draw()
 	cAssetManager::Instance()->Draw(cTextureStrings::Background, 1024, -100, 1024, 768, 0.1f);
 	cMap::Instance()->DrawMap();
 	Mario->Draw();
+	BulletBill->Draw();
 
 	SDL_RenderPresent(m_renderer);
 }

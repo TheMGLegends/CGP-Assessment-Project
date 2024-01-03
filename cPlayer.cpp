@@ -21,7 +21,7 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 	m_rb2D = new cRigidbody();
 	m_rb2D->SetGravity(BASE_GRAVITY * 0.75f);
 
-	m_startingPosition = new cTransform(m_position->m_x, m_position->m_y);
+	m_characterType = CharacterType::Player;
 
 	// INFO: Idle Animation
 	m_animator->SetAnimation(cTextureStrings::Mario_Idle, 0, 10, 100, 2);
@@ -111,13 +111,14 @@ void cPlayer::Jump(float deltaTime)
 	{
 		m_bIsGrounded = false;
 		m_bIsJumping = true;
-		m_rb2D->AddForceY(-m_jumpForce, deltaTime, ForceMode::Impulse);
+		m_rb2D->AddForceY(-m_jumpForce, deltaTime, ForceMode::Acceleration);
+		m_rb2D->SetGravity(BASE_GRAVITY * 0.75f);
 	}
 
 	if (cInputManager::Instance()->GetKey(SDL_SCANCODE_SPACE) && m_bIsJumping && m_jumpTime < JUMP_INTERVAL)
 	{
 		m_jumpTime += deltaTime;
-		m_rb2D->AddForceY(-m_jumpForce, deltaTime, ForceMode::Impulse);
+		m_rb2D->AddForceY(-m_jumpForce, deltaTime, ForceMode::Acceleration);
 		m_animator->SetAnimation(cTextureStrings::Mario_Jump, 0, 2, 100, 2, m_flip);
 	}
 	else
@@ -125,6 +126,7 @@ void cPlayer::Jump(float deltaTime)
 		m_bIsJumping = false;
 		m_jumpTime = 0.0f;
 		m_rb2D->CancelForceY();
+		m_rb2D->SetGravity(BASE_GRAVITY);
 
 		if (!m_bIsGrounded)
 			m_animator->SetAnimation(cTextureStrings::Mario_Fall, 0, 2, 100, 2, m_flip);

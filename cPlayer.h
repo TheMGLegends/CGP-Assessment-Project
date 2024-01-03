@@ -3,7 +3,7 @@
 #include "cRigidbody.h"
 #include "cCharacter.h"
 
-const float JUMP_INTERVAL = 15.0f;
+const float JUMP_INTERVAL = 20.0f;
 
 class cPlayer : public cCharacter
 {
@@ -16,7 +16,6 @@ public:
 
 private:
 	cRigidbody* m_rb2D;
-	cTransform* m_startingPosition;
 
 	bool m_bIsGrounded;
 	bool m_bIsJumping;

@@ -1,29 +1,5 @@
-﻿  cAssetManager.cpp
-B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp(41,33): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp(41,33): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp(41,52): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp(41,52): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp(54,33): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp(54,33): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp(54,52): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp(54,52): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  cBoxCollider.cpp
-B:\University Projects\CGP-Assessment-Project\cBoxCollider.cpp(18,30): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cBoxCollider.cpp(19,30): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-  cCamera.cpp
-B:\University Projects\CGP-Assessment-Project\cCamera.cpp(11,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cCamera.cpp(17,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cCamera.cpp(19,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  cCollisionManager.cpp
-  cGame.cpp
-  cPlayer.cpp
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(42,83): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(42,66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(42,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(42,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(58,83): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(58,66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(58,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(58,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
+﻿  cBulletBill.cpp
+B:\University Projects\CGP-Assessment-Project\cBulletBill.cpp(19,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cBulletBill.cpp(24,93): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cBulletBill.cpp(24,76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   CGP Assessment Project.vcxproj -> B:\University Projects\CGP-Assessment-Project\x64\Debug\CGP Assessment Project.exe

@@ -4,6 +4,14 @@
 #include "cBoxCollider.h"
 #include "cGameObject.h"
 
+enum class CharacterType 
+{
+	None,
+	Player,
+	Goomba,
+	BulletBill
+};
+
 class cCharacter : public cGameObject
 {
 public:
@@ -15,8 +23,11 @@ public:
 
 protected:
 	cTransform* m_previousPosition;
+	cTransform* m_startingPosition;
 
 	cAnimator* m_animator;
 	cBoxCollider* m_boxCollider;
+
+	CharacterType m_characterType;
 };
 
