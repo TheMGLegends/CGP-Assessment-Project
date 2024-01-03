@@ -11,7 +11,10 @@ public:
 
 	void Update();
 	void Draw(int x, int y, int spriteWidth, int spriteHeight) const;
-	void SetAnimation(std::string textureKey, int animRow, int maxFrames, int animSpeed, int animSize = 1, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void SetAnimation(std::string textureKey, int animRow, int maxFrames, int animSpeed, int animSize = 1, SDL_RendererFlip flip = SDL_FLIP_NONE, bool playOneShot = false);
+
+	inline std::string GetCurrentAnimation() const { return m_textureKey; }
+	bool GetAnimationCompleted(std::string currentAnimation) const;
 
 private:
 	int m_animRow;
@@ -23,5 +26,9 @@ private:
 
 	std::string m_textureKey;
 	SDL_RendererFlip m_flip;
+
+	bool m_bPlayOneShot;
+	bool m_bAnimationCompleted;
+	bool m_bSetAnimation;
 };
 

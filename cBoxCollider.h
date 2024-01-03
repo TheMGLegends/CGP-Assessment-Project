@@ -5,13 +5,13 @@
 class cBoxCollider
 {
 public:
-	inline SDL_Rect GetBoxCollider() const { return m_boxCollider; }
+	inline SDL_Rect GetRect() const { return m_rectCollider; }
 
 	void Update(int x, int y, int w, int h);
 
 	void DrawBoxCollider();
 
 private:
-	SDL_Rect m_boxCollider;
+	SDL_Rect m_rectCollider;
 };
 

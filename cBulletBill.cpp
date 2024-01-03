@@ -14,11 +14,7 @@ void cBulletBill::Update(float deltaTime)
 {
 	// INFO: If the entity reaches the left-most side of the map:
 	if (m_position->m_x < -50) 
-	{
-		m_position->m_x = m_startingPosition->m_x;
-		m_position->m_y = 100 + rand() % 276; // INFO: Random Value between 100-375 (Inclusive)
-		m_position->DisplayPosition();
-	}
+		Reset();
 
 	m_position->TranslateX(-5.0f);
 	m_boxCollider->Update((int)m_position->m_x, (int)m_position->m_y, m_width * 2.0f, m_height * 2.0f);
@@ -33,4 +29,10 @@ void cBulletBill::Draw()
 
 void cBulletBill::Clean()
 {
+}
+
+void cBulletBill::Reset()
+{
+	m_position->m_x = m_startingPosition->m_x;
+	m_position->m_y = 100 + rand() % 276; // INFO: Random Value between 100-375 (Inclusive)
 }

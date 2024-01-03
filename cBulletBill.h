@@ -9,7 +9,7 @@ public:
 	virtual void Draw() override;
 	virtual void Clean() override;
 
+	void Reset();
 private:
-
 };
 

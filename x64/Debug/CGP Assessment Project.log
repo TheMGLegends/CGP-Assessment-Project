@@ -1,5 +1,2 @@
-﻿  cBulletBill.cpp
-B:\University Projects\CGP-Assessment-Project\cBulletBill.cpp(19,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cBulletBill.cpp(24,93): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cBulletBill.cpp(24,76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+﻿  cAnimator.cpp
   CGP Assessment Project.vcxproj -> B:\University Projects\CGP-Assessment-Project\x64\Debug\CGP Assessment Project.exe

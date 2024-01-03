@@ -9,4 +9,5 @@ cCharacter::cCharacter(sEssentials* required) : cGameObject(required)
 	m_boxCollider = new cBoxCollider();
 
 	m_characterType = CharacterType::None;
+	m_bIsDead = false;
 }

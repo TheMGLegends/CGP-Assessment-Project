@@ -3,6 +3,7 @@
 #include "cAssetManager.h"
 #include "cBulletBill.h"
 #include "cCamera.h"
+#include "cCollisionManager.h"
 #include "cInputManager.h"
 #include "cMap.h"
 #include "cPlayer.h"
@@ -106,6 +107,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Run, "Assets/Mario_Run.png", m_renderer);
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Jump, "Assets/Mario_Jump.png", m_renderer);
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Fall, "Assets/Mario_Fall.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Death, "Assets/Mario_Death.png", m_renderer);
 
 		cAssetManager::Instance()->LoadTexture(cTextureStrings::BulletBill_Fly, "Assets/BulletBill_Fly.png", m_renderer);
 
@@ -141,6 +143,13 @@ void cGame::Update(float deltaTime)
 {
 	Mario->Update(deltaTime);
 	BulletBill->Update(deltaTime);
+
+	if (cCollisionManager::Instance()->ObjectCollision(Mario->GetBoxCollider()->GetRect(), BulletBill->GetBoxCollider()->GetRect()) && !Mario->GetIsDead()) 
+	{
+		Mario->SetIsDead(true);
+		BulletBill->Reset();
+	}
+
 	cCamera::Instance()->Update(deltaTime);
 }
 

@@ -29,45 +29,60 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 
 void cPlayer::Update(float deltaTime)
 {
-	if (m_position->m_y > 600)
+	if (m_bIsDead && m_animator->GetCurrentAnimation() != cTextureStrings::Mario_Death) 
+	{
+		m_rb2D->CancelForceX();
+
+		if (m_rb2D->GetVelocity().m_y < 0)
+			m_rb2D->CancelForceY();
+
+		m_width = 32;
+		m_height = 33;
+		m_animator->SetAnimation(cTextureStrings::Mario_Death, 0, 10, 85, 2, m_flip, true);
+	}
+
+	if (m_position->m_y > 600 || m_animator->GetAnimationCompleted(cTextureStrings::Mario_Death))
 		Reset();
 
-	Move(deltaTime);
-	Jump(deltaTime);
-
-	m_rb2D->Update(deltaTime);
-
-	m_previousPosition->m_x = m_position->m_x;
-	m_position->TranslateX(m_rb2D->GetPosition().m_x);
-	m_boxCollider->Update(m_position->m_x, m_position->m_y, m_width * 2.0f, m_height * 1.95f);
-
-	if (cCollisionManager::Instance()->MapCollision(m_boxCollider->GetBoxCollider()))
-		m_position->m_x = m_previousPosition->m_x;
-
-	// INFO: Left Border Blocks Player From Leaving the Map
-	if (cCamera::Instance()->GetPosition().m_x > m_position->m_x)
-		m_position->m_x = cCamera::Instance()->GetPosition().m_x;
-
-	// INFO: Right Border Blocks Player From Leaving the Map
-	if (cCamera::Instance()->GetPosition().m_x + cCamera::Instance()->GetCameraView().w - m_width * 2 < m_position->m_x)
-		m_position->m_x = cCamera::Instance()->GetPosition().m_x + cCamera::Instance()->GetCameraView().w - m_width * 2;
-
-
-	m_previousPosition->m_y = m_position->m_y;
-	m_position->TranslateY(m_rb2D->GetPosition().m_y);
-	m_boxCollider->Update(m_position->m_x, m_position->m_y, m_width * 2.0f, m_height * 1.95f);
-
-
-	if (cCollisionManager::Instance()->MapCollision(m_boxCollider->GetBoxCollider()))
+	if (!m_bIsDead)
 	{
-		m_bIsGrounded = true;
-		m_position->m_y = m_previousPosition->m_y;
+		Move(deltaTime);
+		Jump(deltaTime);
 	}
-	else
-		m_bIsGrounded = false;
 
-	m_centerPoint->m_x = m_position->m_x + m_width / 2.0f;
-	m_centerPoint->m_y = m_position->m_y + m_height / 2.0f;
+		m_rb2D->Update(deltaTime);
+
+		m_previousPosition->m_x = m_position->m_x;
+		m_position->TranslateX(m_rb2D->GetPosition().m_x);
+		m_boxCollider->Update(m_position->m_x, m_position->m_y, m_width * 2.0f, m_height * 1.95f);
+
+		if (cCollisionManager::Instance()->MapCollision(m_boxCollider->GetRect()))
+			m_position->m_x = m_previousPosition->m_x;
+
+		// INFO: Left Border Blocks Player From Leaving the Map
+		if (cCamera::Instance()->GetPosition().m_x > m_position->m_x)
+			m_position->m_x = cCamera::Instance()->GetPosition().m_x;
+
+		// INFO: Right Border Blocks Player From Leaving the Map
+		if (cCamera::Instance()->GetPosition().m_x + cCamera::Instance()->GetCameraView().w - m_width * 2 < m_position->m_x)
+			m_position->m_x = cCamera::Instance()->GetPosition().m_x + cCamera::Instance()->GetCameraView().w - m_width * 2;
+
+
+		m_previousPosition->m_y = m_position->m_y;
+		m_position->TranslateY(m_rb2D->GetPosition().m_y);
+		m_boxCollider->Update(m_position->m_x, m_position->m_y, m_width * 2.0f, m_height * 1.95f);
+
+
+		if (cCollisionManager::Instance()->MapCollision(m_boxCollider->GetRect()))
+		{
+			m_bIsGrounded = true;
+			m_position->m_y = m_previousPosition->m_y;
+		}
+		else
+			m_bIsGrounded = false;
+
+		m_centerPoint->m_x = m_position->m_x + m_width / 2.0f;
+		m_centerPoint->m_y = m_position->m_y + m_height / 2.0f;
 
 	m_animator->Update();
 }
@@ -138,6 +153,16 @@ void cPlayer::Reset()
 	m_position->m_x = m_startingPosition->m_x;
 	m_position->m_y = m_startingPosition->m_y;
 
+	m_bIsDead = false;
+
+	m_bIsJumping = false;
+	m_jumpTime = 0.0f;
+
 	m_flip = SDL_FLIP_NONE;
 	cCamera::Instance()->Reset();
+
+	m_width = 18;
+	m_height = 33;
+
+	m_animator->SetAnimation(cTextureStrings::Mario_Idle, 0, 10, 100, 2);
 }
