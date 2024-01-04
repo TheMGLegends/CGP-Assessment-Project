@@ -4,6 +4,7 @@
 #include "cBulletBill.h"
 #include "cCamera.h"
 #include "cCollisionManager.h"
+#include "cGoomba.h"
 #include "cInputManager.h"
 #include "cMap.h"
 #include "cPlayer.h"
@@ -17,6 +18,7 @@
 
 cPlayer* Mario = nullptr;
 cBulletBill* BulletBill = nullptr;
+cGoomba* Goomba = nullptr;
 
 std::vector< std::vector<int> > lvl1 = {
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -31,7 +33,7 @@ std::vector< std::vector<int> > lvl1 = {
 {0,0,0,0,0,0,3,3,3,3,3,0,0,0,0,0,0,0,0,0,3,3,3,3,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,4,0,0,0,4,0,0,0,4,0,0,0,0,0,2,2,0,0,2,2,0,0,0,0,0,3,4,3,0,0,0,0,0,2,2,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0},
-{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,0,0,2,2,2,2,2,0,0,0,0,0,0,0,2,2,2,2,2,0,0,2,0,0},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,0,0,2,2,2,2,2,0,0,0,0,0,0,0,2,2,2,2,2,0,0,2,0,0},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
@@ -117,6 +119,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		// INFO: Load Entities
 		Mario = new cPlayer(new sEssentials(25, 300, 18, 33, cTextureStrings::Mario_Idle));
 		BulletBill = new cBulletBill(new sEssentials(2950, 350, 16, 16, cTextureStrings::BulletBill_Fly, SDL_FLIP_HORIZONTAL));
+		Goomba = new cGoomba(new sEssentials(300, 325, 16, 16, cTextureStrings::Goomba_Walk));
 
 		// INFO: Load Map
 		cMap::Instance()->LoadMap(lvl1);
@@ -143,25 +146,43 @@ void cGame::Update(float deltaTime)
 {
 	Mario->Update(deltaTime);
 	BulletBill->Update(deltaTime);
+	Goomba->Update(deltaTime);
 
-	if (cCollisionManager::Instance()->ObjectCollision(Mario->GetBoxCollider()->GetRect(), BulletBill->GetBoxCollider()->GetRect()) && !Mario->GetIsDead()) 
+	if (cCollisionManager::Instance()->ObjectCollision(Mario->GetBoxCollider()->GetRect(), BulletBill->GetBoxCollider()->GetRect())) 
 	{
 		Mario->SetIsDead(true);
 		BulletBill->Reset();
 	}
+	
+	Mario->GetRigidBody()->GetVelocity().DisplayVector();
+
+	if (cCollisionManager::Instance()->ObjectCollision(Mario->GetBoxCollider()->GetRect(), Goomba->GetBoxCollider()->GetRect()) && !Goomba->GetIsDead()) 
+	{
+		if (!Mario->GetIsGrounded())
+		{
+			Mario->SetSquishedGoomba(true);
+			Goomba->SetIsDead(true);
+		}
+		else
+		{
+			Mario->SetIsDead(true);
+			Goomba->Reset();
+		}
+	}
+
 
 	cCamera::Instance()->Update(deltaTime);
 }
 
 void cGame::Draw()
 {
-	SDL_SetRenderDrawColor(m_renderer, 92, 148, 252, 255);
-
 	SDL_RenderClear(m_renderer);
 
 	cAssetManager::Instance()->Draw(cTextureStrings::Background, 0, -100, 1024, 768, 0.1f);
 	cAssetManager::Instance()->Draw(cTextureStrings::Background, 1024, -100, 1024, 768, 0.1f);
 	cMap::Instance()->DrawMap();
+
+	Goomba->Draw();
 	Mario->Draw();
 	BulletBill->Draw();
 

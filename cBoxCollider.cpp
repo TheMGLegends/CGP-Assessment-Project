@@ -4,7 +4,7 @@
 
 #include "cBoxCollider.h"
 
-void cBoxCollider::Update(int x, int y, int w, int h)
+void cBoxCollider::UpdateCollider(int x, int y, int w, int h)
 {
 	m_rectCollider.x = x;
 	m_rectCollider.y = y;

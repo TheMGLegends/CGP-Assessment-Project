@@ -17,7 +17,7 @@ void cBulletBill::Update(float deltaTime)
 		Reset();
 
 	m_position->TranslateX(-5.0f);
-	m_boxCollider->Update((int)m_position->m_x, (int)m_position->m_y, m_width * 2.0f, m_height * 2.0f);
+	m_boxCollider->UpdateCollider((int)m_position->m_x, (int)m_position->m_y, m_width * 2.0f, m_height * 2.0f);
 }
 
 void cBulletBill::Draw()

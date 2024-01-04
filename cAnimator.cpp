@@ -35,11 +35,6 @@ void cAnimator::Update()
 		m_animFrame = m_maxFrames - 1;
 		m_bAnimationCompleted = true;
 	}
-
-
-
-	std::cout << "ANIM FRAME: " << m_animFrame << std::endl;
-	std::cout << "MAX FRAMES: " << m_maxFrames << std::endl;
 }
 
 void cAnimator::Draw(int x, int y, int spriteWidth, int spriteHeight) const

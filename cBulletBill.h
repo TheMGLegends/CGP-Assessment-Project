@@ -1,5 +1,7 @@
 #pragma once
+
 #include "cCharacter.h"
+
 class cBulletBill : public cCharacter
 {
 public:

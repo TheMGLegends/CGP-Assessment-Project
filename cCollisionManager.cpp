@@ -8,8 +8,8 @@ cCollisionManager* cCollisionManager::m_Instance = nullptr;
 
 bool cCollisionManager::ObjectCollision(SDL_Rect objectA, SDL_Rect objectB)
 {
-	if (objectA.x + objectA.w > objectB.x && objectA.x < objectB.x + objectB.w &&
-		objectA.y + objectA.h > objectB.y && objectA.y < objectB.y + objectB.h)
+	if (objectA.x + objectA.w >= objectB.x && objectA.x <= objectB.x + objectB.w &&
+		objectA.y + objectA.h >= objectB.y && objectA.y <= objectB.y + objectB.h)
 		return true;
 	return false;
 }

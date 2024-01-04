@@ -3,6 +3,13 @@
 #include "cAnimator.h"
 #include "cBoxCollider.h"
 #include "cGameObject.h"
+#include "cRigidbody.h"
+
+const int UP = -1;
+const int DOWN = 1;
+
+const int LEFT = -1;
+const int RIGHT = 1;
 
 enum class CharacterType 
 {
@@ -23,10 +30,13 @@ public:
 
 	inline cBoxCollider* GetBoxCollider() const { return m_boxCollider; }
 	inline bool GetIsDead() const { return m_bIsDead; }
+	inline cRigidbody* GetRigidBody() const { return m_rb2D; }
 
 	inline void SetIsDead(bool isDead) { m_bIsDead = isDead; }
 
 protected:
+	cRigidbody* m_rb2D;
+
 	cTransform* m_previousPosition;
 	cTransform* m_startingPosition;
 
@@ -34,6 +44,7 @@ protected:
 	cBoxCollider* m_boxCollider;
 
 	CharacterType m_characterType;
+
 	bool m_bIsDead;
 };
 

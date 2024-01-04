@@ -7,8 +7,7 @@ class cBoxCollider
 public:
 	inline SDL_Rect GetRect() const { return m_rectCollider; }
 
-	void Update(int x, int y, int w, int h);
-
+	void UpdateCollider(int x, int y, int w, int h);
 	void DrawBoxCollider();
 
 private:

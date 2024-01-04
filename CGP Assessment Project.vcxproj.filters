@@ -85,7 +85,10 @@
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="cBulletBill.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="cGoomba.cpp">
+      <Filter>Source Files\Game Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,7 +141,10 @@
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="cBulletBill.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="cGoomba.h">
+      <Filter>Header Files\Game Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

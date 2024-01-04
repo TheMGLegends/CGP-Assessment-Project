@@ -14,11 +14,12 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 {
 	m_bIsGrounded = false;
 	m_bIsJumping = false;
+	m_bSquishedGoomba = false;
 
 	m_jumpTime = 0.0f;
 	m_jumpForce = 25.0f;
+	m_stompedTime = 0.0f;
 
-	m_rb2D = new cRigidbody();
 	m_rb2D->SetGravity(BASE_GRAVITY * 0.75f);
 
 	m_characterType = CharacterType::Player;
@@ -47,14 +48,32 @@ void cPlayer::Update(float deltaTime)
 	if (!m_bIsDead)
 	{
 		Move(deltaTime);
-		Jump(deltaTime);
+
+		if (!m_bSquishedGoomba)
+			Jump(deltaTime);
+		else 
+		{
+			m_stompedTime += deltaTime;
+
+			if (m_stompedTime < STOMP_INTERVAL)
+			{
+				m_rb2D->SetGravity(BASE_GRAVITY * 0.75f);
+				m_rb2D->AddForceY(-50, deltaTime, ForceMode::Impulse);
+			}
+			else
+			{
+				m_bSquishedGoomba = false;
+				m_stompedTime = 0.0f;
+				m_rb2D->SetGravity(BASE_GRAVITY);
+			}
+		}
 	}
 
 		m_rb2D->Update(deltaTime);
 
 		m_previousPosition->m_x = m_position->m_x;
 		m_position->TranslateX(m_rb2D->GetPosition().m_x);
-		m_boxCollider->Update(m_position->m_x, m_position->m_y, m_width * 2.0f, m_height * 1.95f);
+		m_boxCollider->UpdateCollider(m_position->m_x, m_position->m_y, m_width * 2.0f, m_height * 1.95f);
 
 		if (cCollisionManager::Instance()->MapCollision(m_boxCollider->GetRect()))
 			m_position->m_x = m_previousPosition->m_x;
@@ -70,7 +89,7 @@ void cPlayer::Update(float deltaTime)
 
 		m_previousPosition->m_y = m_position->m_y;
 		m_position->TranslateY(m_rb2D->GetPosition().m_y);
-		m_boxCollider->Update(m_position->m_x, m_position->m_y, m_width * 2.0f, m_height * 1.95f);
+		m_boxCollider->UpdateCollider(m_position->m_x, m_position->m_y, m_width * 2.0f, m_height * 1.95f);
 
 
 		if (cCollisionManager::Instance()->MapCollision(m_boxCollider->GetRect()))
