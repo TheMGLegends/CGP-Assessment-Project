@@ -1,3 +1,4 @@
+#include "cCamera.h"
 #include "cCollisionManager.h"
 #include "cTextureStrings.h"
 
@@ -11,7 +12,7 @@ cGoomba::cGoomba(sEssentials* required) : cCharacter(required)
 
 void cGoomba::Update(float deltaTime)
 {
-	if (!m_bIsDead)
+	if (!m_bIsDead && m_position->m_x < cCamera::Instance()->GetCameraView().x + cCamera::Instance()->GetCameraView().w)
 	{
 		m_rb2D->AddForceX(m_walkingDirection * 2.5f, deltaTime);
 		m_animator->SetAnimation(cTextureStrings::Goomba_Walk, 0, 2, 100, 2);
@@ -74,4 +75,5 @@ void cGoomba::Reset()
 {
 	m_walkingDirection = LEFT;
 	m_position->m_x = m_startingPosition->m_x;
+	m_position->m_y = m_startingPosition->m_y;
 }

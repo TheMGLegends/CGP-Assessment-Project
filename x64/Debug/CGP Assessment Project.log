@@ -1,2 +1,12 @@
 ﻿  cGame.cpp
+  cGoomba.cpp
+B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(30,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(30,74): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(30,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(30,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(50,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(50,74): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(50,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(50,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
   CGP Assessment Project.vcxproj -> B:\University Projects\CGP-Assessment-Project\x64\Debug\CGP Assessment Project.exe
