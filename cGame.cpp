@@ -4,6 +4,7 @@
 #include "cBulletBill.h"
 #include "cCamera.h"
 #include "cCollisionManager.h"
+#include "cEntityManager.h"
 #include "cGoomba.h"
 #include "cInputManager.h"
 #include "cMap.h"
@@ -18,7 +19,8 @@
 
 cPlayer* Mario = nullptr;
 cBulletBill* BulletBill = nullptr;
-cGoomba* Goomba = nullptr;
+std::vector<cCharacter*> entities;
+//cGoomba* Goomba = nullptr;
 
 std::vector< std::vector<int> > lvl1 = {
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -37,6 +39,25 @@ std::vector< std::vector<int> > lvl1 = {
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+};
+
+std::vector< std::vector<int> > lvl1Entities = {
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 };
 
 cGame* cGame::m_Instance = nullptr;
@@ -119,10 +140,15 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		// INFO: Load Entities
 		Mario = new cPlayer(new sEssentials(25, 300, 18, 33, cTextureStrings::Mario_Idle));
 		BulletBill = new cBulletBill(new sEssentials(2950, 350, 16, 16, cTextureStrings::BulletBill_Fly, SDL_FLIP_HORIZONTAL));
-		Goomba = new cGoomba(new sEssentials(1000, 325, 16, 16, cTextureStrings::Goomba_Walk));
+		//Goomba = new cGoomba(new sEssentials(1000, 325, 16, 16, cTextureStrings::Goomba_Walk));
 
 		// INFO: Load Map
 		cMap::Instance()->LoadMap(lvl1);
+
+		// INFO: Load Entities
+		cEntityManager::Instance()->LoadEntities(lvl1Entities);
+
+		entities = cEntityManager::Instance()->GetEntities();
 
 		// INFO: Set Camera Target
 		cCamera::Instance()->SetTarget(Mario->GetCenterPoint());
@@ -146,30 +172,26 @@ void cGame::Update(float deltaTime)
 {
 	Mario->Update(deltaTime);
 	BulletBill->Update(deltaTime);
-	Goomba->Update(deltaTime);
+	cEntityManager::Instance()->UpdateEntities(deltaTime);
 
 	if (cCollisionManager::Instance()->ObjectCollision(Mario->GetBoxCollider()->GetRect(), BulletBill->GetBoxCollider()->GetRect())) 
 	{
 		Mario->SetIsDead(true);
-		BulletBill->Reset();
 	}
-	
-	Mario->GetRigidBody()->GetVelocity().DisplayVector();
 
-	if (cCollisionManager::Instance()->ObjectCollision(Mario->GetBoxCollider()->GetRect(), Goomba->GetBoxCollider()->GetRect()) && !Goomba->GetIsDead()) 
+	for (int i = 0; i < entities.size(); i++)
 	{
-		if (!Mario->GetIsGrounded())
+		if (cCollisionManager::Instance()->ObjectCollision(Mario->GetBoxCollider()->GetRect(), entities[i]->GetBoxCollider()->GetRect()) && !entities[i]->GetIsDead())
 		{
-			Mario->SetSquishedGoomba(true);
-			Goomba->SetIsDead(true);
-		}
-		else
-		{
-			Mario->SetIsDead(true);
-			Goomba->Reset();
+			if (!Mario->GetIsGrounded() && Mario->GetCenterPoint()->m_y < entities[i]->GetCenterPoint()->m_y)
+			{
+				Mario->SetSquishedGoomba(true);
+				entities[i]->SetIsDead(true);
+			}
+			else
+				Mario->SetIsDead(true);
 		}
 	}
-
 
 	cCamera::Instance()->Update(deltaTime);
 }
@@ -180,9 +202,10 @@ void cGame::Draw()
 
 	cAssetManager::Instance()->Draw(cTextureStrings::Background, 0, -100, 1024, 768, 0.1f);
 	cAssetManager::Instance()->Draw(cTextureStrings::Background, 1024, -100, 1024, 768, 0.1f);
-	cMap::Instance()->DrawMap();
 
-	Goomba->Draw();
+	cMap::Instance()->DrawMap();
+	cEntityManager::Instance()->DrawEntities();
+
 	Mario->Draw();
 	BulletBill->Draw();
 
@@ -202,3 +225,13 @@ void cGame::Clean()
 	SDL_Quit();
 }
 
+void cGame::ResetGame() 
+{
+	Mario->Reset();
+	BulletBill->Reset();
+
+	for (int i = 0; i < entities.size(); i++)
+	{
+		entities[i]->Reset();
+	}
+}

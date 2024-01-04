@@ -10,8 +10,8 @@ public:
 	virtual void Update(float deltaTime) override;
 	virtual void Draw() override;
 	virtual void Clean() override;
+	virtual void Reset() override;
 
-	void Reset();
 private:
 };
 

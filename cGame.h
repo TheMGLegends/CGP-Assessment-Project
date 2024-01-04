@@ -16,6 +16,7 @@ public:
 	void Update(float deltaTime);
 	void Draw();
 	void Clean();
+	void ResetGame();
 
 	inline SDL_Renderer* GetRenderer() const { return m_renderer; }
 	inline bool GetIsRunning() const { return m_isRunning; }

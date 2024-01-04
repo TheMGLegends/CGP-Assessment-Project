@@ -14,6 +14,7 @@ public:
 	virtual void Update(float deltaTime) override;
 	virtual void Draw() override;
 	virtual void Clean() override;
+	virtual void Reset() override;
 
 	inline bool GetIsGrounded() const { return m_bIsGrounded; }
 	inline void SetSquishedGoomba(bool hasSquishedGoomba) { m_bSquishedGoomba = hasSquishedGoomba; }
@@ -30,6 +31,5 @@ private:
 
 	void Move(float deltaTime);
 	void Jump(float deltaTime);
-	void Reset();
 };
 

@@ -2,6 +2,8 @@
 
 #include "cCharacter.h"
 
+const int STAY_INTERVAL = 5.0f;
+
 class cGoomba : public cCharacter
 {
 public:
@@ -10,8 +12,8 @@ public:
 	virtual void Update(float deltaTime) override;
 	virtual void Draw() override;
 	virtual void Clean() override;
+	virtual void Reset() override;
 
-	void Reset();
 private:
 	int m_walkingDirection;
 };

@@ -27,6 +27,7 @@ public:
 	virtual void Update(float deltaTime) = 0;
 	virtual void Draw() = 0;
 	virtual void Clean() = 0;
+	virtual void Reset() = 0;
 
 	inline cBoxCollider* GetBoxCollider() const { return m_boxCollider; }
 	inline bool GetIsDead() const { return m_bIsDead; }

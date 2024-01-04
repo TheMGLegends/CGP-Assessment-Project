@@ -43,7 +43,7 @@ void cPlayer::Update(float deltaTime)
 	}
 
 	if (m_position->m_y > 600 || m_animator->GetAnimationCompleted(cTextureStrings::Mario_Death))
-		Reset();
+		cGame::Instance()->ResetGame();
 
 	if (!m_bIsDead)
 	{
@@ -94,6 +94,9 @@ void cPlayer::Update(float deltaTime)
 
 		if (cCollisionManager::Instance()->MapCollision(m_boxCollider->GetRect()))
 		{
+			m_rb2D->CancelForceY();
+			m_rb2D->SetGravity(BASE_GRAVITY);
+
 			m_bIsGrounded = true;
 			m_position->m_y = m_previousPosition->m_y;
 		}
