@@ -10,6 +10,7 @@ public:
 	inline static cTime* Instance() { return m_Instance != nullptr ? m_Instance : m_Instance = new cTime(); }
 
 	void Update();
+	void Clean();
 	inline float DeltaTime() const { return m_deltaTime; }
 
 private:

@@ -4,6 +4,8 @@
 
 #include "cGoomba.h"
 
+#include "MemoryLeakDetector.h"
+
 cGoomba::cGoomba(sEssentials* required) : cCharacter(required)
 {
 	m_characterType = CharacterType::Goomba;

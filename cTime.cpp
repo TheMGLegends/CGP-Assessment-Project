@@ -2,6 +2,8 @@
 
 #include "cTime.h"
 
+#include "MemoryLeakDetector.h"
+
 cTime* cTime::m_Instance = nullptr;
 
 void cTime::Update()
@@ -13,6 +15,15 @@ void cTime::Update()
 	}
 
 	m_previousFrameTime = (float)SDL_GetTicks();
+}
+
+void cTime::Clean()
+{
+	if (m_Instance != nullptr)
+	{
+		delete m_Instance;
+		m_Instance = nullptr;
+	}
 }
 
 cTime::cTime()

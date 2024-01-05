@@ -4,6 +4,8 @@
 
 #include "cAssetManager.h"
 
+#include "MemoryLeakDetector.h"
+
 cAnimator::cAnimator() 
 	: m_animRow{ 0 }
 	, m_animFrame{ 0 }

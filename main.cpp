@@ -4,8 +4,12 @@
 #include "cGame.h"
 #include "cTime.h"
 
+#include "MemoryLeakDetector.h"
+
 int main(int argc, char* argv[])
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	srand(unsigned int(time(NULL)));
 	cGame::Instance()->Initialise("CGP Assessment Project");
 

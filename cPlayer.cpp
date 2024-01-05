@@ -10,6 +10,8 @@
 
 #include "cPlayer.h"
 
+#include "MemoryLeakDetector.h"
+
 cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 {
 	m_bIsGrounded = false;

@@ -5,6 +5,8 @@
 
 #include "cMap.h"
 
+#include "MemoryLeakDetector.h"
+
 cMap* cMap::m_Instance = nullptr;
 
 void cMap::LoadMap(std::vector< std::vector<int> > map)
@@ -57,5 +59,14 @@ void cMap::DrawMap()
 				break;
 			}
 		}
+	}
+}
+
+void cMap::Clean()
+{
+	if (m_Instance != nullptr)
+	{
+		delete m_Instance;
+		m_Instance = nullptr;
 	}
 }

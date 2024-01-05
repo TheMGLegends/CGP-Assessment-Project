@@ -5,6 +5,8 @@
 
 #include "cInputManager.h"
 
+#include "MemoryLeakDetector.h"
+
 cInputManager* cInputManager::m_Instance = nullptr;
 
 cInputManager::cInputManager()
@@ -34,15 +36,15 @@ void cInputManager::Update()
 
 void cInputManager::Clean()
 {
-	if (m_Instance != nullptr) 
-	{
-		delete m_Instance;
-		m_Instance = nullptr;
-	}
-
 	if (m_previousKeyboardState != nullptr)
 	{
 		delete[] m_previousKeyboardState;
 		m_previousKeyboardState = nullptr;
+	}
+
+	if (m_Instance != nullptr) 
+	{
+		delete m_Instance;
+		m_Instance = nullptr;
 	}
 }

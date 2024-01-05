@@ -4,6 +4,8 @@
 
 #include "cBoxCollider.h"
 
+#include "MemoryLeakDetector.h"
+
 void cBoxCollider::UpdateCollider(int x, int y, int w, int h)
 {
 	m_rectCollider.x = x;

@@ -7,6 +7,8 @@
 
 #include "cAssetManager.h"
 
+#include "MemoryLeakDetector.h"
+
 cAssetManager* cAssetManager::m_Instance = nullptr;
 
 bool cAssetManager::LoadTexture(std::string key, const char* filepath, SDL_Renderer* renderer)
@@ -75,5 +77,11 @@ void cAssetManager::Clean()
 	else 
 	{
 		std::cout << "Texture Dictionary is not empty!" << std::endl;
+	}
+
+	if (m_Instance != nullptr)
+	{
+		delete m_Instance;
+		m_Instance = nullptr;
 	}
 }

@@ -14,6 +14,7 @@ public:
 
 	void LoadMap(std::vector< std::vector<int> > map);
 	void DrawMap();
+	void Clean();
 
 	inline int GetLevelWidth() const { return m_levelWidth; }
 	inline int GetLevelHeight() const { return m_levelHeight; }

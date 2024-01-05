@@ -17,10 +17,11 @@
 
 #include "cGame.h"
 
+#include "MemoryLeakDetector.h"
+
 cPlayer* Mario = nullptr;
 cBulletBill* BulletBill = nullptr;
 std::vector<cCharacter*> entities;
-//cGoomba* Goomba = nullptr;
 
 std::vector< std::vector<int> > lvl1 = {
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},

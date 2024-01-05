@@ -14,6 +14,7 @@ public:
 	void LoadEntities(std::vector< std::vector<int> > entityMap);
 	void UpdateEntities(float deltaTime);
 	void DrawEntities();
+	void Clean();
 
 	std::vector<cCharacter*> GetEntities() const { return m_entitiesList; }
 

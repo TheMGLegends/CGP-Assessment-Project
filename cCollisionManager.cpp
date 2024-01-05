@@ -4,7 +4,18 @@
 
 #include "cCollisionManager.h"
 
+#include "MemoryLeakDetector.h"
+
 cCollisionManager* cCollisionManager::m_Instance = nullptr;
+
+void cCollisionManager::Clean()
+{
+	if (m_Instance != nullptr)
+	{
+		delete m_Instance;
+		m_Instance = nullptr;
+	}
+}
 
 bool cCollisionManager::ObjectCollision(SDL_Rect objectA, SDL_Rect objectB)
 {

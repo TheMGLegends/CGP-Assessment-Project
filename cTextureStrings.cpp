@@ -1,5 +1,7 @@
 #include "cTextureStrings.h"
 
+#include "MemoryLeakDetector.h"
+
 const std::string cTextureStrings::Tilemap = "Tilemap";
 const std::string cTextureStrings::Background = "Background";
 

@@ -2,6 +2,8 @@
 
 #include "cCamera.h"
 
+#include "MemoryLeakDetector.h"
+
 cCamera* cCamera::m_Instance = nullptr;
 
 void cCamera::Update(float deltaTime)
@@ -17,6 +19,21 @@ void cCamera::Update(float deltaTime)
 			m_position = cVector2(m_cameraView.x, m_position.m_y);
 		else
 			m_position = cVector2(m_position.m_x, m_cameraView.y);
+	}
+}
+
+void cCamera::Clean()
+{
+	if (m_target != nullptr) 
+	{
+		delete m_target;
+		m_target = nullptr;
+	}
+
+	if (m_Instance != nullptr) 
+	{
+		delete m_Instance;
+		m_Instance = nullptr;
 	}
 }
 

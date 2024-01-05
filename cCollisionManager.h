@@ -10,6 +10,8 @@ public:
 	cCollisionManager(const cCollisionManager&) = delete;
 	inline static cCollisionManager* Instance() { return m_Instance != nullptr ? m_Instance : m_Instance = new cCollisionManager(); }
 
+	void Clean();
+
 	bool ObjectCollision(SDL_Rect objectA, SDL_Rect objectB);
 	bool MapCollision(SDL_Rect object);
 

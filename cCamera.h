@@ -13,6 +13,7 @@ public:
 	inline static cCamera* Instance() { return m_Instance != nullptr ? m_Instance : m_Instance = new cCamera(); }
 
 	void Update(float deltaTime);
+	void Clean();
 
 	inline SDL_Rect GetCameraView() const { return m_cameraView; }
 	inline cVector2 GetPosition() const { return m_position; }

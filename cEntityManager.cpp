@@ -3,6 +3,8 @@
 
 #include "cEntityManager.h"
 
+#include "MemoryLeakDetector.h"
+
 cEntityManager* cEntityManager::m_Instance = nullptr;
 
 void cEntityManager::LoadEntities(std::vector<std::vector<int>> entityMap)
@@ -39,5 +41,24 @@ void cEntityManager::DrawEntities()
 	for (int i = 0; i < m_entitiesList.size(); i++)
 	{
 		m_entitiesList[i]->Draw();
+	}
+}
+
+void cEntityManager::Clean()
+{
+	for (int i = 0; i < m_entitiesList.size(); i++)
+	{
+		if (m_entitiesList[i] != nullptr) 
+		{
+			m_entitiesList[i]->Clean();
+			delete m_entitiesList[i];
+			m_entitiesList[i] = nullptr;
+		}
+	}
+
+	if (m_Instance != nullptr)
+	{
+		delete m_Instance;
+		m_Instance = nullptr;
 	}
 }

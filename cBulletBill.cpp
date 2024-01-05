@@ -5,6 +5,8 @@
 
 #include "cBulletBill.h"
 
+#include "MemoryLeakDetector.h"
+
 cBulletBill::cBulletBill(sEssentials* required) : cCharacter(required)
 {
 	m_characterType = CharacterType::BulletBill;

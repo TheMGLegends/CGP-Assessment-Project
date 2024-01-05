@@ -2,6 +2,8 @@
 
 #include "cTransform.h"
 
+#include "MemoryLeakDetector.h"
+
 cTransform::cTransform(float x, float y) : m_x{ x }, m_y{ y }
 {
 }

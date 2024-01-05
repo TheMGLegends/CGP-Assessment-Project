@@ -1,5 +1,7 @@
 #include "cRigidbody.h"
 
+#include "MemoryLeakDetector.h"
+
 cRigidbody::cRigidbody()
 	: m_drag{ 0 }
 	, m_mass{ BASE_MASS }
