@@ -1,6 +1,7 @@
 #pragma once
 
 #include "cRigidbody.h"
+
 #include "cCharacter.h"
 
 const float JUMP_INTERVAL = 20.0f;

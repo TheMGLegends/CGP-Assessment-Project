@@ -1,32 +1,9 @@
-﻿  cAnimator.cpp
-  cAssetManager.cpp
-  cBoxCollider.cpp
-  cBulletBill.cpp
-  cCamera.cpp
-  cCharacter.cpp
-  cCollisionManager.cpp
+﻿  cBulletBill.cpp
   cEntityManager.cpp
   cGame.cpp
-  cGameObject.cpp
   cGoomba.cpp
-  cInputManager.cpp
   cMap.cpp
   cPlayer.cpp
-  cRigidbody.cpp
-  cTime.cpp
-  cTransform.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\crtdbg.h(307,1): warning C4005: '_malloca': macro redefinition
-  (compiling source file 'cTime.cpp')
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\malloc.h(124,1):
-  see previous definition of '_malloca'
-  
-  cVector2.cpp
-  main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\crtdbg.h(307,1): warning C4005: '_malloca': macro redefinition
-  (compiling source file 'main.cpp')
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\malloc.h(124,1):
-  see previous definition of '_malloca'
-  
-  cTextureStrings.cpp
+  sTextureStrings.cpp
   Generating Code...
   CGP Assessment Project.vcxproj -> B:\University Projects\CGP-Assessment-Project\x64\Debug\CGP Assessment Project.exe

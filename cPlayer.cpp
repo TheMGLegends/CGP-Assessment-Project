@@ -3,7 +3,7 @@
 #include "cCollisionManager.h"
 #include "cGame.h"
 #include "cInputManager.h"
-#include "cTextureStrings.h"
+#include "sTextureStrings.h"
 #include "cVector2.h"
 
 #include "SDL.h"
@@ -27,12 +27,12 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 	m_characterType = CharacterType::Player;
 
 	// INFO: Idle Animation
-	m_animator->SetAnimation(cTextureStrings::Mario_Idle, 0, 10, 100, 2);
+	m_animator->SetAnimation(sTextureStrings::Mario_Idle, 0, 10, 100, 2);
 }
 
 void cPlayer::Update(float deltaTime)
 {
-	if (m_bIsDead && m_animator->GetCurrentAnimation() != cTextureStrings::Mario_Death) 
+	if (m_bIsDead && m_animator->GetCurrentAnimation() != sTextureStrings::Mario_Death) 
 	{
 		m_rb2D->CancelForceX();
 
@@ -41,10 +41,10 @@ void cPlayer::Update(float deltaTime)
 
 		m_width = 32;
 		m_height = 33;
-		m_animator->SetAnimation(cTextureStrings::Mario_Death, 0, 10, 85, 2, m_flip, true);
+		m_animator->SetAnimation(sTextureStrings::Mario_Death, 0, 10, 85, 2, m_flip, true);
 	}
 
-	if (m_position->m_y > 600 || m_animator->GetAnimationCompleted(cTextureStrings::Mario_Death))
+	if (m_position->m_y > 600 || m_animator->GetAnimationCompleted(sTextureStrings::Mario_Death))
 		cGame::Instance()->ResetGame();
 
 	if (!m_bIsDead)
@@ -121,14 +121,14 @@ void cPlayer::Draw()
 void cPlayer::Move(float deltaTime)
 {
 	m_rb2D->CancelForceX();
-	m_animator->SetAnimation(cTextureStrings::Mario_Idle, 0, 10, 100, 2, m_flip);
+	m_animator->SetAnimation(sTextureStrings::Mario_Idle, 0, 10, 100, 2, m_flip);
 
 	if (cInputManager::Instance()->GetKey(SDL_SCANCODE_A))
 	{
 		m_flip = SDL_FLIP_HORIZONTAL;
 
 		m_rb2D->AddForceX(-7.5f, deltaTime);
-		m_animator->SetAnimation(cTextureStrings::Mario_Run, 0, 12, 50, 2, m_flip);
+		m_animator->SetAnimation(sTextureStrings::Mario_Run, 0, 12, 50, 2, m_flip);
 	}
 
 	if (cInputManager::Instance()->GetKey(SDL_SCANCODE_D))
@@ -136,7 +136,7 @@ void cPlayer::Move(float deltaTime)
 		m_flip = SDL_FLIP_NONE;
 
 		m_rb2D->AddForceX(7.5f, deltaTime);
-		m_animator->SetAnimation(cTextureStrings::Mario_Run, 0, 12, 50, 2);
+		m_animator->SetAnimation(sTextureStrings::Mario_Run, 0, 12, 50, 2);
 	}
 }
 
@@ -154,7 +154,7 @@ void cPlayer::Jump(float deltaTime)
 	{
 		m_jumpTime += deltaTime;
 		m_rb2D->AddForceY(-m_jumpForce, deltaTime, ForceMode::Acceleration);
-		m_animator->SetAnimation(cTextureStrings::Mario_Jump, 0, 2, 100, 2, m_flip);
+		m_animator->SetAnimation(sTextureStrings::Mario_Jump, 0, 2, 100, 2, m_flip);
 	}
 	else
 	{
@@ -164,7 +164,7 @@ void cPlayer::Jump(float deltaTime)
 		m_rb2D->SetGravity(BASE_GRAVITY);
 
 		if (!m_bIsGrounded)
-			m_animator->SetAnimation(cTextureStrings::Mario_Fall, 0, 2, 100, 2, m_flip);
+			m_animator->SetAnimation(sTextureStrings::Mario_Fall, 0, 2, 100, 2, m_flip);
 	}
 }
 
@@ -184,5 +184,5 @@ void cPlayer::Reset()
 	m_width = 18;
 	m_height = 33;
 
-	m_animator->SetAnimation(cTextureStrings::Mario_Idle, 0, 10, 100, 2);
+	m_animator->SetAnimation(sTextureStrings::Mario_Idle, 0, 10, 100, 2);
 }

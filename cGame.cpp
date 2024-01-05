@@ -9,7 +9,7 @@
 #include "cInputManager.h"
 #include "cMap.h"
 #include "cPlayer.h"
-#include "cTextureStrings.h"
+#include "sTextureStrings.h"
 
 #include "SDL_ttf.h"
 #include "SDL_mixer.h"
@@ -124,24 +124,23 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		m_isRunning = true;
 
 		// INFO: Initialise Textures
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::Tilemap, "Assets/Tilemap.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::Background, "Assets/Background.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sTextureStrings::Tilemap, "Assets/Tilemap.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sTextureStrings::Background, "Assets/Background.png", m_renderer);
 
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Idle, "Assets/Mario_Idle.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Run, "Assets/Mario_Run.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Jump, "Assets/Mario_Jump.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Fall, "Assets/Mario_Fall.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::Mario_Death, "Assets/Mario_Death.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sTextureStrings::Mario_Idle, "Assets/Mario_Idle.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sTextureStrings::Mario_Run, "Assets/Mario_Run.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sTextureStrings::Mario_Jump, "Assets/Mario_Jump.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sTextureStrings::Mario_Fall, "Assets/Mario_Fall.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sTextureStrings::Mario_Death, "Assets/Mario_Death.png", m_renderer);
 
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::BulletBill_Fly, "Assets/BulletBill_Fly.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sTextureStrings::BulletBill_Fly, "Assets/BulletBill_Fly.png", m_renderer);
 
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::Goomba_Walk, "Assets/Goomba_Walk.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(cTextureStrings::Goomba_Death, "Assets/Goomba_Death.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sTextureStrings::Goomba_Walk, "Assets/Goomba_Walk.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sTextureStrings::Goomba_Death, "Assets/Goomba_Death.png", m_renderer);
 
 		// INFO: Load Entities
-		Mario = new cPlayer(new sEssentials(25, 300, 18, 33, cTextureStrings::Mario_Idle));
-		BulletBill = new cBulletBill(new sEssentials(2950, 350, 16, 16, cTextureStrings::BulletBill_Fly, SDL_FLIP_HORIZONTAL));
-		//Goomba = new cGoomba(new sEssentials(1000, 325, 16, 16, cTextureStrings::Goomba_Walk));
+		Mario = new cPlayer(new sEssentials(25, 300, 18, 33, sTextureStrings::Mario_Idle));
+		BulletBill = new cBulletBill(new sEssentials(2950, 350, 16, 16, sTextureStrings::BulletBill_Fly, SDL_FLIP_HORIZONTAL));
 
 		// INFO: Load Map
 		cMap::Instance()->LoadMap(lvl1);
@@ -201,8 +200,8 @@ void cGame::Draw()
 {
 	SDL_RenderClear(m_renderer);
 
-	cAssetManager::Instance()->Draw(cTextureStrings::Background, 0, -100, 1024, 768, 0.1f);
-	cAssetManager::Instance()->Draw(cTextureStrings::Background, 1024, -100, 1024, 768, 0.1f);
+	cAssetManager::Instance()->Draw(sTextureStrings::Background, 0, -100, 1024, 768, 0.1f);
+	cAssetManager::Instance()->Draw(sTextureStrings::Background, 1024, -100, 1024, 768, 0.1f);
 
 	cMap::Instance()->DrawMap();
 	cEntityManager::Instance()->DrawEntities();

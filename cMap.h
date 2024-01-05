@@ -19,6 +19,7 @@ public:
 	inline int GetLevelWidth() const { return m_levelWidth; }
 	inline int GetLevelHeight() const { return m_levelHeight; }
 
+	// INFO: 0 is include hence we need to -1
 	inline int GetColumnCount() const { return (m_levelWidth / TILE_SIZE) - 1; }
 	inline int GetRowCount() const { return (m_levelHeight / TILE_SIZE) - 1; }
 
@@ -32,7 +33,10 @@ private:
 	int m_levelWidth;
 	int m_levelHeight;
 
+	// INFO: Texture Data (Based on integer value a different part of the tilemap texture is drawn)
 	std::vector< std::vector<int> > m_map;
+	
+	// INFO: Rect Data (Holds all the x, y, w, h of all the map tiles so that map collision detection can be performed)
 	std::vector< std::vector<SDL_Rect> > m_tiles;
 };
 

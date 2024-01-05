@@ -5,9 +5,9 @@
 #include "cGameObject.h"
 #include "cRigidbody.h"
 
+// INFO: Represent which way you a character is travelling
 const int UP = -1;
 const int DOWN = 1;
-
 const int LEFT = -1;
 const int RIGHT = 1;
 

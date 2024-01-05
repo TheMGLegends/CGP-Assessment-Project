@@ -2,8 +2,6 @@
 
 #include "cCharacter.h"
 
-const float STAY_INTERVAL = 5.0f;
-
 class cGoomba : public cCharacter
 {
 public:

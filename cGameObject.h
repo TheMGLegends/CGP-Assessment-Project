@@ -1,9 +1,13 @@
 #pragma once
 
 #include <string>
+
 #include "cTransform.h"
+
 #include "SDL.h"
 
+// INFO: Essential Variables that must be initialized are kept inside of a struct so that each class that inherits from cGameObject
+// doesn't need a long constructor full of parameters (easier to write)
 struct sEssentials
 {
 	sEssentials(float x, float y, int width, int height, std::string textureKey = "", SDL_RendererFlip flip = SDL_FLIP_NONE)
@@ -32,12 +36,15 @@ public:
 	// INFO: Required GO Methods
 	virtual void Update(float deltaTime) = 0;
 	virtual void Draw() = 0;
+
 	virtual void Clean();
 
 	inline cTransform* GetCenterPoint() { return m_centerPoint; }
 
 protected:
+	// INFO: Point used by cCamera to follow the center of the object
 	cTransform* m_centerPoint;
+
 	cTransform* m_position;
 	int m_width;
 	int m_height;

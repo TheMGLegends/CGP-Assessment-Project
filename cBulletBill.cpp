@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 #include "cAssetManager.h"
-#include "cTextureStrings.h"
+#include "sTextureStrings.h"
 
 #include "cBulletBill.h"
 
@@ -24,7 +24,7 @@ void cBulletBill::Update(float deltaTime)
 
 void cBulletBill::Draw()
 {
-	cAssetManager::Instance()->Draw(cTextureStrings::BulletBill_Fly, static_cast<int>(m_position->m_x), static_cast<int>(m_position->m_y), m_width, m_height, 1.0f, 2, m_flip);
+	cAssetManager::Instance()->Draw(sTextureStrings::BulletBill_Fly, static_cast<int>(m_position->m_x), static_cast<int>(m_position->m_y), m_width, m_height, 1.0f, 2, m_flip);
 
 	m_boxCollider->DrawBoxCollider();
 }

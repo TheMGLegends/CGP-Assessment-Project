@@ -11,6 +11,8 @@ public:
 
 	void Update();
 	void Draw(int x, int y, int spriteWidth, int spriteHeight) const;
+	
+	// INFO: Used for changing what animation should play
 	void SetAnimation(std::string textureKey, int animRow, int maxFrames, int animSpeed, int animSize = 1, SDL_RendererFlip flip = SDL_FLIP_NONE, bool playOneShot = false);
 
 	inline std::string GetCurrentAnimation() const { return m_textureKey; }

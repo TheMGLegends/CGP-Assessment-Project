@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "cAssetManager.h"
-#include "cTextureStrings.h"
+#include "sTextureStrings.h"
 
 #include "cMap.h"
 
@@ -44,16 +44,16 @@ void cMap::DrawMap()
 			switch (m_map[x][y])
 			{
 			case 1:
-				cAssetManager::Instance()->DrawAnimation(cTextureStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 0, 0);
+				cAssetManager::Instance()->DrawAnimation(sTextureStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 0, 0);
 				break;
 			case 2:
-				cAssetManager::Instance()->DrawAnimation(cTextureStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 0, 1);
+				cAssetManager::Instance()->DrawAnimation(sTextureStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 0, 1);
 				break;
 			case 3:
-				cAssetManager::Instance()->DrawAnimation(cTextureStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 1, 0);
+				cAssetManager::Instance()->DrawAnimation(sTextureStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 1, 0);
 				break;
 			case 4:
-				cAssetManager::Instance()->DrawAnimation(cTextureStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 1, 1);
+				cAssetManager::Instance()->DrawAnimation(sTextureStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 1, 1);
 				break;
 			default:
 				break;

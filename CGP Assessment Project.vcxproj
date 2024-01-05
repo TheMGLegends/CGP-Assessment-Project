@@ -152,7 +152,7 @@
     <ClCompile Include="cTransform.cpp" />
     <ClCompile Include="cVector2.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="cTextureStrings.cpp" />
+    <ClCompile Include="sTextureStrings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAnimator.h" />
@@ -173,7 +173,7 @@
     <ClInclude Include="cTime.h" />
     <ClInclude Include="cTransform.h" />
     <ClInclude Include="cVector2.h" />
-    <ClInclude Include="cTextureStrings.h" />
+    <ClInclude Include="sTextureStrings.h" />
     <ClInclude Include="MemoryLeakDetector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

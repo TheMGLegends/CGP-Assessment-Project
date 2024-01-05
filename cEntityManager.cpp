@@ -1,5 +1,5 @@
 #include "cGoomba.h"
-#include "cTextureStrings.h"
+#include "sTextureStrings.h"
 
 #include "cEntityManager.h"
 
@@ -18,7 +18,7 @@ void cEntityManager::LoadEntities(std::vector<std::vector<int>> entityMap)
 			switch (entityMap[x][y])
 			{
 			case 1:
-				entity = new cGoomba(new sEssentials(static_cast<float>(y * TILE_SIZE), static_cast<float>(x * TILE_SIZE), 16, 16, cTextureStrings::Goomba_Walk));
+				entity = new cGoomba(new sEssentials(static_cast<float>(y * TILE_SIZE), static_cast<float>(x * TILE_SIZE), 16, 16, sTextureStrings::Goomba_Walk));
 				m_entitiesList.push_back(entity);
 				break;
 			default:
