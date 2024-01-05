@@ -31,7 +31,7 @@ void cGoomba::Update(float deltaTime)
 
 	m_previousPosition->m_x = m_position->m_x;
 	m_position->TranslateX(m_rb2D->GetPosition().m_x);
-	m_boxCollider->UpdateCollider(m_position->m_x, m_position->m_y, m_width * 2.0f, m_height * 1.75f);
+	m_boxCollider->UpdateCollider(static_cast<int>(m_position->m_x), static_cast<int>(m_position->m_y), static_cast<int>(m_width * 2.0f), static_cast<int>(m_height * 1.75f));
 
 	if (cCollisionManager::Instance()->MapCollision(m_boxCollider->GetRect()))
 	{
@@ -51,7 +51,7 @@ void cGoomba::Update(float deltaTime)
 
 	m_previousPosition->m_y = m_position->m_y;
 	m_position->TranslateY(m_rb2D->GetPosition().m_y);
-	m_boxCollider->UpdateCollider(m_position->m_x, m_position->m_y, m_width * 2.0f, m_height * 1.75f);
+	m_boxCollider->UpdateCollider(static_cast<int>(m_position->m_x), static_cast<int>(m_position->m_y), static_cast<int>(m_width * 2.0f), static_cast<int>(m_height * 1.75f));
 
 
 	if (cCollisionManager::Instance()->MapCollision(m_boxCollider->GetRect()))
@@ -66,13 +66,9 @@ void cGoomba::Update(float deltaTime)
 
 void cGoomba::Draw()
 {
-	m_animator->Draw(int(m_position->m_x), int(m_position->m_y), m_width, m_height);
+	m_animator->Draw(static_cast<int>(m_position->m_x), static_cast<int>(m_position->m_y), m_width, m_height);
 
 	m_boxCollider->DrawBoxCollider();
-}
-
-void cGoomba::Clean()
-{
 }
 
 void cGoomba::Reset()

@@ -21,6 +21,7 @@ int main(int argc, char* argv[])
 		cTime::Instance()->Update();
 	}
 
+	cTime::Instance()->Clean();
 	cGame::Instance()->Clean();
 
 	return 0;

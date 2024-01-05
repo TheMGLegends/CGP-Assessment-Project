@@ -24,5 +24,30 @@ void cCharacter::Clean()
 	if (m_rb2D != nullptr)
 	{
 		delete m_rb2D;
+		m_rb2D = nullptr;
+	}
+
+	if (m_previousPosition != nullptr)
+	{
+		delete m_previousPosition;
+		m_previousPosition = nullptr;
+	}
+
+	if (m_startingPosition != nullptr)
+	{
+		delete m_startingPosition;
+		m_startingPosition = nullptr;
+	}
+
+	if (m_animator != nullptr)
+	{
+		delete m_animator;
+		m_animator = nullptr;
+	}
+
+	if (m_boxCollider != nullptr)
+	{
+		delete m_boxCollider;
+		m_boxCollider = nullptr;
 	}
 }

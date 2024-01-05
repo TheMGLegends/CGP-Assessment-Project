@@ -31,8 +31,8 @@ void cMap::LoadMap(std::vector< std::vector<int> > map)
 		}
 	}
 
-	m_levelWidth = m_map[0].size() * TILE_SIZE;
-	m_levelHeight = m_map.size() * TILE_SIZE;
+	m_levelWidth = static_cast<int>(m_map[0].size() * TILE_SIZE);
+	m_levelHeight = static_cast<int>(m_map.size() * TILE_SIZE);
 }
 
 void cMap::DrawMap()

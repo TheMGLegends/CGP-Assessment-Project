@@ -17,8 +17,8 @@ void cBoxCollider::UpdateCollider(int x, int y, int w, int h)
 void cBoxCollider::DrawBoxCollider()
 {
 	cVector2 cameraPos = cCamera::Instance()->GetPosition();
-	m_rectCollider.x -= cameraPos.m_x;
-	m_rectCollider.y -= cameraPos.m_y;
+	m_rectCollider.x -= static_cast<int>(cameraPos.m_x);
+	m_rectCollider.y -= static_cast<int>(cameraPos.m_y);
 
 	SDL_SetRenderDrawColor(cGame::Instance()->GetRenderer(), 255, 0, 0, 255);
 	SDL_RenderDrawRect(cGame::Instance()->GetRenderer(), &m_rectCollider);

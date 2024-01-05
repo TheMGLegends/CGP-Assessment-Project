@@ -18,7 +18,7 @@ public:
 	inline SDL_Rect GetCameraView() const { return m_cameraView; }
 	inline cVector2 GetPosition() const { return m_position; }
 
-	inline void SetTarget(cTransform* target) { m_target = target; }
+	void SetTarget(cTransform* target);
 	inline void Reset() { m_position = cVector2::ZERO; m_cameraView.x = 0; m_cameraView.y = 0; }
 
 private:

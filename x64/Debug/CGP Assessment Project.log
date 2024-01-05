@@ -1,39 +1,32 @@
-﻿  cBulletBill.cpp
-B:\University Projects\CGP-Assessment-Project\cBulletBill.cpp(22,101): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cBulletBill.cpp(22,84): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cBulletBill.cpp(39,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+﻿  cAnimator.cpp
+  cAssetManager.cpp
+  cBoxCollider.cpp
+  cBulletBill.cpp
+  cCamera.cpp
   cCharacter.cpp
+  cCollisionManager.cpp
   cEntityManager.cpp
-B:\University Projects\CGP-Assessment-Project\cGoomba.h(5,27): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'cEntityManager.cpp')
-  
-B:\University Projects\CGP-Assessment-Project\cEntityManager.cpp(21,59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cEntityManager.cpp(21,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   cGame.cpp
-B:\University Projects\CGP-Assessment-Project\cGoomba.h(5,27): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'cGame.cpp')
-  
   cGameObject.cpp
   cGoomba.cpp
-B:\University Projects\CGP-Assessment-Project\cGoomba.h(5,27): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'cGoomba.cpp')
-  
-B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(34,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(34,74): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(34,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(34,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(54,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(54,74): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(54,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cGoomba.cpp(54,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  cInputManager.cpp
+  cMap.cpp
   cPlayer.cpp
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(78,92): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(78,75): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(78,60): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(78,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(94,92): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(94,75): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(94,60): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-B:\University Projects\CGP-Assessment-Project\cPlayer.cpp(94,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  cRigidbody.cpp
+  cTime.cpp
+  cTransform.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\crtdbg.h(307,1): warning C4005: '_malloca': macro redefinition
+  (compiling source file 'cTime.cpp')
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\malloc.h(124,1):
+  see previous definition of '_malloca'
+  
+  cVector2.cpp
+  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\crtdbg.h(307,1): warning C4005: '_malloca': macro redefinition
+  (compiling source file 'main.cpp')
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\malloc.h(124,1):
+  see previous definition of '_malloca'
+  
+  cTextureStrings.cpp
   Generating Code...
   CGP Assessment Project.vcxproj -> B:\University Projects\CGP-Assessment-Project\x64\Debug\CGP Assessment Project.exe

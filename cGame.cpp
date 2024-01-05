@@ -215,7 +215,26 @@ void cGame::Draw()
 
 void cGame::Clean()
 {	
+	if (Mario != nullptr)
+	{
+		Mario->Clean();
+		delete Mario;
+		Mario = nullptr;
+	}
+
+	if (BulletBill != nullptr)
+	{
+		BulletBill->Clean();
+		delete BulletBill;
+		BulletBill = nullptr;
+	}
+
 	cAssetManager::Instance()->Clean();
+	cCamera::Instance()->Clean();
+	cMap::Instance()->Clean();
+	cCollisionManager::Instance()->Clean();
+	cEntityManager::Instance()->Clean();
+	cInputManager::Instance()->Clean();
 
 	SDL_DestroyRenderer(m_renderer);
 	SDL_DestroyWindow(m_window);
@@ -224,6 +243,12 @@ void cGame::Clean()
 	Mix_Quit();
 	IMG_Quit();
 	SDL_Quit();
+
+	if (m_Instance != nullptr)
+	{
+		delete m_Instance;
+		m_Instance = nullptr;
+	}
 }
 
 void cGame::ResetGame() 

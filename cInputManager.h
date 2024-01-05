@@ -17,8 +17,6 @@ public:
 
 private:
 	cInputManager();
-	~cInputManager() { Clean(); }
-
 	static cInputManager* m_Instance;
 
 	Uint8* m_previousKeyboardState;
