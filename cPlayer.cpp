@@ -44,9 +44,11 @@ void cPlayer::Update(float deltaTime)
 		m_animator->SetAnimation(sTextureStrings::Mario_Death, 0, 10, 85, 2, m_flip, true);
 	}
 
+	// INFO: Checks to see whether the death animation has played or whether the player has fallen through a hole before resetting
 	if (m_position->m_y > 600 || m_animator->GetAnimationCompleted(sTextureStrings::Mario_Death))
 		cGame::Instance()->ResetGame();
 
+	// INFO: Allows movement when player isn't dead
 	if (!m_bIsDead)
 	{
 		Move(deltaTime);
@@ -57,6 +59,7 @@ void cPlayer::Update(float deltaTime)
 		{
 			m_stompedTime += deltaTime;
 
+			// INFO: Launches the player upwards when goomba has been stomped on
 			if (m_stompedTime < STOMP_INTERVAL)
 			{
 				m_rb2D->SetGravity(BASE_GRAVITY * 0.75f);
@@ -105,6 +108,7 @@ void cPlayer::Update(float deltaTime)
 		else
 			m_bIsGrounded = false;
 
+		// INFO: Used by camera to track camera target
 		m_centerPoint->m_x = m_position->m_x + m_width / 2.0f;
 		m_centerPoint->m_y = m_position->m_y + m_height / 2.0f;
 
@@ -142,6 +146,7 @@ void cPlayer::Move(float deltaTime)
 
 void cPlayer::Jump(float deltaTime)
 {
+	// INFO: Variable jump height, if released prematurely the player will lose all upward velocity and start falling down
 	if (cInputManager::Instance()->GetKey(SDL_SCANCODE_SPACE) && m_bIsGrounded)
 	{
 		m_bIsGrounded = false;

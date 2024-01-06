@@ -47,5 +47,6 @@ protected:
 	CharacterType m_characterType;
 
 	bool m_bIsDead;
+	float m_movementSpeed;
 };
 

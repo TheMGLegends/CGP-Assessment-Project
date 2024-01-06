@@ -14,6 +14,7 @@ public:
 	bool operator==(const cTransform& other) const;
 	bool operator!=(const cTransform& other) const;
 
+	// INFO: Used to move an object in a given direction
 	inline void TranslateX(float x) { m_x += x; }
 	inline void TranslateY(float y) { m_y += y; }
 	inline void Translate(cVector2 vector) { m_x += vector.m_x; m_y += vector.m_y; }

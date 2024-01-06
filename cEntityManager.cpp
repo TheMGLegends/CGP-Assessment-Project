@@ -9,17 +9,16 @@ cEntityManager* cEntityManager::m_Instance = nullptr;
 
 void cEntityManager::LoadEntities(std::vector<std::vector<int>> entityMap)
 {
-	cCharacter* entity = nullptr;
-
 	for (int x = 0; x < entityMap.size(); x++)
 	{
 		for (int y = 0; y < entityMap[0].size(); y++)
 		{
+			// INFO: Based on the integer value held in the entity map array a different entity is spawned and added to the entities list so that
+			// it can be kept track of
 			switch (entityMap[x][y])
 			{
 			case 1:
-				entity = new cGoomba(new sEssentials(static_cast<float>(y * TILE_SIZE), static_cast<float>(x * TILE_SIZE), 16, 16, sTextureStrings::Goomba_Walk));
-				m_entitiesList.push_back(entity);
+				m_entitiesList.push_back(new cGoomba(new sEssentials(static_cast<float>(y * TILE_SIZE), static_cast<float>(x * TILE_SIZE), 16, 16, sTextureStrings::Goomba_Walk)));
 				break;
 			default:
 				break;

@@ -16,6 +16,7 @@ void cBoxCollider::UpdateCollider(int x, int y, int w, int h)
 
 void cBoxCollider::DrawBoxCollider()
 {
+	// INFO: Used to draw the outline of a collider for visualization and testing purposes
 	cVector2 cameraPos = cCamera::Instance()->GetPosition();
 	m_rectCollider.x -= static_cast<int>(cameraPos.m_x);
 	m_rectCollider.y -= static_cast<int>(cameraPos.m_y);

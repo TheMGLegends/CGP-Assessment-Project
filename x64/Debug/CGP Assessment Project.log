@@ -1,9 +1,2 @@
-﻿  cBulletBill.cpp
-  cEntityManager.cpp
-  cGame.cpp
-  cGoomba.cpp
-  cMap.cpp
-  cPlayer.cpp
-  sTextureStrings.cpp
-  Generating Code...
+﻿  cEntityManager.cpp
   CGP Assessment Project.vcxproj -> B:\University Projects\CGP-Assessment-Project\x64\Debug\CGP Assessment Project.exe

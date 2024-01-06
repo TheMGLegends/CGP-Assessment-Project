@@ -15,6 +15,7 @@ cCharacter::cCharacter(sEssentials* required) : cGameObject(required)
 	m_characterType = CharacterType::None;
 
 	m_bIsDead = false;
+	m_movementSpeed = 1.0f;
 }
 
 void cCharacter::Clean()

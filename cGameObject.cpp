@@ -12,6 +12,7 @@ cGameObject::cGameObject(sEssentials* required)
 
 	m_centerPoint = new cTransform(m_position->m_x + m_width / 2, m_position->m_y + m_height / 2);
 
+	// INFO: The required values are deleted once they have been assigned
 	if (required != nullptr)
 	{
 		delete required;

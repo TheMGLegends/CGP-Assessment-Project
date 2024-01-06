@@ -23,6 +23,7 @@ cPlayer* Mario = nullptr;
 cBulletBill* BulletBill = nullptr;
 std::vector<cCharacter*> entities;
 
+// INFO: 2D Map Array used to store tile map data (lvl1) & entity data (lvl1Entities)
 std::vector< std::vector<int> > lvl1 = {
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -174,15 +175,18 @@ void cGame::Update(float deltaTime)
 	BulletBill->Update(deltaTime);
 	cEntityManager::Instance()->UpdateEntities(deltaTime);
 
+	// INFO: Given that Bullet Bill collides with the player the player will die
 	if (cCollisionManager::Instance()->ObjectCollision(Mario->GetBoxCollider()->GetRect(), BulletBill->GetBoxCollider()->GetRect())) 
 	{
 		Mario->SetIsDead(true);
 	}
 
+	// INFO: Goes through all the entities and checks whether they have collided with mario
 	for (int i = 0; i < entities.size(); i++)
 	{
 		if (cCollisionManager::Instance()->ObjectCollision(Mario->GetBoxCollider()->GetRect(), entities[i]->GetBoxCollider()->GetRect()) && !entities[i]->GetIsDead())
 		{
+			// INFO: If mario isn't grounded (jumping) and a collision occurs the goomba dies, otherwise mario dies
 			if (!Mario->GetIsGrounded() && Mario->GetCenterPoint()->m_y < entities[i]->GetCenterPoint()->m_y)
 			{
 				Mario->SetSquishedGoomba(true);

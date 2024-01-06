@@ -11,10 +11,12 @@ cMap* cMap::m_Instance = nullptr;
 
 void cMap::LoadMap(std::vector< std::vector<int> > map)
 {
+	// INFO: Resizes the 2D vector arrays that hold the map data as well as the tile data to match the size of the passed in map
 	m_map.resize(map.size());
 	m_tiles.resize(map.size());
 
-
+	// INFO: Loops through all the elements held inside of the map and assigns their values to the local m_map variable
+	// It also assigns the necessary values to the tiles' array to ensure that each tile is drawn correctly (X, Y, Width and Height)
 	for (int x = 0; x < map.size(); x++)
 	{
 		m_map[x].resize(map[x].size());
@@ -41,6 +43,8 @@ void cMap::DrawMap()
 	{
 		for (int y = 0; y < m_map[0].size(); y++)
 		{
+			// INFO: Based on the integer value held at a specific position inside of the m_map variable a different part of a specified texture is drawn
+			// in this case it uses the Tilemap texture
 			switch (m_map[x][y])
 			{
 			case 1:

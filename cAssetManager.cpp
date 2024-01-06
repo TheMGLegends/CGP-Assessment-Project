@@ -36,7 +36,7 @@ bool cAssetManager::LoadTexture(std::string key, const char* filepath, SDL_Rende
 	return true;
 }
 
-// INFO: Used for Drawing Static Textures
+// INFO: Used for Drawing things like map tiles or entity states that do not have an animation
 void cAssetManager::Draw(std::string key, int x, int y, int width, int height, float scrollingSpeed, int size, SDL_RendererFlip flip)
 {
 	cVector2 cameraPos = cCamera::Instance()->GetPosition() * scrollingSpeed;
@@ -48,7 +48,7 @@ void cAssetManager::Draw(std::string key, int x, int y, int width, int height, f
 	}
 }
 
-// INFO: Used for Drawing Animated Textures
+// INFO: Used for Drawing Animated Objects 
 void cAssetManager::DrawAnimation(std::string key, int x, int y, int width, int height, int row, int frame, int size, SDL_RendererFlip flip)
 {
 	SDL_Rect sourceRect = { width * frame, height * row, width, height };
