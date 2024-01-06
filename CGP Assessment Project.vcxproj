@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClCompile Include="cAnimator.cpp" />
     <ClCompile Include="cAssetManager.cpp" />
+    <ClCompile Include="cAudioManager.cpp" />
     <ClCompile Include="cBoxCollider.cpp" />
     <ClCompile Include="cBulletBill.cpp" />
     <ClCompile Include="cCamera.cpp" />
@@ -152,11 +153,12 @@
     <ClCompile Include="cTransform.cpp" />
     <ClCompile Include="cVector2.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="sTextureStrings.cpp" />
+    <ClCompile Include="sGlobalStrings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAnimator.h" />
     <ClInclude Include="cAssetManager.h" />
+    <ClInclude Include="cAudioManager.h" />
     <ClInclude Include="cBoxCollider.h" />
     <ClInclude Include="cBulletBill.h" />
     <ClInclude Include="cCamera.h" />
@@ -173,7 +175,7 @@
     <ClInclude Include="cTime.h" />
     <ClInclude Include="cTransform.h" />
     <ClInclude Include="cVector2.h" />
-    <ClInclude Include="sTextureStrings.h" />
+    <ClInclude Include="sGlobalStrings.h" />
     <ClInclude Include="MemoryLeakDetector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

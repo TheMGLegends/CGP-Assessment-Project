@@ -54,7 +54,7 @@
     <ClCompile Include="cTime.cpp">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="sTextureStrings.cpp">
+    <ClCompile Include="sGlobalStrings.cpp">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="cTransform.cpp">
@@ -93,6 +93,9 @@
     <ClCompile Include="cEntityManager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="cAudioManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cGame.h">
@@ -113,7 +116,7 @@
     <ClInclude Include="cTime.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="sTextureStrings.h">
+    <ClInclude Include="sGlobalStrings.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="cTransform.h">
@@ -154,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="MemoryLeakDetector.h">
       <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="cAudioManager.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

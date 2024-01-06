@@ -17,12 +17,16 @@ public:
 	virtual void Reset() override;
 
 	inline bool GetIsGrounded() const { return m_bIsGrounded; }
+	inline bool GetSquishedGoomba() const { return m_bSquishedGoomba; }
+
 	inline void SetSquishedGoomba(bool hasSquishedGoomba) { m_bSquishedGoomba = hasSquishedGoomba; }
 
 private:
 	bool m_bIsGrounded;
 	bool m_bIsJumping;
 	bool m_bSquishedGoomba;
+
+	bool m_bDeathPlayed;
 
 	float m_jumpForce;
 	float m_jumpTime;

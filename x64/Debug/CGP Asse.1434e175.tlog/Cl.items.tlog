@@ -1,5 +1,6 @@
 B:\University Projects\CGP-Assessment-Project\cAnimator.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cAnimator.obj
 B:\University Projects\CGP-Assessment-Project\cAssetManager.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cAssetManager.obj
+B:\University Projects\CGP-Assessment-Project\cAudioManager.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cAudioManager.obj
 B:\University Projects\CGP-Assessment-Project\cBoxCollider.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cBoxCollider.obj
 B:\University Projects\CGP-Assessment-Project\cBulletBill.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cBulletBill.obj
 B:\University Projects\CGP-Assessment-Project\cCamera.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cCamera.obj
@@ -17,4 +18,4 @@ B:\University Projects\CGP-Assessment-Project\cTime.cpp;B:\University Projects\C
 B:\University Projects\CGP-Assessment-Project\cTransform.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cTransform.obj
 B:\University Projects\CGP-Assessment-Project\cVector2.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cVector2.obj
 B:\University Projects\CGP-Assessment-Project\main.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\main.obj
-B:\University Projects\CGP-Assessment-Project\sTextureStrings.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\sTextureStrings.obj
+B:\University Projects\CGP-Assessment-Project\sGlobalStrings.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\sGlobalStrings.obj

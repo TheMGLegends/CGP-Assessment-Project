@@ -1,6 +1,6 @@
 #include "cCamera.h"
 #include "cCollisionManager.h"
-#include "sTextureStrings.h"
+#include "sGlobalStrings.h"
 
 #include "cGoomba.h"
 
@@ -11,7 +11,7 @@ cGoomba::cGoomba(sEssentials* required) : cCharacter(required)
 	m_characterType = CharacterType::Goomba;
 	m_walkingDirection = LEFT;
 
-	m_animator->SetAnimation(sTextureStrings::Goomba_Walk, 0, 2, 100, 2);
+	m_animator->SetAnimation(sGlobalStrings::Goomba_Walk, 0, 2, 100, 2);
 	m_movementSpeed = 2.5f;
 }
 
@@ -20,12 +20,12 @@ void cGoomba::Update(float deltaTime)
 	if (!m_bIsDead && m_position->m_x < cCamera::Instance()->GetPosition().m_x + cCamera::Instance()->GetCameraView().w)
 	{
 		m_rb2D->AddForceX(m_walkingDirection * m_movementSpeed, deltaTime);
-		m_animator->SetAnimation(sTextureStrings::Goomba_Walk, 0, 2, 100, 2);
+		m_animator->SetAnimation(sGlobalStrings::Goomba_Walk, 0, 2, 100, 2);
 	}
 	else if (m_bIsDead)
 	{
 		m_rb2D->CancelForceX();
-		m_animator->SetAnimation(sTextureStrings::Goomba_Death, 0, 1, 100, 2);
+		m_animator->SetAnimation(sGlobalStrings::Goomba_Death, 0, 1, 100, 2);
 	}
 
 	m_rb2D->Update(deltaTime);

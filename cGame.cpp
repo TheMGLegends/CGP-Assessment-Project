@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "cAssetManager.h"
+#include "cAudioManager.h"
 #include "cBulletBill.h"
 #include "cCamera.h"
 #include "cCollisionManager.h"
@@ -9,7 +10,7 @@
 #include "cInputManager.h"
 #include "cMap.h"
 #include "cPlayer.h"
-#include "sTextureStrings.h"
+#include "sGlobalStrings.h"
 
 #include "SDL_ttf.h"
 #include "SDL_mixer.h"
@@ -111,6 +112,12 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 			return false;
 		}
 
+		if (Mix_OpenAudio(44100, AUDIO_S16SYS, 2, 2048) < 0)
+		{
+			std::cout << "Failed to open audio device. SDL_Mixer error: " << Mix_GetError() << std::endl;
+			return false;
+		}
+
 		// INFO: Initialise SDL_TTF
 		if (TTF_Init() < 0)
 		{
@@ -125,34 +132,51 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		m_isRunning = true;
 
 		// INFO: Initialise Textures
-		cAssetManager::Instance()->LoadTexture(sTextureStrings::Tilemap, "Assets/Tilemap.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(sTextureStrings::Background, "Assets/Background.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Tilemap, "Assets/Graphics/Tilemap.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Background, "Assets/Graphics/Background.png", m_renderer);
 
-		cAssetManager::Instance()->LoadTexture(sTextureStrings::Mario_Idle, "Assets/Mario_Idle.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(sTextureStrings::Mario_Run, "Assets/Mario_Run.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(sTextureStrings::Mario_Jump, "Assets/Mario_Jump.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(sTextureStrings::Mario_Fall, "Assets/Mario_Fall.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(sTextureStrings::Mario_Death, "Assets/Mario_Death.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Mario_Idle, "Assets/Graphics/Mario_Idle.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Mario_Run, "Assets/Graphics/Mario_Run.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Mario_Jump, "Assets/Graphics/Mario_Jump.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Mario_Fall, "Assets/Graphics/Mario_Fall.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Mario_Death, "Assets/Graphics/Mario_Death.png", m_renderer);
 
-		cAssetManager::Instance()->LoadTexture(sTextureStrings::BulletBill_Fly, "Assets/BulletBill_Fly.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sGlobalStrings::BulletBill_Fly, "Assets/Graphics/BulletBill_Fly.png", m_renderer);
 
-		cAssetManager::Instance()->LoadTexture(sTextureStrings::Goomba_Walk, "Assets/Goomba_Walk.png", m_renderer);
-		cAssetManager::Instance()->LoadTexture(sTextureStrings::Goomba_Death, "Assets/Goomba_Death.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Goomba_Walk, "Assets/Graphics/Goomba_Walk.png", m_renderer);
+		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Goomba_Death, "Assets/Graphics/Goomba_Death.png", m_renderer);
+
+		// INFO: Initialise Music and SFX
+		cAudioManager::Instance()->LoadAudio(sGlobalStrings::GroundTheme_Music, "Assets/Audio/GroundTheme_Music.mp3", true);
+
+		cAudioManager::Instance()->LoadAudio(sGlobalStrings::Mario_Death_SFX, "Assets/Audio/Mario_Death_SFX.mp3");
+		cAudioManager::Instance()->LoadAudio(sGlobalStrings::Mario_GoombaStomp_SFX, "Assets/Audio/Mario_GoombaStomp_SFX.mp3");
+		cAudioManager::Instance()->LoadAudio(sGlobalStrings::Mario_Jump_SFX, "Assets/Audio/Mario_Jump_SFX.mp3");
+
+		cAudioManager::Instance()->LoadAudio(sGlobalStrings::Coin_SFX, "Assets/Audio/Coin_SFX.mp3");
 
 		// INFO: Load Entities
-		Mario = new cPlayer(new sEssentials(25, 300, 18, 33, sTextureStrings::Mario_Idle));
-		BulletBill = new cBulletBill(new sEssentials(2950, 350, 16, 16, sTextureStrings::BulletBill_Fly, SDL_FLIP_HORIZONTAL));
+		Mario = new cPlayer(new sEssentials(25, 300, 18, 33, sGlobalStrings::Mario_Idle));
+		BulletBill = new cBulletBill(new sEssentials(2950, 350, 16, 16, sGlobalStrings::BulletBill_Fly, SDL_FLIP_HORIZONTAL));
 
 		// INFO: Load Map
 		cMap::Instance()->LoadMap(lvl1);
 
 		// INFO: Load Entities
 		cEntityManager::Instance()->LoadEntities(lvl1Entities);
-
 		entities = cEntityManager::Instance()->GetEntities();
 
 		// INFO: Set Camera Target
 		cCamera::Instance()->SetTarget(Mario->GetCenterPoint());
+
+		// INFO: Set Audio Volumes
+		cAudioManager::Instance()->SetMusicVolume(20);
+		cAudioManager::Instance()->SetSFXVolume(sGlobalStrings::Mario_Jump_SFX, 2);
+		cAudioManager::Instance()->SetSFXVolume(sGlobalStrings::Mario_Death_SFX, 20);
+		cAudioManager::Instance()->SetSFXVolume(sGlobalStrings::Mario_GoombaStomp_SFX, 50);
+
+		// INFO: Start Music
+		cAudioManager::Instance()->PlayAudio(sGlobalStrings::GroundTheme_Music, true);
 
 		return true;
 	}
@@ -177,9 +201,7 @@ void cGame::Update(float deltaTime)
 
 	// INFO: Given that Bullet Bill collides with the player the player will die
 	if (cCollisionManager::Instance()->ObjectCollision(Mario->GetBoxCollider()->GetRect(), BulletBill->GetBoxCollider()->GetRect())) 
-	{
 		Mario->SetIsDead(true);
-	}
 
 	// INFO: Goes through all the entities and checks whether they have collided with mario
 	for (int i = 0; i < entities.size(); i++)
@@ -189,7 +211,11 @@ void cGame::Update(float deltaTime)
 			// INFO: If mario isn't grounded (jumping) and a collision occurs the goomba dies, otherwise mario dies
 			if (!Mario->GetIsGrounded() && Mario->GetCenterPoint()->m_y < entities[i]->GetCenterPoint()->m_y)
 			{
-				Mario->SetSquishedGoomba(true);
+				if (!Mario->GetSquishedGoomba())
+				{
+					Mario->SetSquishedGoomba(true);
+					cAudioManager::Instance()->PlayAudio(sGlobalStrings::Mario_GoombaStomp_SFX);
+				}
 				entities[i]->SetIsDead(true);
 			}
 			else
@@ -204,8 +230,8 @@ void cGame::Draw()
 {
 	SDL_RenderClear(m_renderer);
 
-	cAssetManager::Instance()->Draw(sTextureStrings::Background, 0, -100, 1024, 768, 0.1f);
-	cAssetManager::Instance()->Draw(sTextureStrings::Background, 1024, -100, 1024, 768, 0.1f);
+	cAssetManager::Instance()->Draw(sGlobalStrings::Background, 0, -100, 1024, 768, 0.1f);
+	cAssetManager::Instance()->Draw(sGlobalStrings::Background, 1024, -100, 1024, 768, 0.1f);
 
 	cMap::Instance()->DrawMap();
 	cEntityManager::Instance()->DrawEntities();
@@ -233,6 +259,7 @@ void cGame::Clean()
 	}
 
 	cAssetManager::Instance()->Clean();
+	cAudioManager::Instance()->Clean();
 	cCamera::Instance()->Clean();
 	cMap::Instance()->Clean();
 	cCollisionManager::Instance()->Clean();
@@ -243,8 +270,12 @@ void cGame::Clean()
 	SDL_DestroyWindow(m_window);
 
 	TTF_Quit();
+
+	Mix_CloseAudio();
 	Mix_Quit();
+
 	IMG_Quit();
+
 	SDL_Quit();
 
 	if (m_Instance != nullptr)

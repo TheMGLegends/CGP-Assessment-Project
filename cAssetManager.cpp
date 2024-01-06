@@ -71,13 +71,9 @@ void cAssetManager::Clean()
 	m_textureDictionary.clear();
 
 	if (m_textureDictionary.empty()) 
-	{
 		std::cout << "Texture Dictionary is empty!" << std::endl;
-	}
 	else 
-	{
 		std::cout << "Texture Dictionary is not empty!" << std::endl;
-	}
 
 	if (m_Instance != nullptr)
 	{

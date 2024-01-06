@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 #include "cAssetManager.h"
-#include "sTextureStrings.h"
+#include "sGlobalStrings.h"
 
 #include "cBulletBill.h"
 
@@ -26,7 +26,7 @@ void cBulletBill::Update(float deltaTime)
 void cBulletBill::Draw()
 {
 	// INFO: Since BB only has one frame (No animations) we can just draw him normally
-	cAssetManager::Instance()->Draw(sTextureStrings::BulletBill_Fly, static_cast<int>(m_position->m_x), static_cast<int>(m_position->m_y), m_width, m_height, 1.0f, 2, m_flip);
+	cAssetManager::Instance()->Draw(sGlobalStrings::BulletBill_Fly, static_cast<int>(m_position->m_x), static_cast<int>(m_position->m_y), m_width, m_height, 1.0f, 2, m_flip);
 
 	m_boxCollider->DrawBoxCollider();
 }
