@@ -54,10 +54,19 @@ void cMap::DrawMap()
 				cAssetManager::Instance()->DrawAnimation(sGlobalStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 0, 1);
 				break;
 			case 3:
-				cAssetManager::Instance()->DrawAnimation(sGlobalStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 1, 0);
+				cAssetManager::Instance()->DrawAnimation(sGlobalStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 0, 2);
 				break;
 			case 4:
+				cAssetManager::Instance()->DrawAnimation(sGlobalStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 1, 0);
+				break;
+			case 5:
 				cAssetManager::Instance()->DrawAnimation(sGlobalStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 1, 1);
+				break;
+			case 6:
+				cAssetManager::Instance()->DrawAnimation(sGlobalStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 1, 2);
+				break;
+			case 7:
+				cAssetManager::Instance()->DrawAnimation(sGlobalStrings::Tilemap, m_tiles[x][y].x, m_tiles[x][y].y, m_tiles[x][y].w, m_tiles[x][y].h, 2, 0);
 				break;
 			default:
 				break;

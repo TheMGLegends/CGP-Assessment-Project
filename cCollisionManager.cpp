@@ -54,8 +54,16 @@ bool cCollisionManager::MapCollision(SDL_Rect object)
 		{
 			// INFO: If any of the integer values held inside of the map array are greater than 0 (Meaning there is a block there) 
 			// a collision must have occured, therefore needs to be taken into account (Prevent GO from going there)
-			if (m_levelMap[j][i] > 0)
+			switch (m_levelMap[j][i])
+			{
+			case 1: case 2: case 4: case 5:
 				return true;
+				break;
+			case 3: case 6: case 7:
+				cGame::Instance()->SetLevelCompleted(true);
+			default:
+				break;
+			}
 		}
 	}
 	return false;

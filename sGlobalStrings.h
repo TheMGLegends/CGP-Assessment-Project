@@ -22,6 +22,9 @@ struct sGlobalStrings
 	static const std::string Coin_Rotating;
 
 
+	static const std::string PixelArt_Font;
+
+
 	static const std::string GroundTheme_Music;
 	static const std::string Coin_SFX;
 	static const std::string Mario_Death_SFX;

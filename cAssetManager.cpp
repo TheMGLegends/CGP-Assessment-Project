@@ -36,7 +36,7 @@ bool cAssetManager::LoadTexture(std::string key, const char* filepath, SDL_Rende
 	return true;
 }
 
-// INFO: Used for Drawing things like map tiles or entity states that do not have an animation
+// INFO: Used for Drawing things like drawing entity states that do not have an animation
 void cAssetManager::Draw(std::string key, int x, int y, int width, int height, float scrollingSpeed, int size, SDL_RendererFlip flip)
 {
 	cVector2 cameraPos = cCamera::Instance()->GetPosition() * scrollingSpeed;
@@ -48,7 +48,7 @@ void cAssetManager::Draw(std::string key, int x, int y, int width, int height, f
 	}
 }
 
-// INFO: Used for Drawing Animated Objects 
+// INFO: Used for Drawing Animated Objects + Sections of Textures like Tilemap Pieces
 void cAssetManager::DrawAnimation(std::string key, int x, int y, int width, int height, int row, int frame, int size, SDL_RendererFlip flip)
 {
 	SDL_Rect sourceRect = { width * frame, height * row, width, height };
@@ -59,6 +59,19 @@ void cAssetManager::DrawAnimation(std::string key, int x, int y, int width, int 
 	{
 		SDL_RenderCopyEx(cGame::Instance()->GetRenderer(), m_textureDictionary[key], &sourceRect, &destinationRect, 0, NULL, flip);
 	}
+}
+
+bool cAssetManager::LoadFont(std::string key, const char* filepath, int fontSize)
+{
+	TTF_Font* font = TTF_OpenFont(filepath, fontSize);
+
+	if (font == nullptr)
+	{
+		std::cout << "Failed to initialize Font. SDL_TTF error: " << TTF_GetError() << std::endl;
+		return false;
+	}
+
+	m_fontDictionary[key] = font;
 }
 
 void cAssetManager::Clean()
@@ -74,6 +87,18 @@ void cAssetManager::Clean()
 		std::cout << "Texture Dictionary is empty!" << std::endl;
 	else 
 		std::cout << "Texture Dictionary is not empty!" << std::endl;
+
+	for (auto i = m_fontDictionary.begin(); i != m_fontDictionary.end(); i++)
+	{
+		TTF_CloseFont(i->second);
+	}
+
+	m_fontDictionary.clear();
+
+	if (m_fontDictionary.empty())
+		std::cout << "Font Dictionary is empty!" << std::endl;
+	else
+		std::cout << "Font Dictionary is not empty!" << std::endl;
 
 	if (m_Instance != nullptr)
 	{

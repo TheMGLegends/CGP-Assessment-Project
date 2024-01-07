@@ -19,9 +19,10 @@ public:
 	void ResetGame();
 
 	inline SDL_Renderer* GetRenderer() const { return m_renderer; }
-	inline bool GetIsRunning() const { return m_isRunning; }
+	inline bool GetIsRunning() const { return m_bIsRunning; }
 
-	inline void SetIsRunning(bool isRunning) { m_isRunning = isRunning; }
+	inline void SetIsRunning(bool isRunning) { m_bIsRunning = isRunning; }
+	inline void SetLevelCompleted(bool isLevelCompleted) { m_bLevelCompleted = isLevelCompleted; }
 
 private:
 	cGame();
@@ -29,5 +30,7 @@ private:
 
 	SDL_Window* m_window;
 	SDL_Renderer* m_renderer;
-	bool m_isRunning;
+	bool m_bIsRunning;
+
+	bool m_bLevelCompleted;
 };

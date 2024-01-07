@@ -19,6 +19,9 @@ const std::string sGlobalStrings::Goomba_Death = "Goomba_Death";
 const std::string sGlobalStrings::Coin_Rotating = "Coin_Rotating";
 
 
+const std::string sGlobalStrings::PixelArt_Font = "PixelArt_Font";
+
+
 const std::string sGlobalStrings::GroundTheme_Music = "GroundTheme_Music";
 const std::string sGlobalStrings::Coin_SFX = "Coin_SFX";
 const std::string sGlobalStrings::Mario_Death_SFX = "Mario_Death_SFX";

@@ -28,8 +28,6 @@ private:
 	bool m_bIsJumping;
 	bool m_bSquishedGoomba;
 
-	bool m_bDeathPlayed;
-
 	float m_jumpForce;
 	float m_jumpTime;
 

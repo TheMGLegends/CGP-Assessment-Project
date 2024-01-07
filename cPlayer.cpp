@@ -20,8 +20,6 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 	m_bIsJumping = false;
 	m_bSquishedGoomba = false;
 
-	m_bDeathPlayed = false;
-
 	m_jumpTime = 0.0f;
 	m_jumpForce = 25.0f;
 	m_stompedTime = 0.0f;
@@ -38,12 +36,6 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 
 void cPlayer::Update(float deltaTime)
 {
-	if (m_bIsDead && !m_bDeathPlayed)
-	{
-		cAudioManager::Instance()->PlayAudio(sGlobalStrings::Mario_Death_SFX);
-		m_bDeathPlayed = true;
-	}
-
 	if (m_bIsDead && m_animator->GetCurrentAnimation() != sGlobalStrings::Mario_Death) 
 	{
 		m_rb2D->CancelForceX();
@@ -58,7 +50,10 @@ void cPlayer::Update(float deltaTime)
 
 	// INFO: Checks to see whether the death animation has played or whether the player has fallen through a hole before resetting
 	if (m_position->m_y > 600 || m_animator->GetAnimationCompleted(sGlobalStrings::Mario_Death))
+	{
+		cAudioManager::Instance()->PlayAudio(sGlobalStrings::Mario_Death_SFX);
 		cGame::Instance()->ResetGame();
+	}
 
 	// INFO: Allows movement when player isn't dead
 	if (!m_bIsDead)
@@ -194,7 +189,6 @@ void cPlayer::Reset()
 	m_position->m_y = m_startingPosition->m_y;
 
 	m_bIsDead = false;
-	m_bDeathPlayed = false;
 
 	m_bIsJumping = false;
 	m_jumpTime = 0.0f;
