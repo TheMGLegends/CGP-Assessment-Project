@@ -26,8 +26,8 @@ public:
 
 	virtual void Update(float deltaTime) = 0;
 	virtual void Draw() = 0;
-	virtual void Clean();
 	virtual void Reset() = 0;
+	virtual void Clean() override;
 
 	inline cBoxCollider* GetBoxCollider() const { return m_boxCollider; }
 	inline bool GetIsDead() const { return m_bIsDead; }

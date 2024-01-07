@@ -16,6 +16,8 @@ const std::string sGlobalStrings::BulletBill_Fly = "BulletBill_Fly";
 const std::string sGlobalStrings::Goomba_Walk = "Goomba_Walk";
 const std::string sGlobalStrings::Goomba_Death = "Goomba_Death";
 
+const std::string sGlobalStrings::Coin_Rotating = "Coin_Rotating";
+
 
 const std::string sGlobalStrings::GroundTheme_Music = "GroundTheme_Music";
 const std::string sGlobalStrings::Coin_SFX = "Coin_SFX";

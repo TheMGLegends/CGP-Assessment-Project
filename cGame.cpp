@@ -10,6 +10,7 @@
 #include "cInputManager.h"
 #include "cMap.h"
 #include "cPlayer.h"
+#include "cPickups.h"
 #include "sGlobalStrings.h"
 
 #include "SDL_ttf.h"
@@ -23,6 +24,7 @@
 cPlayer* Mario = nullptr;
 cBulletBill* BulletBill = nullptr;
 std::vector<cCharacter*> entities;
+std::vector<cPickups*> pickups;
 
 // INFO: 2D Map Array used to store tile map data (lvl1) & entity data (lvl1Entities)
 std::vector< std::vector<int> > lvl1 = {
@@ -49,15 +51,15 @@ std::vector< std::vector<int> > lvl1Entities = {
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,2,0,2,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,1,0,0,0,2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
@@ -146,6 +148,8 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Goomba_Walk, "Assets/Graphics/Goomba_Walk.png", m_renderer);
 		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Goomba_Death, "Assets/Graphics/Goomba_Death.png", m_renderer);
 
+		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Coin_Rotating, "Assets/Graphics/Coin_Rotating.png", m_renderer);
+
 		// INFO: Initialise Music and SFX
 		cAudioManager::Instance()->LoadAudio(sGlobalStrings::GroundTheme_Music, "Assets/Audio/GroundTheme_Music.mp3", true);
 
@@ -165,6 +169,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		// INFO: Load Entities
 		cEntityManager::Instance()->LoadEntities(lvl1Entities);
 		entities = cEntityManager::Instance()->GetEntities();
+		pickups = cEntityManager::Instance()->GetPickups();
 
 		// INFO: Set Camera Target
 		cCamera::Instance()->SetTarget(Mario->GetCenterPoint());
@@ -174,6 +179,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		cAudioManager::Instance()->SetSFXVolume(sGlobalStrings::Mario_Jump_SFX, 2);
 		cAudioManager::Instance()->SetSFXVolume(sGlobalStrings::Mario_Death_SFX, 20);
 		cAudioManager::Instance()->SetSFXVolume(sGlobalStrings::Mario_GoombaStomp_SFX, 50);
+		cAudioManager::Instance()->SetSFXVolume(sGlobalStrings::Coin_SFX, 25);
 
 		// INFO: Start Music
 		cAudioManager::Instance()->PlayAudio(sGlobalStrings::GroundTheme_Music, true);
@@ -220,6 +226,16 @@ void cGame::Update(float deltaTime)
 			}
 			else
 				Mario->SetIsDead(true);
+		}
+	}
+
+	for (int i = 0; i < pickups.size(); i++)
+	{
+		if (cCollisionManager::Instance()->ObjectCollision(Mario->GetBoxCollider()->GetRect(), pickups[i]->GetBoxCollider()->GetRect()) && !pickups[i]->GetIsCollected())
+		{
+			pickups[i]->SetIsCollected(true);
+			Mario->PickupEffect(pickups[i]->GetPickupType());
+			cAudioManager::Instance()->PlayAudio(sGlobalStrings::Coin_SFX);
 		}
 	}
 
@@ -293,5 +309,10 @@ void cGame::ResetGame()
 	for (int i = 0; i < entities.size(); i++)
 	{
 		entities[i]->Reset();
+	}
+
+	for (int i = 0; i < pickups.size(); i++)
+	{
+		pickups[i]->Reset();
 	}
 }

@@ -5,6 +5,7 @@ B:\University Projects\CGP-Assessment-Project\cBoxCollider.cpp;B:\University Pro
 B:\University Projects\CGP-Assessment-Project\cBulletBill.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cBulletBill.obj
 B:\University Projects\CGP-Assessment-Project\cCamera.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cCamera.obj
 B:\University Projects\CGP-Assessment-Project\cCharacter.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cCharacter.obj
+B:\University Projects\CGP-Assessment-Project\cCoin.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cCoin.obj
 B:\University Projects\CGP-Assessment-Project\cCollisionManager.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cCollisionManager.obj
 B:\University Projects\CGP-Assessment-Project\cEntityManager.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cEntityManager.obj
 B:\University Projects\CGP-Assessment-Project\cGame.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cGame.obj
@@ -12,6 +13,7 @@ B:\University Projects\CGP-Assessment-Project\cGameObject.cpp;B:\University Proj
 B:\University Projects\CGP-Assessment-Project\cGoomba.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cGoomba.obj
 B:\University Projects\CGP-Assessment-Project\cInputManager.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cInputManager.obj
 B:\University Projects\CGP-Assessment-Project\cMap.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cMap.obj
+B:\University Projects\CGP-Assessment-Project\cPickups.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cPickups.obj
 B:\University Projects\CGP-Assessment-Project\cPlayer.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cPlayer.obj
 B:\University Projects\CGP-Assessment-Project\cRigidbody.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cRigidbody.obj
 B:\University Projects\CGP-Assessment-Project\cTime.cpp;B:\University Projects\CGP-Assessment-Project\x64\Debug\cTime.obj

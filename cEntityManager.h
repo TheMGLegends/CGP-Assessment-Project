@@ -4,6 +4,7 @@
 
 #include "cCharacter.h"
 #include "cMap.h"
+#include "cPickups.h"
 
 class cEntityManager
 {
@@ -17,11 +18,13 @@ public:
 	void Clean();
 
 	std::vector<cCharacter*> GetEntities() const { return m_entitiesList; }
+	std::vector<cPickups*> GetPickups() const { return m_pickupsList; }
 
 private:
 	cEntityManager() {};
 	static cEntityManager* m_Instance;
 
 	std::vector<cCharacter*> m_entitiesList;
+	std::vector<cPickups*> m_pickupsList;
 };
 

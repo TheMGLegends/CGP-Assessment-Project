@@ -26,6 +26,8 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 	m_jumpForce = 25.0f;
 	m_stompedTime = 0.0f;
 
+	m_score = 0;
+
 	m_rb2D->SetGravity(BASE_GRAVITY * 0.75f);
 
 	m_characterType = CharacterType::Player;
@@ -127,7 +129,7 @@ void cPlayer::Update(float deltaTime)
 
 void cPlayer::Draw()
 {
-	m_animator->Draw(int(m_position->m_x), int(m_position->m_y), m_width, m_height);
+	m_animator->Draw(static_cast<int>(m_position->m_x), static_cast<int>(m_position->m_y), m_width, m_height);
 
 	m_boxCollider->DrawBoxCollider();
 }
@@ -197,6 +199,8 @@ void cPlayer::Reset()
 	m_bIsJumping = false;
 	m_jumpTime = 0.0f;
 
+	m_score = 0;
+
 	m_flip = SDL_FLIP_NONE;
 	cCamera::Instance()->Reset();
 
@@ -204,4 +208,18 @@ void cPlayer::Reset()
 	m_height = 33;
 
 	m_animator->SetAnimation(sGlobalStrings::Mario_Idle, 0, 10, 100, 2);
+}
+
+void cPlayer::PickupEffect(PickupType pickupType)
+{
+	switch (pickupType)
+	{
+	case PickupType::None:
+		break;
+	case PickupType::Coin:
+		m_score += 100;
+		break;
+	default:
+		break;
+	}
 }

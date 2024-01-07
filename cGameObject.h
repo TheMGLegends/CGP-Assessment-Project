@@ -36,7 +36,7 @@ public:
 	// INFO: Required GO Methods
 	virtual void Update(float deltaTime) = 0;
 	virtual void Draw() = 0;
-
+	virtual void Reset() = 0;
 	virtual void Clean();
 
 	inline cTransform* GetCenterPoint() { return m_centerPoint; }

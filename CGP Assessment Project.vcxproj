@@ -140,6 +140,7 @@
     <ClCompile Include="cBulletBill.cpp" />
     <ClCompile Include="cCamera.cpp" />
     <ClCompile Include="cCharacter.cpp" />
+    <ClCompile Include="cCoin.cpp" />
     <ClCompile Include="cCollisionManager.cpp" />
     <ClCompile Include="cEntityManager.cpp" />
     <ClCompile Include="cGame.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="cGoomba.cpp" />
     <ClCompile Include="cInputManager.cpp" />
     <ClCompile Include="cMap.cpp" />
+    <ClCompile Include="cPickups.cpp" />
     <ClCompile Include="cPlayer.cpp" />
     <ClCompile Include="cRigidbody.cpp" />
     <ClCompile Include="cTime.cpp" />
@@ -163,6 +165,7 @@
     <ClInclude Include="cBulletBill.h" />
     <ClInclude Include="cCamera.h" />
     <ClInclude Include="cCharacter.h" />
+    <ClInclude Include="cCoin.h" />
     <ClInclude Include="cCollisionManager.h" />
     <ClInclude Include="cEntityManager.h" />
     <ClInclude Include="cGame.h" />
@@ -170,6 +173,7 @@
     <ClInclude Include="cGoomba.h" />
     <ClInclude Include="cInputManager.h" />
     <ClInclude Include="cMap.h" />
+    <ClInclude Include="cPickups.h" />
     <ClInclude Include="cPlayer.h" />
     <ClInclude Include="cRigidbody.h" />
     <ClInclude Include="cTime.h" />

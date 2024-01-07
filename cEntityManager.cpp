@@ -1,3 +1,4 @@
+#include "cCoin.h"
 #include "cGoomba.h"
 #include "sGlobalStrings.h"
 
@@ -20,6 +21,9 @@ void cEntityManager::LoadEntities(std::vector<std::vector<int>> entityMap)
 			case 1:
 				m_entitiesList.push_back(new cGoomba(new sEssentials(static_cast<float>(y * TILE_SIZE), static_cast<float>(x * TILE_SIZE), 16, 16, sGlobalStrings::Goomba_Walk)));
 				break;
+			case 2:
+				m_pickupsList.push_back(new cCoin(new sEssentials(static_cast<float>(y * TILE_SIZE), static_cast<float>(x * TILE_SIZE), 16, 16, sGlobalStrings::Coin_Rotating)));
+				break;
 			default:
 				break;
 			}
@@ -29,22 +33,44 @@ void cEntityManager::LoadEntities(std::vector<std::vector<int>> entityMap)
 
 void cEntityManager::UpdateEntities(float deltaTime)
 {
+	for (int i = 0; i < m_pickupsList.size(); i++)
+	{
+		m_pickupsList[i]->Update(deltaTime);
+	}
+
 	for (int i = 0; i < m_entitiesList.size(); i++)
 	{
 		m_entitiesList[i]->Update(deltaTime);
 	}
+
 }
 
 void cEntityManager::DrawEntities()
 {
+	for (int i = 0; i < m_pickupsList.size(); i++)
+	{
+		m_pickupsList[i]->Draw();
+	}
+
 	for (int i = 0; i < m_entitiesList.size(); i++)
 	{
 		m_entitiesList[i]->Draw();
 	}
+
 }
 
 void cEntityManager::Clean()
 {
+	for (int i = 0; i < m_pickupsList.size(); i++)
+	{
+		if (m_pickupsList[i] != nullptr)
+		{
+			m_pickupsList[i]->Clean();
+			delete m_pickupsList[i];
+			m_pickupsList[i] = nullptr;
+		}
+	}
+
 	for (int i = 0; i < m_entitiesList.size(); i++)
 	{
 		if (m_entitiesList[i] != nullptr) 

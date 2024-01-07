@@ -1,5 +1,6 @@
 #pragma once
 
+#include "cPickups.h"
 #include "cRigidbody.h"
 
 #include "cCharacter.h"
@@ -20,6 +21,7 @@ public:
 	inline bool GetSquishedGoomba() const { return m_bSquishedGoomba; }
 
 	inline void SetSquishedGoomba(bool hasSquishedGoomba) { m_bSquishedGoomba = hasSquishedGoomba; }
+	void PickupEffect(PickupType pickupType);
 
 private:
 	bool m_bIsGrounded;
@@ -32,6 +34,8 @@ private:
 	float m_jumpTime;
 
 	float m_stompedTime;
+
+	int m_score;
 
 	void Move(float deltaTime);
 	void Jump(float deltaTime);

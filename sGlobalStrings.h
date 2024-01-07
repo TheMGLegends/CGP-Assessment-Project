@@ -19,6 +19,8 @@ struct sGlobalStrings
 	static const std::string Goomba_Walk;
 	static const std::string Goomba_Death;
 
+	static const std::string Coin_Rotating;
+
 
 	static const std::string GroundTheme_Music;
 	static const std::string Coin_SFX;
