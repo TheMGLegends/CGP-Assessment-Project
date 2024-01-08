@@ -1,4 +1,6 @@
+#include <fstream>
 #include <iostream>
+#include <string>
 
 #include "cAssetManager.h"
 #include "cAudioManager.h"
@@ -217,8 +219,6 @@ void cGame::HandleEvents()
 
 void cGame::Update(float deltaTime)
 {
-	std::cout << m_bonusScore << std::endl;
-
 	m_currentTime = SDL_GetTicks() - m_resetTime;
 
 	if (m_bLevelCompleted)
@@ -234,7 +234,26 @@ void cGame::Update(float deltaTime)
 			m_bonusScore = static_cast<int>(TIME_BONUS * bonusPercentage);
 
 			int totalScore = Mario->GetScore() + m_bonusScore;
-			std::string temp = "Score: " + std::to_string(totalScore);
+
+			// INFO: Read Value Held to determine if high score is the highest score
+			std::ifstream Read_Highscore_Holder("Highscore_Holder.txt");
+			std::string highscoreTxt;
+			std::getline(Read_Highscore_Holder, highscoreTxt);
+			Read_Highscore_Holder.close();
+
+			if (stoi(highscoreTxt) < totalScore)
+			{
+				std::ofstream Write_Highscore_Holder("Highscore_Holder.txt");
+				Write_Highscore_Holder << std::to_string(totalScore);
+				Write_Highscore_Holder.close();
+
+				std::ifstream Read_Highscore_Holder("Highscore_Holder.txt");
+				std::getline(Read_Highscore_Holder, highscoreTxt);
+				Read_Highscore_Holder.close();
+
+			}
+
+			std::string temp = "High Score: " + highscoreTxt + "    " + "Score: " + std::to_string(totalScore);
 			ScoreCounter->ChangeText(temp);
 		}
 
