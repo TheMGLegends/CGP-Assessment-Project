@@ -19,6 +19,7 @@ public:
 
 	inline bool GetIsGrounded() const { return m_bIsGrounded; }
 	inline bool GetSquishedGoomba() const { return m_bSquishedGoomba; }
+	inline int GetScore() const { return m_score; }
 
 	inline void SetSquishedGoomba(bool hasSquishedGoomba) { m_bSquishedGoomba = hasSquishedGoomba; }
 	void PickupEffect(PickupType pickupType);

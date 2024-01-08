@@ -14,6 +14,9 @@ public:
 
 	bool LoadTexture(std::string key, const char* filepath, SDL_Renderer* renderer);
 
+	// INFO: Used to draw UI elements
+	void DrawUI(SDL_Texture* texture, int x, int y, int width, int height, int size = 1, SDL_RendererFlip flip = SDL_FLIP_NONE);
+
 	// INFO: Used to draw the map
 	void Draw(std::string key, int x, int y, int width, int height, float scrollingSpeed = 1.0f, int size = 1, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
@@ -24,7 +27,9 @@ public:
 	bool LoadFont(std::string key, const char* filepath, int fontSize);
 
 	// INFO: Used to Retrieve a Font
-	inline TTF_Font* GetFont(std::string key) { if (m_fontDictionary[key] != nullptr) return m_fontDictionary[key]; }
+	inline TTF_Font* GetFont(std::string key) { return m_fontDictionary[key] != nullptr ? m_fontDictionary[key] : nullptr; }
+
+	inline void SetFontSize(std::string key, int size) { if (m_fontDictionary[key] != nullptr) TTF_SetFontSize(m_fontDictionary[key], size); }
 
 	void Clean();
 

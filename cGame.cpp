@@ -6,12 +6,13 @@
 #include "cCamera.h"
 #include "cCollisionManager.h"
 #include "cEntityManager.h"
+#include "sGlobalStrings.h"
 #include "cGoomba.h"
 #include "cInputManager.h"
 #include "cMap.h"
 #include "cPlayer.h"
 #include "cPickups.h"
-#include "sGlobalStrings.h"
+#include "cUILabel.h"
 
 #include "SDL_ttf.h"
 #include "SDL_mixer.h"
@@ -25,6 +26,7 @@ cPlayer* Mario = nullptr;
 cBulletBill* BulletBill = nullptr;
 std::vector<cCharacter*> entities;
 std::vector<cPickups*> pickups;
+cUILabel* ScoreCounter = nullptr;
 
 // INFO: 2D Map Array used to store tile map data (lvl1) & entity data (lvl1Entities)
 std::vector< std::vector<int> > lvl1 = {
@@ -153,7 +155,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		cAssetManager::Instance()->LoadTexture(sGlobalStrings::Coin_Rotating, "Assets/Graphics/Coin_Rotating.png", m_renderer);
 
 		// INFO: Initialise Fonts
-		cAssetManager::Instance()->LoadFont(sGlobalStrings::PixelArt_Font, "Assets/Fonts/PixelArt_Font.ttf", 16);
+		cAssetManager::Instance()->LoadFont(sGlobalStrings::PixelArt_Font, "Assets/Fonts/PixelArt_Font.fon", 16);
 
 		// INFO: Initialise Music and SFX
 		cAudioManager::Instance()->LoadAudio(sGlobalStrings::GroundTheme_Music, "Assets/Audio/GroundTheme_Music.mp3", true);
@@ -164,9 +166,10 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 
 		cAudioManager::Instance()->LoadAudio(sGlobalStrings::Coin_SFX, "Assets/Audio/Coin_SFX.mp3");
 
-		// INFO: Load Entities
+		// INFO: Load Entities & Elements
 		Mario = new cPlayer(new sEssentials(25, 300, 18, 33, sGlobalStrings::Mario_Idle));
 		BulletBill = new cBulletBill(new sEssentials(2950, 350, 16, 16, sGlobalStrings::BulletBill_Fly, SDL_FLIP_HORIZONTAL));
+		ScoreCounter = new cUILabel(0, 0, 2, "Score: 0");
 
 		// INFO: Load Map
 		cMap::Instance()->LoadMap(lvl1);
@@ -249,6 +252,9 @@ void cGame::Update(float deltaTime)
 				pickups[i]->SetIsCollected(true);
 				Mario->PickupEffect(pickups[i]->GetPickupType());
 				cAudioManager::Instance()->PlayAudio(sGlobalStrings::Coin_SFX);
+
+				std::string temp = "Score: " + std::to_string(Mario->GetScore());
+				ScoreCounter->ChangeText(temp);
 			}
 		}
 
@@ -268,6 +274,7 @@ void cGame::Draw()
 
 	Mario->Draw();
 	BulletBill->Draw();
+	ScoreCounter->Draw();
 
 	SDL_RenderPresent(m_renderer);
 }
@@ -286,6 +293,13 @@ void cGame::Clean()
 		BulletBill->Clean();
 		delete BulletBill;
 		BulletBill = nullptr;
+	}
+
+	if (ScoreCounter != nullptr)
+	{
+		ScoreCounter->Clean();
+		delete ScoreCounter;
+		ScoreCounter = nullptr;
 	}
 
 	cAssetManager::Instance()->Clean();
@@ -319,6 +333,7 @@ void cGame::ResetGame()
 {
 	Mario->Reset();
 	BulletBill->Reset();
+	ScoreCounter->ChangeText("Score: 0");
 
 	for (int i = 0; i < entities.size(); i++)
 	{

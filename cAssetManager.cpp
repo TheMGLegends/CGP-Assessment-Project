@@ -36,6 +36,17 @@ bool cAssetManager::LoadTexture(std::string key, const char* filepath, SDL_Rende
 	return true;
 }
 
+// INFO: Used for Drawing things like UI elements
+void cAssetManager::DrawUI(SDL_Texture* texture, int x, int y, int width, int height, int size, SDL_RendererFlip flip)
+{
+	SDL_Rect destinationRect = { x, y, width * size, height * size };
+
+	if (cGame::Instance()->GetRenderer() != nullptr && texture != nullptr)
+	{
+		SDL_RenderCopyEx(cGame::Instance()->GetRenderer(), texture, NULL, &destinationRect, 0, NULL, flip);
+	}
+}
+
 // INFO: Used for Drawing things like drawing entity states that do not have an animation
 void cAssetManager::Draw(std::string key, int x, int y, int width, int height, float scrollingSpeed, int size, SDL_RendererFlip flip)
 {
@@ -72,6 +83,8 @@ bool cAssetManager::LoadFont(std::string key, const char* filepath, int fontSize
 	}
 
 	m_fontDictionary[key] = font;
+
+	return true;
 }
 
 void cAssetManager::Clean()

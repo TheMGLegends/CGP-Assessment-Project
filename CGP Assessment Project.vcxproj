@@ -153,6 +153,7 @@
     <ClCompile Include="cRigidbody.cpp" />
     <ClCompile Include="cTime.cpp" />
     <ClCompile Include="cTransform.cpp" />
+    <ClCompile Include="cUILabel.cpp" />
     <ClCompile Include="cVector2.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sGlobalStrings.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="cRigidbody.h" />
     <ClInclude Include="cTime.h" />
     <ClInclude Include="cTransform.h" />
+    <ClInclude Include="cUILabel.h" />
     <ClInclude Include="cVector2.h" />
     <ClInclude Include="sGlobalStrings.h" />
     <ClInclude Include="MemoryLeakDetector.h" />
