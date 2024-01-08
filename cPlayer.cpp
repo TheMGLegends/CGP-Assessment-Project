@@ -126,7 +126,7 @@ void cPlayer::Draw()
 {
 	m_animator->Draw(static_cast<int>(m_position->m_x), static_cast<int>(m_position->m_y), m_width, m_height);
 
-	m_boxCollider->DrawBoxCollider();
+	//m_boxCollider->DrawBoxCollider();
 }
 
 void cPlayer::Move(float deltaTime)

@@ -28,7 +28,7 @@ void cBulletBill::Draw()
 	// INFO: Since BB only has one frame (No animations) we can just draw him normally
 	cAssetManager::Instance()->Draw(sGlobalStrings::BulletBill_Fly, static_cast<int>(m_position->m_x), static_cast<int>(m_position->m_y), m_width, m_height, 1.0f, 2, m_flip);
 
-	m_boxCollider->DrawBoxCollider();
+	//m_boxCollider->DrawBoxCollider();
 }
 
 void cBulletBill::Reset()

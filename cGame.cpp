@@ -194,7 +194,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 
 		// INFO: Set Audio Volumes
 		cAudioManager::Instance()->SetMusicVolume(20);
-		cAudioManager::Instance()->SetSFXVolume(sGlobalStrings::Mario_Jump_SFX, 2);
+		cAudioManager::Instance()->SetSFXVolume(sGlobalStrings::Mario_Jump_SFX, 3);
 		cAudioManager::Instance()->SetSFXVolume(sGlobalStrings::Mario_Death_SFX, 20);
 		cAudioManager::Instance()->SetSFXVolume(sGlobalStrings::Mario_GoombaStomp_SFX, 50);
 		cAudioManager::Instance()->SetSFXVolume(sGlobalStrings::Coin_SFX, 25);

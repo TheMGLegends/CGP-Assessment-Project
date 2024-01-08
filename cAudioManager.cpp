@@ -53,6 +53,8 @@ void cAudioManager::PlayAudio(std::string key, bool isMusic)
 		{
 			if (Mix_PlayChannel(-1, m_sfxDictionary[key], 0) == -1)
 				std::cout << "SFX could not be played. SDL_Mixer error: " << Mix_GetError() << std::endl;
+
+			m_currentSFX = key;
 		}
 	}
 }

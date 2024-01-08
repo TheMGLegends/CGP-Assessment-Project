@@ -17,6 +17,7 @@ public:
 	inline void SetMusicVolume(int volume) { Mix_VolumeMusic(volume); }
 	inline void SetSFXVolume(std::string key, int volume) { if (m_sfxDictionary[key] != nullptr) Mix_VolumeChunk(m_sfxDictionary[key], volume); }
 
+	inline std::string GetCurrentSFX() const { return m_currentSFX; }
 	inline std::string GetCurrentMusic() const { return m_currentMusic; }
 
 	void Clean();
@@ -28,6 +29,7 @@ private:
 	std::unordered_map<std::string, Mix_Chunk*> m_sfxDictionary;
 	std::unordered_map<std::string, Mix_Music*> m_musicDictionary;
 
+	std::string m_currentSFX;
 	std::string m_currentMusic;
 };
 
