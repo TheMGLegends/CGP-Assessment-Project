@@ -79,6 +79,10 @@ cGame::cGame()
 
 	m_bLevelCompleted = false;
 	m_levelCompleteTime = 0.0f;
+	m_bonusScore = 0;
+
+	m_currentTime = 0.0f;
+	m_resetTime = 0.0f;
 }
 
 bool cGame::Initialise(const char* windowTitle, int width, int height)
@@ -213,13 +217,26 @@ void cGame::HandleEvents()
 
 void cGame::Update(float deltaTime)
 {
+	std::cout << m_bonusScore << std::endl;
+
+	m_currentTime = SDL_GetTicks() - m_resetTime;
+
 	if (m_bLevelCompleted)
 	{
-		std::cout << m_levelCompleteTime << std::endl;
 		m_levelCompleteTime += deltaTime;
 
 		if (cAudioManager::Instance()->GetCurrentMusic() == sGlobalStrings::GroundTheme_Music)
+		{
 			cAudioManager::Instance()->PlayAudio(sGlobalStrings::LevelComplete_Music, true);
+
+			// INFO: Percent Lost every 5 seconds
+			float bonusPercentage = 1 - (((m_currentTime / static_cast<float>(1000)) / 5) / 100);
+			m_bonusScore = static_cast<int>(TIME_BONUS * bonusPercentage);
+
+			int totalScore = Mario->GetScore() + m_bonusScore;
+			std::string temp = "Score: " + std::to_string(totalScore);
+			ScoreCounter->ChangeText(temp);
+		}
 
 		// INFO: Centre of Screen
 		ScoreCounter->ChangeLabelPos((static_cast<float>(SCREEN_WIDTH) / 2) - ScoreCounter->GetWidth() * 1.5f,
@@ -351,9 +368,14 @@ void cGame::Clean()
 
 void cGame::ResetGame() 
 {
+	m_resetTime = static_cast<float>(SDL_GetTicks());
+
+	m_bonusScore = 0;
+
 	Mario->Reset();
 	BulletBill->Reset();
 	ScoreCounter->ChangeText("Score: 0");
+	ScoreCounter->ChangeLabelPos(0, 0);
 
 	for (int i = 0; i < entities.size(); i++)
 	{

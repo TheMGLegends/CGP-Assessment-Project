@@ -7,6 +7,8 @@ const int SCREEN_HEIGHT = 480;
 
 const float LEVEL_COMPLETE_INTERVAL = 360.0f;
 
+const int TIME_BONUS = 5000;
+
 class cGame
 {
 public:
@@ -36,4 +38,9 @@ private:
 
 	bool m_bLevelCompleted;
 	float m_levelCompleteTime;
+
+	int m_bonusScore;
+
+	float m_currentTime;
+	float m_resetTime;
 };
