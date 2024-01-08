@@ -14,8 +14,13 @@ public:
 	cUILabel(float x, float y, int scale = 1, std::string text = "New Text");
 
 	bool ChangeText(std::string labelText);
-	void Draw();
+	void ChangeLabelPos(float x, float y);
+
+	void Draw() const;
 	void Clean();
+
+	inline int GetWidth() const { return m_width; }
+	inline int GetHeight() const { return m_height; }
 
 private:
 	cTransform* m_position;

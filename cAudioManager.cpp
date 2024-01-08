@@ -43,6 +43,8 @@ void cAudioManager::PlayAudio(std::string key, bool isMusic)
 		{
 			if (Mix_PlayMusic(m_musicDictionary[key], -1) == -1)
 				std::cout << "Music could not be played. SDL_Mixer error: " << Mix_GetError() << std::endl;
+
+			m_currentMusic = key;
 		}
 	}
 	else

@@ -55,7 +55,13 @@ bool cUILabel::ChangeText(std::string labelText)
 	return false;
 }
 
-void cUILabel::Draw()
+void cUILabel::ChangeLabelPos(float x, float y)
+{
+	m_position->m_x = x;
+	m_position->m_y = y;
+}
+
+void cUILabel::Draw() const
 {
 	cAssetManager::Instance()->DrawUI(m_labelTexture, static_cast<int>(m_position->m_x), static_cast<int>(m_position->m_y), m_width, m_height, m_scale);
 }

@@ -26,6 +26,7 @@ struct sGlobalStrings
 
 
 	static const std::string GroundTheme_Music;
+	static const std::string LevelComplete_Music;
 	static const std::string Coin_SFX;
 	static const std::string Mario_Death_SFX;
 	static const std::string Mario_GoombaStomp_SFX;

@@ -5,6 +5,8 @@
 const int SCREEN_WIDTH = 960;
 const int SCREEN_HEIGHT = 480;
 
+const float LEVEL_COMPLETE_INTERVAL = 360.0f;
+
 class cGame
 {
 public:
@@ -33,4 +35,5 @@ private:
 	bool m_bIsRunning;
 
 	bool m_bLevelCompleted;
+	float m_levelCompleteTime;
 };

@@ -24,9 +24,10 @@
 
 cPlayer* Mario = nullptr;
 cBulletBill* BulletBill = nullptr;
+cUILabel* ScoreCounter = nullptr;
+
 std::vector<cCharacter*> entities;
 std::vector<cPickups*> pickups;
-cUILabel* ScoreCounter = nullptr;
 
 // INFO: 2D Map Array used to store tile map data (lvl1) & entity data (lvl1Entities)
 std::vector< std::vector<int> > lvl1 = {
@@ -75,7 +76,9 @@ cGame::cGame()
 	m_renderer = nullptr;
 
 	m_bIsRunning = false;
+
 	m_bLevelCompleted = false;
+	m_levelCompleteTime = 0.0f;
 }
 
 bool cGame::Initialise(const char* windowTitle, int width, int height)
@@ -159,6 +162,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 
 		// INFO: Initialise Music and SFX
 		cAudioManager::Instance()->LoadAudio(sGlobalStrings::GroundTheme_Music, "Assets/Audio/GroundTheme_Music.mp3", true);
+		cAudioManager::Instance()->LoadAudio(sGlobalStrings::LevelComplete_Music, "Assets/Audio/LevelComplete_Music.mp3", true);
 
 		cAudioManager::Instance()->LoadAudio(sGlobalStrings::Mario_Death_SFX, "Assets/Audio/Mario_Death_SFX.mp3");
 		cAudioManager::Instance()->LoadAudio(sGlobalStrings::Mario_GoombaStomp_SFX, "Assets/Audio/Mario_GoombaStomp_SFX.mp3");
@@ -169,7 +173,7 @@ bool cGame::Initialise(const char* windowTitle, int width, int height)
 		// INFO: Load Entities & Elements
 		Mario = new cPlayer(new sEssentials(25, 300, 18, 33, sGlobalStrings::Mario_Idle));
 		BulletBill = new cBulletBill(new sEssentials(2950, 350, 16, 16, sGlobalStrings::BulletBill_Fly, SDL_FLIP_HORIZONTAL));
-		ScoreCounter = new cUILabel(0, 0, 2, "Score: 0");
+		ScoreCounter = new cUILabel(0, 0, 3, "Score: 0");
 
 		// INFO: Load Map
 		cMap::Instance()->LoadMap(lvl1);
@@ -211,9 +215,25 @@ void cGame::Update(float deltaTime)
 {
 	if (m_bLevelCompleted)
 	{
-		std::cout << "Won game!" << std::endl;
-		m_bLevelCompleted = false;
-		ResetGame();
+		std::cout << m_levelCompleteTime << std::endl;
+		m_levelCompleteTime += deltaTime;
+
+		if (cAudioManager::Instance()->GetCurrentMusic() == sGlobalStrings::GroundTheme_Music)
+			cAudioManager::Instance()->PlayAudio(sGlobalStrings::LevelComplete_Music, true);
+
+		// INFO: Centre of Screen
+		ScoreCounter->ChangeLabelPos((static_cast<float>(SCREEN_WIDTH) / 2) - ScoreCounter->GetWidth() * 1.5f,
+									 (static_cast<float>(SCREEN_HEIGHT / 2) - static_cast<float>(ScoreCounter->GetHeight() / 2)));
+
+		if (m_levelCompleteTime > LEVEL_COMPLETE_INTERVAL)
+		{
+			m_levelCompleteTime = 0.0f;
+			m_bLevelCompleted = false;
+
+			cAudioManager::Instance()->PlayAudio(sGlobalStrings::GroundTheme_Music, true);
+
+			ResetGame();
+		}
 	}
 	else
 	{

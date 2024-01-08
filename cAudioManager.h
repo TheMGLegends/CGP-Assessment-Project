@@ -17,13 +17,17 @@ public:
 	inline void SetMusicVolume(int volume) { Mix_VolumeMusic(volume); }
 	inline void SetSFXVolume(std::string key, int volume) { if (m_sfxDictionary[key] != nullptr) Mix_VolumeChunk(m_sfxDictionary[key], volume); }
 
+	inline std::string GetCurrentMusic() const { return m_currentMusic; }
+
 	void Clean();
 
 private:
-	cAudioManager() {};
+	cAudioManager() : m_currentMusic{ "" } {};
 	static cAudioManager* m_Instance;
 
 	std::unordered_map<std::string, Mix_Chunk*> m_sfxDictionary;
 	std::unordered_map<std::string, Mix_Music*> m_musicDictionary;
+
+	std::string m_currentMusic;
 };
 
