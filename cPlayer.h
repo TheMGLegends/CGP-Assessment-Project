@@ -6,7 +6,7 @@
 #include "cCharacter.h"
 
 const float JUMP_INTERVAL = 20.0f;
-const float STOMP_INTERVAL = 5.0f;
+const float STOMP_INTERVAL = 20.0f;
 
 class cPlayer : public cCharacter
 {
@@ -32,6 +32,7 @@ private:
 	float m_jumpForce;
 	float m_jumpTime;
 
+	float m_stompForce;
 	float m_stompedTime;
 
 	int m_score;

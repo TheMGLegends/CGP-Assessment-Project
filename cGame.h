@@ -40,7 +40,4 @@ private:
 	float m_levelCompleteTime;
 
 	int m_bonusScore;
-
-	float m_currentTime;
-	float m_resetTime;
 };

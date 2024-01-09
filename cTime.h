@@ -13,10 +13,16 @@ public:
 	void Clean();
 	inline float DeltaTime() const { return m_deltaTime; }
 
+	inline float GetCurrentTime() const { return m_currentTime; }
+	inline void SetResetTime() { m_resetTime = static_cast<float>(SDL_GetTicks()); }
+
 private:
 	cTime();
 	static cTime* m_Instance;
 
 	float m_deltaTime;
 	float m_previousFrameTime;
+
+	float m_currentTime;
+	float m_resetTime;
 };

@@ -14,6 +14,7 @@
 #include "cMap.h"
 #include "cPlayer.h"
 #include "cPickups.h"
+#include "cTime.h"
 #include "cUILabel.h"
 
 #include "SDL_ttf.h"
@@ -82,9 +83,6 @@ cGame::cGame()
 	m_bLevelCompleted = false;
 	m_levelCompleteTime = 0.0f;
 	m_bonusScore = 0;
-
-	m_currentTime = 0.0f;
-	m_resetTime = 0.0f;
 }
 
 bool cGame::Initialise(const char* windowTitle, int width, int height)
@@ -219,8 +217,6 @@ void cGame::HandleEvents()
 
 void cGame::Update(float deltaTime)
 {
-	m_currentTime = SDL_GetTicks() - m_resetTime;
-
 	if (m_bLevelCompleted)
 	{
 		m_levelCompleteTime += deltaTime;
@@ -230,7 +226,7 @@ void cGame::Update(float deltaTime)
 			cAudioManager::Instance()->PlayAudio(sGlobalStrings::LevelComplete_Music, true);
 
 			// INFO: Percent Lost every 5 seconds
-			float bonusPercentage = 1 - (((m_currentTime / static_cast<float>(1000)) / 5) / 100);
+			float bonusPercentage = 1 - (((cTime::Instance()->GetCurrentTime() / static_cast<float>(1000)) / 5) / 100);
 			m_bonusScore = static_cast<int>(TIME_BONUS * bonusPercentage);
 
 			int totalScore = Mario->GetScore() + m_bonusScore;
@@ -387,7 +383,7 @@ void cGame::Clean()
 
 void cGame::ResetGame() 
 {
-	m_resetTime = static_cast<float>(SDL_GetTicks());
+	cTime::Instance()->SetResetTime();
 
 	m_bonusScore = 0;
 

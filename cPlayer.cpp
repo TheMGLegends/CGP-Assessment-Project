@@ -22,7 +22,9 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 
 	m_jumpTime = 0.0f;
 	m_jumpForce = 25.0f;
+
 	m_stompedTime = 0.0f;
+	m_stompForce = 20.0f;
 
 	m_score = 0;
 
@@ -69,14 +71,19 @@ void cPlayer::Update(float deltaTime)
 			// INFO: Launches the player upwards when goomba has been stomped on
 			if (m_stompedTime < STOMP_INTERVAL)
 			{
+				m_rb2D->AddForceY(UP * m_stompForce, deltaTime, ForceMode::Impulse);
 				m_rb2D->SetGravity(BASE_GRAVITY * 0.75f);
-				m_rb2D->AddForceY(-50, deltaTime, ForceMode::Impulse);
+
+				m_animator->SetAnimation(sGlobalStrings::Mario_Jump, 0, 2, 100, 2, m_flip);
 			}
 			else
 			{
 				m_bSquishedGoomba = false;
 				m_stompedTime = 0.0f;
 				m_rb2D->SetGravity(BASE_GRAVITY);
+
+				if (!m_bIsGrounded)
+					m_animator->SetAnimation(sGlobalStrings::Mario_Fall, 0, 2, 100, 2, m_flip);
 			}
 		}
 	}
