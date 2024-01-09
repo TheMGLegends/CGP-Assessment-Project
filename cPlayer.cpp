@@ -28,6 +28,8 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 
 	m_score = 0;
 
+	m_movementSpeed = 7.5f;
+
 	m_rb2D->SetGravity(BASE_GRAVITY * 0.75f);
 
 	m_characterType = CharacterType::Player;
@@ -145,7 +147,7 @@ void cPlayer::Move(float deltaTime)
 	{
 		m_flip = SDL_FLIP_HORIZONTAL;
 
-		m_rb2D->AddForceX(-7.5f, deltaTime);
+		m_rb2D->AddForceX(LEFT * m_movementSpeed, deltaTime);
 		m_animator->SetAnimation(sGlobalStrings::Mario_Run, 0, 12, 50, 2, m_flip);
 	}
 
@@ -153,7 +155,7 @@ void cPlayer::Move(float deltaTime)
 	{
 		m_flip = SDL_FLIP_NONE;
 
-		m_rb2D->AddForceX(7.5f, deltaTime);
+		m_rb2D->AddForceX(RIGHT * m_movementSpeed, deltaTime);
 		m_animator->SetAnimation(sGlobalStrings::Mario_Run, 0, 12, 50, 2);
 	}
 }
@@ -168,14 +170,14 @@ void cPlayer::Jump(float deltaTime)
 	{
 		m_bIsGrounded = false;
 		m_bIsJumping = true;
-		m_rb2D->AddForceY(-m_jumpForce, deltaTime, ForceMode::Acceleration);
+		m_rb2D->AddForceY(UP * m_jumpForce, deltaTime, ForceMode::Acceleration);
 		m_rb2D->SetGravity(BASE_GRAVITY * 0.75f);
 	}
 
 	if (cInputManager::Instance()->GetKey(SDL_SCANCODE_SPACE) && m_bIsJumping && m_jumpTime < JUMP_INTERVAL)
 	{
 		m_jumpTime += deltaTime;
-		m_rb2D->AddForceY(-m_jumpForce, deltaTime, ForceMode::Acceleration);
+		m_rb2D->AddForceY(UP * m_jumpForce, deltaTime, ForceMode::Acceleration);
 		m_animator->SetAnimation(sGlobalStrings::Mario_Jump, 0, 2, 100, 2, m_flip);
 	}
 	else
