@@ -160,7 +160,7 @@ void cPlayer::Move(float deltaTime)
 
 void cPlayer::Jump(float deltaTime)
 {
-	if (cInputManager::Instance()->GetKeyDown(SDL_SCANCODE_SPACE))
+	if (cInputManager::Instance()->GetKeyDown(SDL_SCANCODE_SPACE) && m_bIsGrounded)
 		cAudioManager::Instance()->PlayAudio(sGlobalStrings::Mario_Jump_SFX);
 
 	// INFO: Variable jump height, if released prematurely the player will lose all upward velocity and start falling down
