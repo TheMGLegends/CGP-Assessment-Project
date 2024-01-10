@@ -15,28 +15,18 @@ cAnimator::cAnimator()
 	, m_textureKey{ "" }
 	, m_flip{ SDL_FLIP_NONE }
 	, m_bPlayOneShot{ false }
-	, m_bAnimationCompleted{ false }
-	, m_bSetAnimation{ false }
 {
 }
 
 void cAnimator::Update()
 {
-	m_animFrame = (SDL_GetTicks() / m_animSpeed) % m_maxFrames;
-
-	// INFO: Prevents Skipping of Animation
-	if (m_bSetAnimation && m_bPlayOneShot)
+	if (m_bPlayOneShot)
 	{
-		m_animFrame = 0;
-		m_bSetAnimation = false;
+		if (m_animFrame != m_maxFrames - 1)
+			m_animFrame = (SDL_GetTicks() / m_animSpeed) % m_maxFrames;
 	}
-
-	// INFO: Ensures Animation is only ever played through once
-	if (m_bPlayOneShot && m_animFrame == m_maxFrames - 1) 
-	{
-		m_animFrame = m_maxFrames - 1;
-		m_bAnimationCompleted = true;
-	}
+	else 
+		m_animFrame = (SDL_GetTicks() / m_animSpeed) % m_maxFrames;
 }
 
 void cAnimator::Draw(int x, int y, int spriteWidth, int spriteHeight) const
@@ -46,9 +36,6 @@ void cAnimator::Draw(int x, int y, int spriteWidth, int spriteHeight) const
 
 void cAnimator::SetAnimation(std::string textureKey, int animRow, int maxFrames, int animSpeed, int animSize, SDL_RendererFlip flip, bool playOneShot)
 {
-	m_bAnimationCompleted = false;
-	m_bSetAnimation = true;
-
 	m_textureKey = textureKey;
 	m_animRow = animRow;
 	m_maxFrames = maxFrames;
@@ -56,11 +43,4 @@ void cAnimator::SetAnimation(std::string textureKey, int animRow, int maxFrames,
 	m_animSize = animSize;
 	m_flip = flip;
 	m_bPlayOneShot = playOneShot;
-}
-
-bool cAnimator::GetAnimationCompleted(std::string currentAnimation) const
-{
-	if (m_textureKey == currentAnimation && m_bAnimationCompleted)
-		return true;
-	return false;
 }

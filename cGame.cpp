@@ -293,7 +293,10 @@ void cGame::Update(float deltaTime)
 					entities[i]->SetIsDead(true);
 				}
 				else
+				{
 					Mario->SetIsDead(true);
+					Mix_PauseMusic();
+				}
 			}
 		}
 
@@ -384,6 +387,7 @@ void cGame::Clean()
 void cGame::ResetGame() 
 {
 	cTime::Instance()->SetResetTime();
+	Mix_ResumeMusic();
 
 	m_bonusScore = 0;
 

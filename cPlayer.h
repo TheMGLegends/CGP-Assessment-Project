@@ -7,6 +7,7 @@
 
 const float JUMP_INTERVAL = 20.0f;
 const float STOMP_INTERVAL = 20.0f;
+const float DEATH_INTERVAL = 225.0f;
 
 class cPlayer : public cCharacter
 {
@@ -35,6 +36,8 @@ private:
 
 	float m_stompForce;
 	float m_stompedTime;
+
+	float m_deathTime;
 
 	int m_score;
 

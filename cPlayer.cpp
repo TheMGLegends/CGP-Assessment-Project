@@ -27,6 +27,8 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 	m_stompedTime = 0.0f;
 	m_stompForce = 20.0f;
 
+	m_deathTime = 0.0f;
+
 	m_score = 0;
 
 	m_movementSpeed = 7.5f;
@@ -41,6 +43,7 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 
 void cPlayer::Update(float deltaTime)
 {
+	// INFO: Ensures the following only happen once
 	if (m_bIsDead && m_animator->GetCurrentAnimation() != sGlobalStrings::Mario_Death) 
 	{
 		m_rb2D->CancelForceX();
@@ -51,14 +54,24 @@ void cPlayer::Update(float deltaTime)
 		m_width = 32;
 		m_height = 33;
 		m_animator->SetAnimation(sGlobalStrings::Mario_Death, 0, 10, 85, 2, m_flip, true);
+		cAudioManager::Instance()->PlayAudio(sGlobalStrings::Mario_Death_SFX);
 	}
 
-	// INFO: Checks to see whether the death animation has played or whether the player has fallen through a hole before resetting
-	if (m_position->m_y > 600 || m_animator->GetAnimationCompleted(sGlobalStrings::Mario_Death))
+	// INFO: Custom death timer
+	if (m_bIsDead)
 	{
-		cAudioManager::Instance()->PlayAudio(sGlobalStrings::Mario_Death_SFX);
-		cGame::Instance()->ResetGame();
+		m_deathTime += deltaTime;
+
+		if (m_deathTime > DEATH_INTERVAL)
+		{
+			m_deathTime = 0.0f;
+			cGame::Instance()->ResetGame();
+		}
 	}
+
+	// INFO: Reset for when mario falls through the holes
+	if (m_position->m_y > 600)
+		cGame::Instance()->ResetGame();
 
 	// INFO: Allows movement when player isn't dead
 	if (!m_bIsDead)
@@ -116,11 +129,15 @@ void cPlayer::Update(float deltaTime)
 
 	if (cCollisionManager::Instance()->MapCollision(m_boxCollider->GetRect()))
 	{
+		if (m_rb2D->GetVelocity().m_y >= 0)
+		{
+			m_bIsGrounded = true;
+			m_bJumpSFXPlayed = false;
+		}
+
 		m_rb2D->CancelForceY();
 		m_rb2D->SetGravity(BASE_GRAVITY);
 
-		m_bIsGrounded = true;
-		m_bJumpSFXPlayed = false;
 		m_position->m_y = m_previousPosition->m_y;
 	}
 	else
