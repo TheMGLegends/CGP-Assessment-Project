@@ -275,7 +275,10 @@ void cGame::Update(float deltaTime)
 
 		// INFO: Given that Bullet Bill collides with the player the player will die
 		if (cCollisionManager::Instance()->ObjectCollision(Mario->GetBoxCollider()->GetRect(), BulletBill->GetBoxCollider()->GetRect()))
+		{
 			Mario->SetIsDead(true);
+			Mix_PauseMusic();
+		}
 
 		// INFO: Goes through all the entities and checks whether they have collided with mario
 		for (int i = 0; i < entities.size(); i++)
