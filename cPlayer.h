@@ -28,6 +28,7 @@ private:
 	bool m_bIsGrounded;
 	bool m_bIsJumping;
 	bool m_bSquishedGoomba;
+	bool m_bJumpSFXPlayed;
 
 	float m_jumpForce;
 	float m_jumpTime;

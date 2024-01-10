@@ -1,17 +1,4 @@
-﻿  cAssetManager.cpp
-  cBoxCollider.cpp
-  cCamera.cpp
-  cCollisionManager.cpp
-  cGame.cpp
-  cGoomba.cpp
-  cInputManager.cpp
+﻿  cGame.cpp
   cPlayer.cpp
-  cUILabel.cpp
-  main.cpp
   Generating Code...
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\crtdbg.h(307,1): warning C4005: '_malloca': macro redefinition
-  (compiling source file 'main.cpp')
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\malloc.h(124,1):
-  see previous definition of '_malloca'
-  
   CGP Assessment Project.vcxproj -> B:\University Projects\CGP-Assessment-Project\x64\Debug\CGP Assessment Project.exe

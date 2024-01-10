@@ -19,6 +19,7 @@ cPlayer::cPlayer(sEssentials* required) : cCharacter(required)
 	m_bIsGrounded = false;
 	m_bIsJumping = false;
 	m_bSquishedGoomba = false;
+	m_bJumpSFXPlayed = false;
 
 	m_jumpTime = 0.0f;
 	m_jumpForce = 25.0f;
@@ -119,6 +120,7 @@ void cPlayer::Update(float deltaTime)
 		m_rb2D->SetGravity(BASE_GRAVITY);
 
 		m_bIsGrounded = true;
+		m_bJumpSFXPlayed = false;
 		m_position->m_y = m_previousPosition->m_y;
 	}
 	else
@@ -162,8 +164,11 @@ void cPlayer::Move(float deltaTime)
 
 void cPlayer::Jump(float deltaTime)
 {
-	if (cInputManager::Instance()->GetKeyDown(SDL_SCANCODE_SPACE) && m_bIsGrounded)
+	if (cInputManager::Instance()->GetKey(SDL_SCANCODE_SPACE) && m_bIsGrounded && !m_bJumpSFXPlayed)
+	{
 		cAudioManager::Instance()->PlayAudio(sGlobalStrings::Mario_Jump_SFX);
+		m_bJumpSFXPlayed = true;
+	}
 
 	// INFO: Variable jump height, if released prematurely the player will lose all upward velocity and start falling down
 	if (cInputManager::Instance()->GetKey(SDL_SCANCODE_SPACE) && m_bIsGrounded)
